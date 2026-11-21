@@ -1,0 +1,20 @@
+/*! @version pwa-studio: 0.0.1, @magento/venia-ui: ~11.3.0, @magento/upward-security-headers: ~1.0.14, @magento/pwa-theme-venia: ~2.4.0, @magento/pwa-buildpack: ~11.4.3, @magento/peregrine: ~15.5.2, @magento/pagebuilder: ~9.2.1, @magento/eslint-config: ~1.5.0, @magento/babel-preset-peregrine: ~1.2.3, @apollo/client: ~3.5.0 */
+(window.webpackJsonp=window.webpackJsonp||[]).push([[53],{"+fQW":function(t,e,n){t.exports=n.p+"storeSelect-iZ3.png"},"/bV2":function(t,e,n){t.exports=n.p+"sfpickupSelect-5ks.svg"},"8iKg":function(t,e,n){t.exports=n.p+"fitnesspickupIcon-gH4.svg"},DU7E:function(t,e,n){t.exports=n.p+"storeNotSelect-nBV.png"},FdSz:function(t,e,n){t.exports=n.p+"sfpickupIcon-iwJ.svg"},Lhfy:function(t,e,n){t.exports=n.p+"fitnesspickupSelect-948.svg"},"x+Ak":function(t,e,n){"use strict"
+n.r(e)
+var i=n("J4zp"),l=n.n(i),c=n("q1tI"),a=n.n(c),o=n("DrT9"),r=n("Fvk+"),u=n("zAJy"),s=n("FdSz"),f=n.n(s),p=n("/bV2"),g=n.n(p),d=n("8iKg"),k=n.n(d),v=n("Lhfy"),m=n.n(v),b=n("DU7E"),h=n.n(b),y=n("+fQW"),E=n.n(y),O=Object(u.a)(),w=(new r.a).getItem("store_view_code")||"en_US",S={lat:22.3193,lng:114.1694},j={sfpickup:{default:f.a,selected:g.a},fitnesspickup:{default:k.a,selected:m.a}},T=function StoreMarkers(t){var e=t.activeMarker,n=t.locationList,i=t.onMarkerClick,l=t.pickUpType
+return n.map(function(t){var n=t.location||{},c=n.lat,r=n.lng
+if(!Number.isFinite(c)||!Number.isFinite(r))return null
+var u=function normalizePickupType(t){var e=String(t||"").toLowerCase()
+return e.includes("sf")?"sfpickup":e.includes("fitness")||e.includes("247")?"fitnesspickup":""}(t.pickUpType||l),s=j[u],f=t.key===e,p=f?null==s?void 0:s.selected:null==s?void 0:s.default
+return a.a.createElement(o.b,{key:t.key,position:t.location,anchorPoint:o.c.TOP_LEFT,onClick:function onClick(){return i(t)},zIndex:f?1e3:1},p?a.a.createElement("img",{src:p,width:f?44:40,height:f?51:46,alt:""}):f?a.a.createElement("img",{src:E.a,width:44,height:50,alt:""}):a.a.createElement("img",{src:h.a,width:40,height:46,alt:""}))})},C=function MapController(t){var e=t.currentPick,n=t.locationList,i=Object(o.f)(),l=Object(c.useRef)(!1)
+return Object(c.useEffect)(function(){if(e&&i){var t,l=n.find(function(t){return t.id===e})
+if(l&&0!==(null===(t=l.location)||void 0===t?void 0:t.lat)){var c=l.location,a={lat:c.lat,lng:c.lng}
+try{"function"==typeof i.panTo&&(i.panTo(a),i.setZoom(15))}catch(t){}}}},[e,n,i]),Object(c.useEffect)(function(){if(!l.current&&!e&&i&&n&&n.length>0){var t,c=null===(t=n[0])||void 0===t?void 0:t.location
+if(c&&c.lat&&c.lng&&0!==c.lat)try{"function"==typeof i.panTo&&(i.panTo({lat:c.lat,lng:c.lng}),l.current=!0)}catch(t){}}},[e,n,i]),null}
+e.default=function StoreGooleMap(t){var e=t.locationList,n=t.pickLocation,i=t.currentPick,r=t.pickUpType,u=Object(c.useState)(null),s=l()(u,2),f=s[0],p=s[1],g=Object(c.useState)(!1),d=l()(g,2),k=(d[0],d[1]),v=Object(c.useState)(null),m=l()(v,2),b=m[0],h=m[1],y=Object(c.useState)({lat:0,lng:0}),E=l()(y,2),j=(E[0],E[1]),L=Object(c.useRef)(!1)
+Object(c.useEffect)(function(){if(!L.current&&e&&e.length>0){var t,n=null===(t=e[0])||void 0===t?void 0:t.location
+if(null!=n&&n.lat&&null!=n&&n.lng){var i={lat:n.lat,lng:n.lng}
+p(i),L.current=!0}}},[e]),Object(c.useEffect)(function(){if(i){var t,n=e.find(function(t){return t.id===i})
+if(n&&0!==(null===(t=n.location)||void 0===t?void 0:t.lat)){var l=n.location,c=l.lat,a=l.lng
+j({lat:c,lng:a}),h(i),k(!0)}}else h(null),k(!1)},[i,e])
+return Object(c.useEffect)(function(){null===b&&k(!1)},[b]),a.a.createElement("div",{id:"map",className:"map-container",style:{height:"100%"}},a.a.createElement(o.a,{apiKey:O,language:"zh_HK"==w?"zh-HK":"en"},a.a.createElement(o.e,{defaultZoom:10,defaultCenter:f||S,mapId:"DEMO_MAP_ID",options:{draggable:!0,zoomControl:!0,gestureHandling:"auto",fullscreenControl:!0,mapTypeControl:!1,streetViewControl:!1}},a.a.createElement(C,{currentPick:i,locationList:e}),a.a.createElement(T,{activeMarker:b,locationList:e||[],onMarkerClick:function onMarkerClick(t){h(t.key),k(!0),j({lat:t.location.lat,lng:t.location.lng}),n(t)},pickUpType:r}))))}}}])

@@ -5,7 +5,8 @@ param(
   [int]$Concurrency = 6,
   [int]$Retries = 8,
   [int]$From = 0,
-  [int]$To = 0
+  [int]$To = 0,
+  [string]$JobsFile = ''
 )
 
 $ErrorActionPreference = 'Stop'
@@ -331,7 +332,7 @@ switch ($Stage) {
   }
 
   'media' {
-    $listFile = Join-Path $Raw 'media-jobs.json'
+    $listFile = if ($JobsFile) { $JobsFile } else { Join-Path $Raw 'media-jobs.json' }
     if (-not (Test-Path $listFile)) { Write-Host 'missing media-jobs.json (run node scripts/02-media-plan.mjs first)'; exit 1 }
     $jobs = Get-Content $listFile -Raw -Encoding UTF8 | ConvertFrom-Json
     $todo = @()

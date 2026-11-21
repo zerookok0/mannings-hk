@@ -1,22 +1,86 @@
-# 萬寧香港官方網店 · 完整鏡像站（mannings.com.hk）
+# 萬寧香港官方網店 · 1:1 鏡像（Cloudflare Pages + R2）
 
-把 [www.mannings.com.hk](https://www.mannings.com.hk)（Magento PWA / Venia + 獨立搜索網關）**整站鏡像成本地可離線瀏覽的靜態站**：
-全部商品、SKU、分類、品牌、圖片、CMS 內容與頁面結構，並附完整數據導出。
+把 [www.mannings.com.hk](https://www.mannings.com.hk) **原样跑起来**：不是重写页面，而是把原站的
+PWA 应用本体（HTML 外壳 + 全部 webpack chunk + 全部静态资源）整体镜像，配上原站同一套 GraphQL
+数据快照与图片资源，部署在 Cloudflare 上——打开看到的就是原站，交互、路由、字体、间距全部一致。
+
+## 两种交付物
+
+| | 方案 | 目录 | 特征 |
+| --- | --- | --- | --- |
+| **A（默认，1:1）** | 原站 PWA 应用镜像 | `app/` → `pages/dist` + `functions/` + R2 | 与原站**像素级一致**，SPA 路由全站可达，购物车/搜索/筛选为原站真实交互 |
+| B（附带） | 数据驱动静态重建站 | `site/` | 9,118 个静态 HTML、可离线、无 JS 依赖；数据/图片同源，版面为按原站设计语言重写 |
+
+## A. 1:1 应用镜像的组成
 
 ```
-商品 7,780 個 SKU（站內 total_count 7,802，覆蓋 99.7%）
-分類   307 個（真實 155 + 菜單層級補齊，含 2/3/4 級）
-品牌   999 個
-圖片 28,930 個檔案 / 425 MB（本地 .webp 派生圖）
-頁面 9,118 個靜態 HTML（另 307 個分類 JSON 索引）
+app/                   原站应用本体（逐字节镜像）
+  index.html           HTML 外壳（仅把 data-media-backend 换成同源 /media/）
+  runtime.*.js         webpack runtime（96 个 chunk 的哈希表）
+  client.*.js          主包（2.6 MB）
+  vendors.*.js / i18n-zh_HK.*.js / RootCmp_*.js / 1..98.*.js
+  venia-static-assets/ 主题 CSS、图标、图片
+  mannings-j7X.svg     站标
+pages/                 Cloudflare Pages 工程
+  dist/                上面这些原样拷贝 + _redirects(SPA 回退) + _routes.json
+  functions/graphql.js /graphql：R2 快照优先，未命中回源并写回 R2
+  functions/media/[[path]].js  /media/*：R2 图片优先，未命中回源并写回
+cache/graphql/        GraphQL 快照（键 = operationName + 规范化 variables）
 ```
 
+## 为什么能做到「看不出任何不同」
 
-![首頁](docs/preview-home.jpg)
-![分類頁](docs/preview-category.jpg)
-![商品頁](docs/preview-product.jpg)
+原站是 Magento PWA Studio（Venia）应用：
 
-## 快速開始
+- **应用本体镜像**：从原站抓下 index.html 与 runtime 里登记的 96 个 chunk，浏览器拿到的是同一份 JS/CSS。
+- **接口同源化**：原站前端把 `/graphql` 打到自己的域上；镜像站由 Pages Function 接管该路径，
+  先查 R2 快照（键与前端请求一一对应），命中直接返回原站当时的响应；未命中才回源并落盘。
+- **图片同源化**：把响应与外壳里的 `https://www.mannings.com.hk/media/...` 改写成 `/media/...`
+  （只换域名，不改任何图片内容），由 Function 从 R2 取原图。
+- **SPA 路由**：`_redirects` 把任意前端路由回退到同一份 index.html，`/zh-hant/c/...`、`/zh-hant/.../p/####` 
+  等所有原站 URL 都能直接打开。
+- 搜索/筛选（`gw.dfgd-os.com` 网关）为原站跨域调用，CORS 允许任意源，镜像站按原样直连。
+
+## 部署（Cloudflare R2 + Pages）
+
+```powershell
+$env:CLOUDFLARE_API_TOKEN="<Workers+Pages+R2 编辑权限的 API Token>"
+powershell -File scripts/app/10-deploy.ps1
+```
+
+脚本会：建 R2 桶 `mannings-mirror` → 部署临时 uploader Worker → 并发上传快照与图片 →
+`wrangler pages deploy pages/dist --project-name mannings-hk` → 删除 uploader。
+站点地址：`https://mannings-hk.pages.dev`
+
+## 本地预览（等价于线上行为）
+
+```bash
+node scripts/app/server.mjs      # http://127.0.0.1:8790 （/graphql 先查快照，未命中经 .NET 通道回源）
+```
+
+## 抓取工具链
+
+| 脚本 | 作用 |
+| --- | --- |
+| `scripts/ps/fetch.ps1` | 批量抓取（.NET/SChannel 通道；Node/curl 会被边缘 403） |
+| `scripts/app/01-capture.mjs` | 抓 HTML 外壳 + 入口 chunk |
+| `scripts/app/02-chunks.mjs` | 解析 runtime 的 chunk 哈希表，抓全 96 个 chunk |
+| `scripts/app/04-warm.mjs` / `09-snapshot.mjs` | 预热 GraphQL 快照（商品详情 / 分类面包屑 / 文章 / 优惠券） |
+| `scripts/app/05-build-pages.mjs` | 生成 Pages 工程（dist + functions + wrangler） |
+| `scripts/app/08-upload.mjs` | 批量上传 R2（断点续传） |
+
+### 两个必须知道的坑
+
+1. **TLS 指纹**：`www.mannings.com.hk` 对 OpenSSL 系客户端（Node/undici、curl）一律 403，
+   只有 .NET/SChannel 放行 —— 所以抓取走 PowerShell + `System.Net.Http.HttpClient`。
+2. **边缘软性限流**：同一 URL 变体约 1/2 概率返回 403/429，且会被缓存。
+   抓取器每次请求都换 `x-magento-cache-id`、遇 403/429 指数退避重试。
+
+---
+
+# B. 数据驱动静态重建站（附带交付）
+
+## 快速開始## 快速開始
 
 ```bash
 npm run serve        # 本地預覽 http://127.0.0.1:8787

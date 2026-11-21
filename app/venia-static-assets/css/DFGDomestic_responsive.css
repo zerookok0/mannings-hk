@@ -1,0 +1,2022 @@
+html {
+    /* font-family: Microsoft JhengHei, 'Microsoft JhengHei', 微軟正黑體, '微軟正黑體', 黑體-繁, '黑體-繁', Heiti TC,
+        'Heiti TC', 'Noto Sans TC', 'Noto Sans TC Normal', STHeiti, Helvetica, Arial, sans-serif; */
+    font-weight: 400;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+body {
+    margin: 0;
+}
+.back-to-top,
+.arrow-down-24,
+.arrow-left-24,
+.arrow-right-24,
+.arrow-up-24,
+.attention-24,
+.back-to-top-24,
+.bin-24,
+.card-payment-24,
+.cart-empty-24,
+.cart-filled-24,
+.chevron-down-24,
+.chevron-left-24,
+.chevron-right-24,
+.chevron-up-24,
+.click-collect-24,
+.cross-24,
+.delivery-24,
+.discount-24,
+.edit-24,
+.email-24,
+.facebook-24,
+.favourite-empty-24,
+.favourite-filled-24,
+.help-24,
+.instagram-24,
+.invisible-24,
+.location-24,
+.lock-24,
+.menu-24,
+.minus-24,
+.news-letter-24,
+.order-confirmation-24,
+.phone-24,
+.play-24,
+.plus-24,
+.search-24,
+.shield-24,
+.share-24,
+.sign-out-24,
+.star-empty-24,
+.star-filled-24,
+.star-half-24,
+.tick-24,
+.twitter-24,
+.user-24,
+.visible-24,
+.voucher-24,
+.warning-24,
+.wechat-24,
+.zoom-24,
+.union,
+.union-2,
+.union-8,
+.union-12,
+.union-24 {
+    background-image: url(/venia-static-assets/css/sprite.png) !important;
+    background-repeat: no-repeat !important;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.add-to-list-16,
+.arrow-down-16,
+.arrow-left-16,
+.arrow-right-16,
+.arrow-up-16,
+.attention-16,
+.back-to-top-16,
+.bin-16,
+.card-payment-16,
+.cart-empty-16,
+.cart-filled-16,
+.chevron-down-16,
+.chevron-left-16,
+.chevron-right-16,
+.chevron-up-16,
+.click-collect-16,
+.cross-16,
+.delivery-16,
+.discount-16,
+.edit-16,
+.email-16,
+.facebook-16,
+.favourite-empty-16,
+.favourite-filled-16,
+.help-16,
+.instagram-16,
+.invisible-16,
+.location-16,
+.lock-16,
+.menu-16,
+.minus-16,
+.news-letter-16,
+.order-confirmation-16,
+.phone-16,
+.play-16,
+.plus-16,
+.search-16,
+.shield-16,
+.share-16,
+.sign-out-16,
+.star-empty-16,
+.star-filled-16,
+.star-half-16,
+.tick-16,
+.twitter-16,
+.user-16,
+.visible-16,
+.voucher-16,
+.warning-16,
+.wechat-16,
+.zoom-16,
+.union-16 {
+    background-image: url(/venia-static-assets/css/sprite.png) !important;
+    background-repeat: no-repeat !important;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.add-to-list-24 {
+    background-position: -20px 0px;
+}
+.arrow-down-24 {
+    background-position: -20px -3668px;
+}
+.arrow-left-24 {
+    background-position: -20px -1648px;
+}
+.arrow-right-24 {
+    background-position: -20px -1616px;
+}
+.arrow-up-24 {
+    background-position: -20px -3628px;
+}
+.attention-24 {
+    background-position: -20px -44px;
+}
+.back-to-top {
+    background-position: -20px -88px !important;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+}
+.back-to-top-24 {
+    background-position: -20px -88px;
+}
+.bin-24 {
+    background-position: -20px -132px;
+}
+.card-payment-24 {
+    background-position: -20px -176px;
+}
+.cart-empty-24 {
+    background-position: -20px -1540px;
+}
+.cart-filled-24 {
+    background-position: -20px -1540px;
+}
+.chevron-down-24 {
+    background-position: -14px -3749px;
+    -webkit-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+.chevron-left-24 {
+    background-position: -20px -3744px;
+}
+.chevron-right-24 {
+    background-position: -20px -3708px;
+}
+.chevron-up-24 {
+    background-position: -10px -3741px;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.click-collect-24 {
+    background-position: -20px -220px;
+}
+.cross-24 {
+    background-position: -20px -3592px;
+}
+.delivery-24 {
+    background-position: -20px -264px;
+}
+.discount-24 {
+    background-position: -20px -308px;
+}
+.edit-24 {
+    background-position: -20px -352px;
+}
+.email-24 {
+    background-position: -20px -396px;
+}
+.facebook-24 {
+    background-position: -20px -440px;
+}
+.favourite-empty-24 {
+    background-position: -20px -484px;
+}
+.favourite-filled-24 {
+    background-position: -20px -528px;
+}
+.help-24 {
+    background-position: -20px -572px;
+}
+.instagram-24 {
+    background-position: -20px -616px;
+}
+.invisible-24 {
+    background-position: -20px -660px;
+}
+.location-24 {
+    background-position: -20px -704px;
+}
+.lock-24 {
+    background-position: -20px -748px;
+}
+.menu-24 {
+    background-position: -20px -792px;
+}
+.minus-24 {
+    background-position: -20px -3218px;
+}
+.news-letter-24 {
+    background-position: -20px -836px;
+}
+.order-confirmation-24 {
+    background-position: -20px -880px;
+}
+.phone-24 {
+    background-position: -20px -924px;
+}
+.play-24 {
+    background-position: -20px -968px;
+}
+.plus-24 {
+    background-position: -20px -3246px;
+}
+.search-24 {
+    background-position: -20px -1012px;
+}
+.shield-24 {
+    background-position: -20px -1056px;
+}
+.share-24 {
+}
+.sign-out-24 {
+}
+.star-empty-24 {
+    background-position: -20px -1100px;
+}
+.star-filled-24 {
+    background-position: -20px -1144px;
+}
+.star-half-24 {
+    background-position: -20px -1188px;
+}
+.tick-24 {
+    background-position: -18px -1680px;
+}
+.twitter-24 {
+    background-position: -20px -1232px;
+}
+.user-24 {
+    background-position: -20px -1276px;
+}
+.visible-24 {
+    background-position: -20px -1320px;
+}
+.voucher-24 {
+    background-position: -20px -1364px;
+}
+.warning-24 {
+    background-position: -20px -1408px;
+}
+.wechat-24 {
+    background-position: -20px -1452px;
+}
+.zoom-24 {
+    background-position: -20px -1496px;
+}
+.add-to-list-16 {
+    background-position: -20px -1718px;
+}
+.arrow-down-16 {
+    background-position: -20px -2115px;
+}
+.arrow-left-16 {
+    background-position: -20px -2150px;
+}
+.arrow-right-16 {
+    background-position: -20px -2186px;
+}
+.arrow-up-16 {
+    background-position: -20px -2222px;
+}
+.attention-16 {
+    background-position: -20px -1898px;
+}
+.back-to-top-16 {
+    background-position: -20px -1934px;
+}
+.bin-16 {
+    background-position: -20px -1969px;
+}
+.card-payment-16 {
+    background-position: -20px -2006px;
+}
+.cart-empty-16 {
+    background-position: -20px -2042px;
+}
+.cart-filled-16 {
+    background-position: -20px -2078px;
+}
+.chevron-down-16 {
+    background-position: -20px -2114px;
+}
+.chevron-left-16 {
+    background-position: -20px -2150px;
+}
+.chevron-right-16 {
+    background-position: -20px -2186px;
+}
+.chevron-up-16 {
+    background-position: -20px -2222px;
+}
+.click-collect-16 {
+    background-position: -20px -2258px;
+}
+.cross-16 {
+    background-position: -20px -2293px;
+}
+.delivery-16 {
+    background-position: -20px -2330px;
+}
+.discount-16 {
+    background-position: -20px -2366px;
+}
+.edit-16 {
+    background-position: -20px -2402px;
+}
+.email-16 {
+    background-position: -20px -2438px;
+}
+.facebook-16 {
+    background-position: -20px -2474px;
+}
+.favourite-empty-16 {
+    background-position: -20px -2510px;
+}
+.favourite-filled-16 {
+    background-position: -20px -2546px;
+}
+.help-16 {
+    background-position: -20px -2582px;
+}
+.instagram-16 {
+    background-position: -20px -2618px;
+}
+.invisible-16 {
+    background-position: -20px -3382px;
+}
+.location-16 {
+    background-position: -20px -2654px;
+}
+.lock-16 {
+    background-position: -20px -2690px;
+}
+.menu-16 {
+    background-position: -20px -2726px;
+}
+.minus-16 {
+    background-position: -20px -2762px;
+}
+.news-letter-16 {
+    background-position: -20px -2798px;
+}
+.order-confirmation-16 {
+    background-position: -20px -2834px;
+}
+.phone-16 {
+    background-position: -20px -2870px;
+}
+.play-16 {
+    background-position: -20px -2906px;
+}
+.plus-16 {
+    background-position: -20px -2942px;
+}
+.search-16 {
+    background-position: -20px -2978px;
+}
+.shield-16 {
+    background-position: -20px -3014px;
+}
+.share-16 {
+}
+.sign-out-16 {
+}
+.star-empty-16 {
+    background-position: -20px -3050px;
+}
+.star-filled-16 {
+    background-position: -20px -3086px;
+}
+.star-half-16 {
+    background-position: -20px -3122px;
+}
+.tick-16 {
+    background-position: -20px -3158px;
+}
+.twitter-16 {
+    background-position: -20px -3194px;
+}
+.user-16 {
+    background-position: -20px -3346px;
+}
+.visible-16 {
+    background-position: -8px -3405px;
+    margin-left: -40px;
+    position: absolute;
+    top: 0px;
+    height: 40px !important;
+    width: 40px !important;
+    cursor: pointer;
+}
+.voucher-16 {
+    background-position: -20px -3452px;
+}
+.warning-16 {
+    background-position: -20px -3488px;
+}
+.wechat-16 {
+    background-position: -20px -3524px;
+}
+.zoom-16 {
+    background-position: -20px -3560px;
+}
+.union {
+    background-position: -20px -1578px;
+}
+.union-2 {
+    background-position: -20px -3597px;
+}
+.union-8 {
+    background-position: -20px -3749px;
+}
+.union-12 {
+    background-position: -20px -1652px;
+    width: 21px;
+    height: 12px;
+}
+.union-16 {
+}
+.union-24 {
+}
+.white.add-to-list-24,
+.white.back-to-top,
+.white.arrow-down-24,
+.white.arrow-left-24,
+.white.arrow-right-24,
+.white.arrow-up-24,
+.white.attention-24,
+.white.back-to-top-24,
+.white.bin-24,
+.white.card-payment-24,
+.white.cart-empty-24,
+.white.cart-filled-24,
+.white.chevron-down-24,
+.white.chevron-left-24,
+.white.chevron-right-24,
+.white.chevron-up-24,
+.white.click-collect-24,
+.white.cross-24,
+.white.delivery-24,
+.white.discount-24,
+.white.edit-24,
+.white.email-24,
+.white.facebook-24,
+.white.favourite-empty-24,
+.white.favourite-filled-24,
+.white.help-24,
+.white.instagram-24,
+.white.invisible-24,
+.white.location-24,
+.white.lock-24,
+.white.menu-24,
+.white.minus-24,
+.white.news-letter-24,
+.white.order-confirmation-24,
+.white.phone-24,
+.white.play-24,
+.white.plus-24,
+.white.search-24,
+.white.shield-24,
+.white.share-24,
+.white.sign-out-24,
+.white.star-empty-24,
+.white.star-filled-24,
+.white.star-half-24,
+.white.tick-24,
+.white.twitter-24,
+.white.user-24,
+.white.visible-24,
+.white.voucher-24,
+.white.warning-24,
+.white.wechat-24,
+.white.zoom-24 {
+    background-image: url(/venia-static-assets/css/sprite_white.png) !important;
+    background-repeat: no-repeat !important;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.white.add-to-list-16,
+.white.arrow-down-16,
+.white.arrow-left-16,
+.white.arrow-right-16,
+.white.arrow-up-16,
+.white.attention-16,
+.white.back-to-top-16,
+.white.bin-16,
+.white.card-payment-16,
+.white.cart-empty-16,
+.white.cart-filled-16,
+.white.chevron-down-16,
+.white.chevron-left-16,
+.white.chevron-right-16,
+.white.chevron-up-16,
+.white.click-collect-16,
+.white.cross-16,
+.white.delivery-16,
+.white.discount-16,
+.white.edit-16,
+.white.email-16,
+.white.facebook-16,
+.white.favourite-empty-16,
+.white.favourite-filled-16,
+.white.help-16,
+.white.instagram-16,
+.white.invisible-16,
+.white.location-16,
+.white.lock-16,
+.white.menu-16,
+.white.minus-16,
+.white.news-letter-16,
+.white.order-confirmation-16,
+.white.phone-16,
+.white.play-16,
+.white.plus-16,
+.white.search-16,
+.white.shield-16,
+.white.share-16,
+.white.sign-out-16,
+.white.star-empty-16,
+.white.star-filled-16,
+.white.star-half-16,
+.white.tick-16,
+.white.twitter-16,
+.white.user-16,
+.white.visible-16,
+.white.voucher-16,
+.white.warning-16,
+.white.wechat-16,
+.white.zoom-16 {
+    background-image: url(/venia-static-assets/css/sprite_white.png) !important;
+    background-repeat: no-repeat !important;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.white.add-to-list-24 {
+    background-position: -20px 0px;
+}
+.white.arrow-down-24 {
+    background-position: -20px -44px;
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.white.arrow-left-24 {
+    background-position: -20px -88px;
+}
+.white.arrow-right-24 {
+    background-position: -20px -132px;
+}
+.white.arrow-up-24 {
+    background-position: -20px -176px;
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.white.attention-24 {
+    background-position: -20px -220px;
+}
+.white.back-to-top,
+.white.back-to-top-24 {
+    background-position: -20px -264px;
+}
+.white.bin-24 {
+    background-position: -20px -308px;
+}
+.white.card-payment-24 {
+    background-position: -20px -352px;
+}
+.white.cart-empty-24 {
+    background-position: -20px -396px;
+}
+.white.cart-filled-24 {
+    background-position: -20px -440px;
+}
+.white.chevron-down-24 {
+    background-position: -20px -484px;
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.white.chevron-left-24 {
+    background-position: -20px -528px;
+}
+.white.chevron-right-24 {
+    background-position: -20px -572px;
+}
+.white.chevron-up-24 {
+    background-position: -20px -616px;
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.white.click-collect-24 {
+    background-position: -20px -660px;
+}
+.white.cross-24 {
+    background-position: -20px -704px;
+}
+.white.delivery-24 {
+    background-position: -20px -748px;
+}
+.white.discount-24 {
+    background-position: -20px -792px;
+}
+.white.edit-24 {
+    background-position: -20px -836px;
+}
+.white.email-24 {
+    background-position: -20px -880px;
+}
+.white.facebook-24 {
+    background-position: -20px -924px;
+}
+.white.favourite-empty-24 {
+    background-position: -20px -968px;
+}
+.white.favourite-filled-24 {
+    background-position: -20px -1012px;
+}
+.white.help-24 {
+    background-position: -20px -1056px;
+}
+.white.instagram-24 {
+    background-position: -20px -1100px;
+}
+.white.invisible-24 {
+    background-position: -20px -1144px;
+}
+.white.location-24 {
+    background-position: -20px -1188px;
+}
+.white.lock-24 {
+    background-position: -20px -1232px;
+}
+.white.menu-24 {
+    background-position: -20px -1276px;
+}
+.white.minus-24 {
+    background-position: -20px -1320px;
+}
+.white.news-letter-24 {
+    background-position: -20px -1364px;
+}
+.white.order-confirmation-24 {
+    background-position: -20px -1408px;
+}
+.white.phone-24 {
+    background-position: -20px -1452px;
+}
+.white.play-24 {
+    background-position: -20px -1496px;
+}
+.white.plus-24 {
+    background-position: -20px -1540px;
+}
+.white.search-24 {
+    background-position: -20px -1584px;
+}
+.white.shield-24 {
+    background-position: -20px -1628px;
+}
+.white.share-24 {
+}
+.white.sign-out-24 {
+}
+.white.star-empty-24 {
+    background-position: -20px -1672px;
+}
+.white.star-filled-24 {
+    background-position: -20px -1716px;
+}
+.white.star-half-24 {
+    background-position: -20px -1760px;
+}
+.white.tick-24 {
+    background-position: -20px -1804px;
+}
+.white.twitter-24 {
+    background-position: -20px -1848px;
+}
+.white.user-24 {
+    background-position: -20px -1892px;
+}
+.white.visible-24 {
+    background-position: -20px -1936px;
+}
+.white.voucher-24 {
+    background-position: -20px -1980px;
+}
+.white.warning-24 {
+    background-position: -20px -2024px;
+}
+.white.wechat-24 {
+    background-position: -20px -2068px;
+}
+.white.zoom-24 {
+    background-position: -20px -2112px;
+}
+.white.add-to-list-16 {
+    background-position: -20px -2156px;
+}
+.white.arrow-down-16 {
+    background-position: -20px -2192px;
+}
+.white.arrow-left-16 {
+    background-position: -20px -2228px;
+}
+.white.arrow-right-16 {
+    background-position: -20px -2264px;
+}
+.white.arrow-up-16 {
+    background-position: -20px -2300px;
+}
+.white.attention-16 {
+    background-position: -20px -2336px;
+}
+.white.back-to-top-16 {
+    background-position: -20px -2372px;
+}
+.white.bin-16 {
+    background-position: -20px -2408px;
+}
+.white.card-payment-16 {
+    background-position: -20px -2444px;
+}
+.white.cart-empty-16 {
+    background-position: -20px -2480px;
+}
+.white.cart-filled-16 {
+    background-position: -20px -2516px;
+}
+.white.chevron-down-16 {
+    background-position: -20px -2552px;
+}
+.white.chevron-left-16 {
+    background-position: -20px -2588px;
+}
+.white.chevron-right-16 {
+    background-position: -20px -2624px;
+}
+.white.chevron-up-16 {
+    background-position: -20px -2660px;
+}
+.white.click-collect-16 {
+    background-position: -20px -2696px;
+}
+.white.cross-16 {
+    background-position: -20px -2732px;
+}
+.white.delivery-16 {
+    background-position: -20px -2768px;
+}
+.white.discount-16 {
+    background-position: -20px -2804px;
+}
+.white.edit-16 {
+    background-position: -20px -2840px;
+}
+.white.email-16 {
+    background-position: -20px -2876px;
+}
+.white.facebook-16 {
+    background-position: -20px -2912px;
+}
+.white.favourite-empty-16 {
+    background-position: -20px -2948px;
+}
+.white.favourite-filled-16 {
+    background-position: -20px -2984px;
+}
+.white.help-16 {
+    background-position: -20px -3020px;
+}
+.white.instagram-16 {
+    background-position: -20px -3056px;
+}
+.white.invisible-16 {
+    background-position: -20px -3704px;
+}
+.white.location-16 {
+    background-position: -20px -3092px;
+}
+.white.lock-16 {
+    background-position: -20px -3128px;
+}
+.white.menu-16 {
+    background-position: -20px -3164px;
+}
+.white.minus-16 {
+    background-position: -20px -3200px;
+}
+.white.news-letter-16 {
+    background-position: -20px -3236px;
+}
+.white.order-confirmation-16 {
+    background-position: -20px -3272px;
+}
+.white.phone-16 {
+    background-position: -20px -3308px;
+}
+.white.play-16 {
+    background-position: -20px -3344px;
+}
+.white.plus-16 {
+    background-position: -20px -3380px;
+}
+.white.search-16 {
+    background-position: -20px -3416px;
+}
+.white.shield-16 {
+    background-position: -20px -3452px;
+}
+.white.share-16 {
+}
+.white.sign-out-16 {
+}
+.white.star-empty-16 {
+    background-position: -20px -3488px;
+}
+.white.star-filled-16 {
+    background-position: -20px -3524px;
+}
+.white.star-half-16 {
+    background-position: -20px -3560px;
+}
+.white.tick-16 {
+    background-position: -20px -3596px;
+}
+.white.twitter-16 {
+    background-position: -20px -3632px;
+}
+.white.user-16 {
+    background-position: -20px -3668px;
+}
+.white.visible-16 {
+    background-position: -8px -3728px;
+    margin-left: -40px;
+    position: absolute;
+    top: 0px;
+    height: 40px !important;
+    width: 40px !important;
+    cursor: pointer;
+}
+.white.voucher-16 {
+    background-position: -20px -3776px;
+}
+.white.warning-16 {
+    background-position: -20px -3812px;
+}
+.white.wechat-16 {
+    background-position: -20px -3848px;
+}
+.white.zoom-16 {
+    background-position: -20px -3884px;
+}
+.orange_add-to-list-24,
+.orange_back-to-top,
+.orange_arrow-down-24,
+.orange_arrow-left-24,
+.orange_arrow-right-24,
+.orange_arrow-up-24,
+.orange_attention-24,
+.orange_back-to-top-24,
+.orange_bin-24,
+.orange_card-payment-24,
+.orange_cart-empty-24,
+.orange_cart-filled-24,
+.orange_chevron-down-24,
+.orange_chevron-left-24,
+.orange_chevron-right-24,
+.orange_chevron-up-24,
+.orange_click-collect-24,
+.orange_cross-24,
+.orange_delivery-24,
+.orange_discount-24,
+.orange_edit-24,
+.orange_email-24,
+.orange_facebook-24,
+.orange_favourite-empty-24,
+.orange_favourite-filled-24,
+.orange_help-24,
+.orange_instagram-24,
+.orange_invisible-24,
+.orange_location-24,
+.orange_lock-24,
+.orange_menu-24,
+.orange_minus-24,
+.orange_news-letter-24,
+.orange_order-confirmation-24,
+.orange_phone-24,
+.orange_play-24,
+.orange_plus-24,
+.orange_search-24,
+.orange_shield-24,
+.orange_share-24,
+.orange_sign-out-24,
+.orange_star-empty-24,
+.orange_star-filled-24,
+.orange_star-half-24,
+.orange_tick-24,
+.orange_twitter-24,
+.orange_user-24,
+.orange_visible-24,
+.orange_voucher-24,
+.orange_warning-24,
+.orange_wechat-24,
+.orange_zoom-24 {
+    background-image: url(/venia-static-assets/css/sprite_orange.png) !important;
+    background-repeat: no-repeat !important;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.orange_add-to-list-16,
+.orange_arrow-down-16,
+.orange_arrow-left-16,
+.orange_arrow-right-16,
+.orange_arrow-up-16,
+.orange_attention-16,
+.orange_back-to-top-16,
+.orange_bin-16,
+.orange_card-payment-16,
+.orange_cart-empty-16,
+.orange_cart-filled-16,
+.orange_chevron-down-16,
+.orange_chevron-left-16,
+.orange_chevron-right-16,
+.orange_chevron-up-16,
+.orange_click-collect-16,
+.orange_cross-16,
+.orange_delivery-16,
+.orange_discount-16,
+.orange_edit-16,
+.orange_email-16,
+.orange_facebook-16,
+.orange_favourite-empty-16,
+.orange_favourite-filled-16,
+.orange_help-16,
+.orange_instagram-16,
+.orange_invisible-16,
+.orange_location-16,
+.orange_lock-16,
+.orange_menu-16,
+.orange_minus-16,
+.orange_news-letter-16,
+.orange_order-confirmation-16,
+.orange_phone-16,
+.orange_play-16,
+.orange_plus-16,
+.orange_search-16,
+.orange_shield-16,
+.orange_share-16,
+.orange_sign-out-16,
+.orange_star-empty-16,
+.orange_star-filled-16,
+.orange_star-half-16,
+.orange_tick-16,
+.orange_twitter-16,
+.orange_user-16,
+.orange_visible-16,
+.orange_voucher-16,
+.orange_warning-16,
+.orange_wechat-16,
+.orange_zoom-16 {
+    background-image: url(/venia-static-assets/css/sprite_orange.png) !important;
+    background-repeat: no-repeat !important;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.orange_add-to-list-24 {
+    background-position: -20px 0px;
+}
+.orange_arrow-down-24 {
+    background-position: -20px -44px;
+}
+.orange_arrow-left-24 {
+    background-position: -20px -88px;
+}
+.orange_arrow-right-24 {
+    background-position: -20px -132px;
+}
+.orange_arrow-up-24 {
+    background-position: -20px -176px;
+}
+.orange_attention-24 {
+    background-position: -20px -220px;
+}
+.orange_back-to-top {
+    background-position: -20px -2372px;
+}
+.orange_back-to-top-24 {
+    background-position: -20px -2372px;
+}
+.orange_bin-24 {
+    background-position: -20px -308px;
+}
+.orange_card-payment-24 {
+    background-position: -20px -352px;
+}
+.orange_cart-empty-24 {
+    background-position: -20px -396px;
+}
+.orange_cart-filled-24 {
+    background-position: -20px -440px;
+}
+.orange_chevron-down-24 {
+    background-position: -20px -484px;
+}
+.orange_chevron-left-24 {
+    background-position: -20px -528px;
+}
+.orange_chevron-right-24 {
+    background-position: -20px -572px;
+}
+.orange_chevron-up-24 {
+    background-position: -20px -616px;
+}
+.orange_click-collect-24 {
+    background-position: -20px -660px;
+}
+.orange_cross-24 {
+    background-position: -20px -704px;
+}
+.orange_delivery-24 {
+    background-position: -20px -748px;
+}
+.orange_discount-24 {
+    background-position: -20px -792px;
+}
+.orange_edit-24 {
+    background-position: -20px -836px;
+}
+.orange_email-24 {
+    background-position: -20px -880px;
+}
+.orange_facebook-24 {
+    background-position: -20px -924px;
+}
+.orange_favourite-empty-24 {
+    background-position: -20px -968px;
+}
+.orange_favourite-filled-24 {
+    background-position: -20px -1012px;
+}
+.orange_help-24 {
+    background-position: -20px -1056px;
+}
+.orange_instagram-24 {
+    background-position: -20px -1100px;
+}
+.orange_invisible-24 {
+    background-position: -20px -1144px;
+}
+.orange_location-24 {
+    background-position: -20px -1188px;
+}
+.orange_lock-24 {
+    background-position: -20px -1232px;
+}
+.orange_menu-24 {
+    background-position: -20px -1276px;
+}
+.orange_minus-24 {
+    background-position: -20px -1320px;
+}
+.orange_news-letter-24 {
+    background-position: -20px -1364px;
+}
+.orange_order-confirmation-24 {
+    background-position: -20px -1408px;
+}
+.orange_phone-24 {
+    background-position: -20px -1452px;
+}
+.orange_play-24 {
+    background-position: -20px -1496px;
+}
+.orange_plus-24 {
+    background-position: -20px -1540px;
+}
+.orange_search-24 {
+    background-position: -20px -1584px;
+}
+.orange_shield-24 {
+    background-position: -20px -1628px;
+}
+.orange_share-24 {
+}
+.orange_sign-out-24 {
+}
+.orange_star-empty-24 {
+    background-position: -20px -1672px;
+}
+.orange_star-filled-24 {
+    background-position: -20px -1716px;
+}
+.orange_star-half-24 {
+    background-position: -20px -1760px;
+}
+.orange_tick-24 {
+    background-position: -20px -1804px;
+}
+.orange_twitter-24 {
+    background-position: -20px -1848px;
+}
+.orange_user-24 {
+    background-position: -20px -1892px;
+}
+.orange_visible-24 {
+    background-position: -20px -1936px;
+}
+.orange_voucher-24 {
+    background-position: -20px -1980px;
+}
+.orange_warning-24 {
+    background-position: -20px -2024px;
+}
+.orange_wechat-24 {
+    background-position: -20px -2068px;
+}
+.orange_zoom-24 {
+    background-position: -20px -2112px;
+}
+.orange_add-to-list-16 {
+    background-position: -20px -2156px;
+}
+.orange_arrow-down-16 {
+    background-position: -20px -2192px;
+}
+.orange_arrow-left-16 {
+    background-position: -20px -2228px;
+}
+.orange_arrow-right-16 {
+    background-position: -20px -2264px;
+}
+.orange_arrow-up-16 {
+    background-position: -20px -2300px;
+}
+.orange_attention-16 {
+    background-position: -20px -2336px;
+}
+.orange_back-to-top-16 {
+    background-position: -20px -2372px;
+}
+.orange_bin-16 {
+    background-position: -20px -2408px;
+}
+.orange_card-payment-16 {
+    background-position: -20px -2444px;
+}
+.orange_cart-empty-16 {
+    background-position: -20px -2480px;
+}
+.orange_cart-filled-16 {
+    background-position: -20px -2516px;
+}
+.orange_chevron-down-16 {
+    background-position: -20px -2552px;
+}
+.orange_chevron-left-16 {
+    background-position: -20px -2588px;
+}
+.orange_chevron-right-16 {
+    background-position: -20px -2624px;
+}
+.orange_chevron-up-16 {
+    background-position: -20px -2660px;
+}
+.orange_click-collect-16 {
+    background-position: -20px -2696px;
+}
+.orange_cross-16 {
+    background-position: -20px -2732px;
+}
+.orange_delivery-16 {
+    background-position: -20px -2768px;
+}
+.orange_discount-16 {
+    background-position: -20px -793px;
+    width: 24px;
+    height: 24px;
+    scale: 0.7;
+}
+.orange_edit-16 {
+    background-position: -20px -2840px;
+}
+.orange_email-16 {
+    background-position: -20px -2876px;
+}
+.orange_facebook-16 {
+    background-position: -20px -2912px;
+}
+.orange_favourite-empty-16 {
+    background-position: -20px -2948px;
+}
+.orange_favourite-filled-16 {
+    background-position: -20px -2984px;
+}
+.orange_help-16 {
+    background-position: -20px -3020px;
+}
+.orange_instagram-16 {
+    background-position: -20px -3056px;
+}
+.orange_invisible-16 {
+    background-position: -20px -3704px;
+}
+.orange_location-16 {
+    background-position: -20px -3092px;
+}
+.orange_lock-16 {
+    background-position: -20px -3128px;
+}
+.orange_menu-16 {
+    background-position: -20px -3164px;
+}
+.orange_minus-16 {
+    background-position: -20px -3200px;
+}
+.orange_news-letter-16 {
+    background-position: -20px -3236px;
+}
+.orange_order-confirmation-16 {
+    background-position: -20px -3272px;
+}
+.orange_phone-16 {
+    background-position: -20px -3308px;
+}
+.orange_play-16 {
+    background-position: -20px -3344px;
+}
+.orange_plus-16 {
+    background-position: -20px -3380px;
+}
+.orange_search-16 {
+    background-position: -20px -3416px;
+}
+.orange_shield-16 {
+    background-position: -20px -3452px;
+}
+.orange_share-16 {
+}
+.orange_sign-out-16 {
+}
+.orange_star-empty-16 {
+    background-position: -20px -3488px;
+}
+.orange_star-filled-16 {
+    background-position: -20px -3524px;
+}
+.orange_star-half-16 {
+    background-position: -20px -3560px;
+}
+.orange_tick-16 {
+    background-position: -20px -3596px;
+}
+.orange_twitter-16 {
+    background-position: -20px -3632px;
+}
+.orange_user-16 {
+    background-position: -20px -3668px;
+}
+.orange_visible-16 {
+    background-position: -20px -3740px;
+}
+.orange_voucher-16 {
+    background-position: -20px -3776px;
+}
+.orange_warning-16 {
+    background-position: -20px -3812px;
+}
+.orange_wechat-16 {
+    background-position: -20px -3848px;
+}
+.orange_zoom-16 {
+    background-position: -20px -3884px;
+}
+.orange_facebook-20,
+.orange_url-20,
+.orange_whatsapp-20,
+.orange_wechat-20 {
+    background-repeat: no-repeat !important;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    scale: 0.9;
+}
+.orange_facebook-20 {
+    background-image: url(/venia-static-assets/css/icon-fb.svg) !important;
+    background-position: 0px 0px;
+}
+.orange_url-20 {
+    background-image: url(/venia-static-assets/css/icon-url.svg) !important;
+    background-position: 0px 0px;
+}
+.orange_whatsapp-20 {
+    background-image: url(/venia-static-assets/css/icon-whatsapp.svg) !important;
+    background-position: 0px 0px;
+}
+.orange_wechat-20 {
+    background-image: url(/venia-static-assets/css/icon-wechat.svg) !important;
+    background-position: 0px 0px;
+}
+.grey_add-to-list-24,
+.grey_back-to-top,
+.grey_arrow-down-24,
+.grey_arrow-left-24,
+.grey_arrow-right-24,
+.grey_arrow-up-24,
+.grey_attention-24,
+.grey_back-to-top-24,
+.grey_bin-24,
+.grey_card-payment-24,
+.grey_cart-empty-24,
+.grey_cart-filled-24,
+.grey_chevron-down-24,
+.grey_chevron-left-24,
+.grey_chevron-right-24,
+.grey_chevron-up-24,
+.grey_click-collect-24,
+.grey_cross-24,
+.grey_delivery-24,
+.grey_discount-24,
+.grey_edit-24,
+.grey_email-24,
+.grey_facebook-24,
+.grey_favourite-empty-24,
+.grey_favourite-filled-24,
+.grey_help-24,
+.grey_instagram-24,
+.grey_invisible-24,
+.grey_location-24,
+.grey_lock-24,
+.grey_menu-24,
+.grey_minus-24,
+.grey_news-letter-24,
+.grey_order-confirmation-24,
+.grey_phone-24,
+.grey_play-24,
+.grey_plus-24,
+.grey_search-24,
+.grey_shield-24,
+.grey_share-24,
+.grey_sign-out-24,
+.grey_star-empty-24,
+.grey_star-filled-24,
+.grey_star-half-24,
+.grey_tick-24,
+.grey_twitter-24,
+.grey_user-24,
+.grey_visible-24,
+.grey_voucher-24,
+.grey_warning-24,
+.grey_wechat-24,
+.grey_zoom-24 {
+    background-image: url(/venia-static-assets/css/sprite_grey.png) !important;
+    background-repeat: no-repeat !important;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.slick-arrow.slick-disabled .arrow-up-16,
+.slick-arrow.slick-disabled .arrow-down-16,
+.slick-arrow.slick-disabled .arrow-left-16,
+.slick-arrow.slick-disabled .arrow-right-16,
+.grey_add-to-list-16,
+.grey_arrow-down-16,
+.grey_arrow-left-16,
+.grey_arrow-right-16,
+.grey_arrow-up-16,
+.grey_attention-16,
+.grey_back-to-top-16,
+.grey_bin-16,
+.grey_card-payment-16,
+.grey_cart-empty-16,
+.grey_cart-filled-16,
+.grey_chevron-down-16,
+.grey_chevron-left-16,
+.grey_chevron-right-16,
+.grey_chevron-up-16,
+.grey_click-collect-16,
+.grey_cross-16,
+.grey_delivery-16,
+.grey_discount-16,
+.grey_edit-16,
+.grey_email-16,
+.grey_facebook-16,
+.grey_favourite-empty-16,
+.grey_favourite-filled-16,
+.grey_help-16,
+.grey_instagram-16,
+.grey_invisible-16,
+.grey_location-16,
+.grey_lock-16,
+.grey_menu-16,
+.grey_minus-16,
+.grey_news-letter-16,
+.grey_order-confirmation-16,
+.grey_phone-16,
+.grey_play-16,
+.grey_plus-16,
+.grey_search-16,
+.grey_shield-16,
+.grey_share-16,
+.grey_sign-out-16,
+.grey_star-empty-16,
+.grey_star-filled-16,
+.grey_star-half-16,
+.grey_tick-16,
+.grey_twitter-16,
+.grey_user-16,
+.grey_visible-16,
+.grey_voucher-16,
+.grey_warning-16,
+.grey_wechat-16,
+.grey_zoom-16 {
+    background-image: url(/venia-static-assets/css/sprite_grey.png) !important;
+    background-repeat: no-repeat !important;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.grey_add-to-list-24 {
+    background-position: -20px 0px;
+}
+.grey_arrow-down-24 {
+    background-position: -20px -44px;
+}
+.grey_arrow-left-24 {
+    background-position: -20px -88px;
+}
+.grey_arrow-right-24 {
+    background-position: -20px -132px;
+}
+.grey_arrow-up-24 {
+    background-position: -20px -176px;
+}
+.grey_attention-24 {
+    background-position: -20px -220px;
+}
+.grey_back-to-top {
+    background-position: -20px -264px;
+}
+.grey_back-to-top-24 {
+    background-position: -20px -264px;
+}
+.grey_bin-24 {
+    background-position: -20px -308px;
+}
+.grey_card-payment-24 {
+    background-position: -20px -352px;
+}
+.grey_cart-empty-24 {
+    background-position: -20px -396px;
+}
+.grey_cart-filled-24 {
+    background-position: -20px -440px;
+}
+.grey_chevron-down-24 {
+    background-position: -20px -484px;
+}
+.grey_chevron-left-24 {
+    background-position: -20px -528px;
+}
+.grey_chevron-right-24 {
+    background-position: -20px -572px;
+}
+.grey_chevron-up-24 {
+    background-position: -20px -616px;
+}
+.grey_click-collect-24 {
+    background-position: -20px -660px;
+}
+.grey_cross-24 {
+    background-position: -20px -704px;
+}
+.grey_delivery-24 {
+    background-position: -20px -748px;
+}
+.grey_discount-24 {
+    background-position: -20px -792px;
+}
+.grey_edit-24 {
+    background-position: -20px -836px;
+}
+.grey_email-24 {
+    background-position: -20px -880px;
+}
+.grey_facebook-24 {
+    background-position: -20px -924px;
+}
+.grey_favourite-empty-24 {
+    background-position: -20px -968px;
+}
+.grey_favourite-filled-24 {
+    background-position: -20px -1012px;
+}
+.grey_help-24 {
+    background-position: -20px -1056px;
+}
+.grey_instagram-24 {
+    background-position: -20px -1100px;
+}
+.grey_invisible-24 {
+    background-position: -20px -1144px;
+}
+.grey_location-24 {
+    background-position: -20px -1188px;
+}
+.grey_lock-24 {
+    background-position: -20px -1232px;
+}
+.grey_menu-24 {
+    background-position: -20px -1276px;
+}
+.grey_minus-24 {
+    background-position: -20px -1320px;
+}
+.grey_news-letter-24 {
+    background-position: -20px -1364px;
+}
+.grey_order-confirmation-24 {
+    background-position: -20px -1408px;
+}
+.grey_phone-24 {
+    background-position: -20px -1452px;
+}
+.grey_play-24 {
+    background-position: -20px -1496px;
+}
+.grey_plus-24 {
+    background-position: -20px -1540px;
+}
+.grey_search-24 {
+    background-position: -20px -1584px;
+}
+.grey_shield-24 {
+    background-position: -20px -1672px;
+}
+.grey_share-24 {
+    background-position: -20px -1628px;
+}
+.grey_sign-out-24 {
+    background-position: -20px -1716px;
+}
+.grey_star-empty-24 {
+    background-position: -20px -1760px;
+}
+.grey_star-filled-24 {
+    background-position: -20px -1804px;
+}
+.grey_star-half-24 {
+    background-position: -20px -1848px;
+}
+.grey_tick-24 {
+    background-position: -20px -1892px;
+}
+.grey_twitter-24 {
+    background-position: -20px -1936px;
+}
+.grey_user-24 {
+    background-position: -20px -1980px;
+}
+.grey_visible-24 {
+    background-position: -20px -2024px;
+}
+.grey_voucher-24 {
+    background-position: -20px -2068px;
+}
+.grey_warning-24 {
+    background-position: -20px -2112px;
+}
+.grey_wechat-24 {
+    background-position: -20px -2156px;
+}
+.grey_zoom-24 {
+    background-position: -20px -2200px;
+}
+.grey_add-to-list-16 {
+    background-position: -20px -2244px;
+}
+.grey_arrow-down-16 {
+    background-position: -20px -2280px;
+}
+.grey_arrow-left-16 {
+    background-position: -20px -2316px;
+}
+.grey_arrow-right-16 {
+    background-position: -20px -2352px;
+}
+.grey_arrow-up-16 {
+    background-position: -20px -2388px;
+}
+.grey_attention-16 {
+    background-position: -20px -2424px;
+}
+.grey_back-to-top-16 {
+    background-position: -20px -2460px;
+}
+.grey_bin-16 {
+    background-position: -20px -2496px;
+}
+.grey_card-payment-16 {
+    background-position: -20px -2532px;
+}
+.grey_cart-empty-16 {
+    background-position: -20px -2568px;
+}
+.grey_cart-filled-16 {
+    background-position: -20px -2604px;
+}
+.grey_chevron-down-16 {
+    background-position: -20px -2640px;
+}
+.grey_chevron-left-16 {
+    background-position: -20px -2676px;
+}
+.grey_chevron-right-16 {
+    background-position: -20px -2712px;
+}
+.grey_chevron-up-16 {
+    background-position: -20px -2748px;
+}
+.grey_click-collect-16 {
+    background-position: -20px -2784px;
+}
+.grey_cross-16 {
+    background-position: -20px -2820px;
+}
+.grey_delivery-16 {
+    background-position: -20px -2856px;
+}
+.grey_discount-16 {
+    background-position: -20px -2892px;
+}
+.grey_edit-16 {
+    background-position: -20px -2928px;
+}
+.grey_email-16 {
+    background-position: -20px -2964px;
+}
+.grey_facebook-16 {
+    background-position: -20px -3000px;
+}
+.grey_favourite-empty-16 {
+    background-position: -20px -3036px;
+}
+.grey_favourite-empty-16:hover {
+    background-image: url(/venia-static-assets/css/sprite_orange.png) !important;
+    background-position: -20px -2984px;
+}
+.grey_favourite-filled-16 {
+    background-position: -20px -3072px;
+}
+.grey_help-16 {
+    background-position: -20px -3108px;
+}
+.grey_instagram-16 {
+    background-position: -20px -3144px;
+}
+.grey_invisible-16 {
+    background-position: -20px -3864px;
+}
+.grey_location-16 {
+    background-position: -20px -3180px;
+}
+.grey_lock-16 {
+    background-position: -20px -3216px;
+}
+.grey_menu-16 {
+    background-position: -20px -3252px;
+}
+.grey_minus-16 {
+    background-position: -20px -3288px;
+}
+.grey_news-letter-16 {
+    background-position: -20px -3324px;
+}
+.grey_order-confirmation-16 {
+    background-position: -20px -3360px;
+}
+.grey_phone-16 {
+    background-position: -20px -3396px;
+}
+.grey_play-16 {
+    background-position: -20px -3432px;
+}
+.grey_plus-16 {
+    background-position: -20px -3468px;
+}
+.grey_search-16 {
+    background-position: -20px -3504px;
+}
+.grey_shield-16 {
+    background-position: -20px -3576px;
+}
+.grey_share-16 {
+    background-position: -20px -3540px;
+}
+.grey_sign-out-16 {
+    background-position: -20px -3612px;
+}
+.grey_star-empty-16 {
+    background-position: -20px -3648px;
+}
+.grey_star-filled-16 {
+    background-position: -20px -3684px;
+}
+.grey_star-half-16 {
+    background-position: -20px -3720px;
+}
+.grey_tick-16 {
+    background-position: -20px -3756px;
+}
+.grey_twitter-16 {
+    background-position: -20px -3792px;
+}
+.grey_user-16 {
+    background-position: -20px -3828px;
+}
+.grey_visible-16 {
+    background-position: -20px -3900px;
+}
+.grey_voucher-16 {
+    background-position: -20px -3936px;
+}
+.grey_warning-16 {
+    background-position: -20px -3972px;
+}
+.grey_wechat-16 {
+    background-position: -20px -4008px;
+}
+.grey_zoom-16 {
+    background-position: -20px -4044px;
+}
+.grey_cross-48 {
+    background-repeat: no-repeat !important;
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.slick-arrow.slick-disabled .arrow-left-16 {
+    background-position: -20px -2677px;
+}
+.slick-arrow.slick-disabled .arrow-right-16 {
+    background-position: -20px -2713px;
+}
+.slick-arrow.slick-disabled .arrow-up-16 {
+    background-position: -20px -2748px;
+}
+.slick-arrow.slick-disabled .arrow-down-16 {
+    background-position: -20px -2640px;
+}
+.time-24 {
+    background-image: url(/venia-static-assets/css/cross_image.png) !important;
+    width: 24px;
+    height: 24px;
+}
+.career-listing-16 {
+    background-image: url(/venia-static-assets/css/icon-career-16w.png) !important;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.mcs-phone-16 {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    background-image: url(/venia-static-assets/css/sprite.png) !important;
+    background-position: -26px -3901px !important;
+    background-size: 87px;
+    margin: -10px 0px -5px 0px;
+}
+.mcs-email-16 {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    background-image: url(/venia-static-assets/css/sprite.png) !important;
+    background-position: -27px -3311px !important;
+    background-size: 87px;
+    margin: -10px 0px -5px 0px;
+}
+.tabs {
+    margin: 0;
+    border-top: none;
+}
+.recently-viewed-products .tabs {
+    margin: 0 auto;
+}
+.product_slider_section.free_gift_carousel_bg {
+    background: #f5f5f5 !important;
+}
+.recently-viewed-products .product_slider_section {
+    background: #ffeaca;
+}
+.recently-viewed-products .product_slider_section h4 {
+    color: #db4d00;
+    margin-top: 30px;
+}
+.recently-viewed-products .product_slider_section .container {
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+}
+.need_help_text,
+.back_to_cart_text {
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 700;
+}
+.checkout_header_secure {
+    display: inline-block;
+    color: #ffffff;
+    vertical-align: middle;
+}
+@media only screen and (min-width: 768px) {
+    a#easychat-floating-button-left {
+        right: 30px !important;
+        bottom: 65px !important;
+    }
+}
+#back-to-top {
+    display: none;
+    cursor: pointer;
+    position: fixed;
+    z-index: 9999;
+    padding: 11px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 4px rgba(55, 48, 54, 0.1);
+    right: 30px;
+    bottom: 65px;
+    border-radius: 30px;
+}
+#back-to-top:hover {
+    opacity: 0.8;
+}
+#back-to-top:active {
+    background: rgba(0, 0, 0, 0.1);
+}
+.nav-tabs {
+    border-bottom: none;
+    text-align: center;
+}
+.nav-tabs > li {
+    float: none;
+    display: inline-block;
+    border-bottom: none !important;
+    zoom: 1;
+}
+.nav-tabs > li a {
+    border: none !important;
+    padding: 8px 16px !important;
+    border-radius: 8px !important;
+    color: #373737 !important;
+}
+.nav-tabs > li.hover > a,
+.new_desktop_cart_icon {
+    background-image: url(/venia-static-assets/images/cart_desktop.png) !important;
+    background-repeat: no-repeat !important;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.page-loading {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: 64px;
+    height: 64px;
+}
+
+.page-loading span {
+    --i: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    margin: -5px 0 0 -5px;
+    border-radius: 50%;
+    background-color: #ff8200;
+    transform: rotate(calc(var(--i) * 45deg)) translateY(-26px);
+    animation: page-loading-dot-pulse 0.88s linear infinite;
+}
+
+.page-loading span:nth-child(1) {
+    --i: 0;
+    animation-delay: 0s;
+}
+.page-loading span:nth-child(2) {
+    --i: 1;
+    animation-delay: 0.11s;
+}
+.page-loading span:nth-child(3) {
+    --i: 2;
+    animation-delay: 0.22s;
+}
+.page-loading span:nth-child(4) {
+    --i: 3;
+    animation-delay: 0.33s;
+}
+.page-loading span:nth-child(5) {
+    --i: 4;
+    animation-delay: 0.44s;
+}
+.page-loading span:nth-child(6) {
+    --i: 5;
+    animation-delay: 0.55s;
+}
+.page-loading span:nth-child(7) {
+    --i: 6;
+    animation-delay: 0.66s;
+}
+.page-loading span:nth-child(8) {
+    --i: 7;
+    animation-delay: 0.77s;
+}
+
+@keyframes page-loading-dot-pulse {
+    0%,
+    75%,
+    100% {
+        opacity: 0.2;
+        background-color: #fce8d5;
+        transform: rotate(calc(var(--i) * 45deg)) translateY(-26px) scale(0.45);
+    }
+
+    12.5% {
+        opacity: 1;
+        background-color: #ff8200;
+        transform: rotate(calc(var(--i) * 45deg)) translateY(-26px) scale(1.1);
+    }
+}
+
+.black-attention {
+    background-image: url(/venia-static-assets/images/black-attention.png) !important;
+    background-repeat: no-repeat !important;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: middle;
+    min-width: 18px;
+}
+
+.pdp-info-icon {
+    background-image: url(/venia-static-assets/images/pdp-info-icon.svg) !important;
+    background-repeat: no-repeat !important;
+    min-width: 12px;
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+}

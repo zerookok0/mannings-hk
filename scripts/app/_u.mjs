@@ -1,0 +1,11 @@
+﻿import { Q } from "./queries.mjs";
+import fs from "node:fs/promises";
+import path from "node:path";
+const ORIGIN = "https://www.mannings.com.hk";
+const u = new URL(ORIGIN + "/graphql");
+u.searchParams.set("query", Q.pdp);
+u.searchParams.set("operationName", "getProductDetailForProductPage");
+u.searchParams.set("variables", JSON.stringify({ sku: "103705" }));
+const out = path.join(import.meta.dirname, "..", "..", "data", "raw", "_pdp_url.txt");
+await fs.writeFile(out, u.toString(), "utf8");
+console.log("len", u.toString().length, "->", out);

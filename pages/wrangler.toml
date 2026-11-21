@@ -1,0 +1,7 @@
+name = "mannings-hk"
+compatibility_date = "2026-11-01"
+pages_build_output_dir = "dist"
+
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "mannings-mirror"

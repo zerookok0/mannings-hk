@@ -1,0 +1,83 @@
+# Default crawler instructions
+User-agent: *
+Disallow: /lib/
+Disallow: /*.php$
+Disallow: /pkginfo/
+Disallow: /report/
+Disallow: /var/
+Disallow: /catalog/
+Disallow: /customer/
+Disallow: /sendfriend/
+Disallow: /review/
+Disallow: /*SID=
+
+# Restrict User Account & Checkout Pages
+Disallow: /cart
+Disallow: /checkout
+Disallow: /login
+Disallow: /account
+Disallow: /order-history
+Disallow: /account-information
+Disallow: /reward-points
+Disallow: /tracking-order
+Disallow: /store-credit
+Disallow: /product-review
+Disallow: /newsletter
+Disallow: /raf
+Disallow: /shop
+
+# Restrict localized PWA pages
+Disallow: /zh-hant/cart
+Disallow: /en/cart
+Disallow: /zh-hant/checkout
+Disallow: /en/checkout
+Disallow: /zh-hant/login
+Disallow: /en/login
+Disallow: /zh-hant/account
+Disallow: /en/account
+Disallow: /zh-hant/order-history
+Disallow: /en/order-history
+Disallow: /zh-hant/account-information
+Disallow: /en/account-information
+Disallow: /zh-hant/reward-points
+Disallow: /en/reward-points
+Disallow: /zh-hant/tracking-order
+Disallow: /en/tracking-order
+Disallow: /zh-hant/store-credit
+Disallow: /en/store-credit
+Disallow: /zh-hant/product-review
+Disallow: /en/product-review
+Disallow: /zh-hant/newsletter
+Disallow: /en/newsletter
+Disallow: /zh-hant/raf
+Disallow: /en/raf
+Disallow: /zh-hant/shop
+Disallow: /en/shop
+
+# Disallow URL Filter Searches
+Disallow: /*?dir*
+Disallow: /*?dir=desc
+Disallow: /*?dir=asc
+Disallow: /*?limit=all
+Disallow: /*?mode*
+
+# Restrict CMS Directories
+Disallow: /app/
+Disallow: /bin/
+Disallow: /dev/
+Disallow: /lib/
+Disallow: /phpserver/
+#Disallow: /pub/
+
+# Disallow Duplicate Content
+Disallow: /tag
+Disallow: /review
+Disallow: /zh-hant/tag
+Disallow: /en/tag
+Disallow: /zh-hant/review
+Disallow: /en/review
+
+# Google Image Crawler Setup
+User-agent: Googlebot-Image
+Disallow:
+

@@ -1,0 +1,7 @@
+name = "mannings-uploader"
+main = "workers/uploader.js"
+compatibility_date = "2026-11-01"
+
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "mannings-mirror"
