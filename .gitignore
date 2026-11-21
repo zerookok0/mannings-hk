@@ -1,0 +1,18 @@
+# 抓取原始数据（体积大，可随时用 npm run crawl 重建）
+data/raw/
+data/catalog.json
+data/details.json
+data/catalog-lite.json
+data/categories.json
+
+# 旧工程归档
+_legacy/
+
+# 临时
+node_modules/
+*.log
+_q.json
+scripts/_*.mjs
+scripts/_*.ps1
+.DS_Store
+Thumbs.db

@@ -1,0 +1,24 @@
+{
+  "name": "mannings-hk-mirror",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "萬寧香港官方網店（mannings.com.hk）完整離線鏡像：7,780 商品 / SKU / 分類 / 品牌 / 圖片 / CMS 內容 + 靜態站在線化",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "crawl:meta": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/ps/fetch.ps1 -Stage meta -Concurrency 3",
+    "crawl:list": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/ps/fetch.ps1 -Stage search -From 1 -To 131 -Concurrency 6",
+    "crawl:pdp": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/ps/fetch.ps1 -Stage pdp -Concurrency 6",
+    "crawl:cms": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/ps/fetch.ps1 -Stage cms -Concurrency 5",
+    "crawl:cats": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/ps/fetch.ps1 -Stage cats -Concurrency 4",
+    "crawl:media": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/ps/fetch.ps1 -Stage media -Concurrency 12",
+    "normalize": "node scripts/01-normalize.mjs",
+    "plan:media": "node scripts/02-media-plan.mjs",
+    "build": "node scripts/03-build.mjs",
+    "export": "node scripts/04-export.mjs",
+    "verify": "node scripts/05-verify.mjs",
+    "serve": "node scripts/serve.mjs",
+    "crawl": "npm run crawl:meta && npm run crawl:list && npm run crawl:pdp && npm run crawl:cms && npm run crawl:cats && npm run normalize && npm run plan:media && npm run crawl:media",
+    "ship": "npm run build && npm run export && npm run verify"
+  }
+}

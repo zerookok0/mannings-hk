@@ -1,0 +1,2151 @@
+[
+ {
+  "name": "成人皮膚護理",
+  "urlPath": "adult-skin-care",
+  "level": 4,
+  "count": 3,
+  "parent": null
+ },
+ {
+  "name": "美容",
+  "urlPath": "beauty",
+  "level": 2,
+  "count": 2673,
+  "parent": null
+ },
+ {
+  "name": "暗瘡護理",
+  "urlPath": "beauty/acne-care",
+  "level": 3,
+  "count": 0,
+  "parent": "beauty"
+ },
+ {
+  "name": "化妝工具",
+  "urlPath": "beauty/beauty-accessories",
+  "level": 3,
+  "count": 41,
+  "parent": "beauty"
+ },
+ {
+  "name": "眼部化妝工具",
+  "urlPath": "beauty/beauty-accessories/eye-make-up-accessories",
+  "level": 4,
+  "count": 9,
+  "parent": "beauty/beauty-accessories"
+ },
+ {
+  "name": "面部化妝工具",
+  "urlPath": "beauty/beauty-accessories/face-make-up-accessories",
+  "level": 4,
+  "count": 25,
+  "parent": "beauty/beauty-accessories"
+ },
+ {
+  "name": "美甲工具",
+  "urlPath": "beauty/beauty-accessories/nail-accessories",
+  "level": 4,
+  "count": 7,
+  "parent": "beauty/beauty-accessories"
+ },
+ {
+  "name": "潔面",
+  "urlPath": "beauty/cleanser",
+  "level": 3,
+  "count": 0,
+  "parent": "beauty"
+ },
+ {
+  "name": "化妝棉",
+  "urlPath": "beauty/cosmetic-cottons",
+  "level": 3,
+  "count": 0,
+  "parent": "beauty"
+ },
+ {
+  "name": "醫學美容",
+  "urlPath": "beauty/derma-cosmetics",
+  "level": 3,
+  "count": 392,
+  "parent": "beauty"
+ },
+ {
+  "name": "去角質",
+  "urlPath": "beauty/exfoliator",
+  "level": 3,
+  "count": 0,
+  "parent": "beauty"
+ },
+ {
+  "name": "眼部護理",
+  "urlPath": "beauty/eye",
+  "level": 3,
+  "count": 48,
+  "parent": "beauty"
+ },
+ {
+  "name": "手部及身體護理",
+  "urlPath": "beauty/hand-body",
+  "level": 3,
+  "count": 148,
+  "parent": "beauty"
+ },
+ {
+  "name": "身體磨砂",
+  "urlPath": "beauty/hand-body/body-exfoliator",
+  "level": 4,
+  "count": 0,
+  "parent": "beauty/hand-body"
+ },
+ {
+  "name": "身體乳液",
+  "urlPath": "beauty/hand-body/body-moisturizer",
+  "level": 4,
+  "count": 98,
+  "parent": "beauty/hand-body"
+ },
+ {
+  "name": "手部及甲部護理",
+  "urlPath": "beauty/hand-body/hand-nail",
+  "level": 4,
+  "count": 50,
+  "parent": "beauty/hand-body"
+ },
+ {
+  "name": "日本護膚品",
+  "urlPath": "beauty/japanese-skincare",
+  "level": 3,
+  "count": 38,
+  "parent": "beauty"
+ },
+ {
+  "name": "韓國護膚品",
+  "urlPath": "beauty/korean-skincare",
+  "level": 3,
+  "count": 10,
+  "parent": "beauty"
+ },
+ {
+  "name": "唇部護理",
+  "urlPath": "beauty/lip",
+  "level": 3,
+  "count": 81,
+  "parent": "beauty"
+ },
+ {
+  "name": "彩妝",
+  "urlPath": "beauty/make-up",
+  "level": 3,
+  "count": 750,
+  "parent": "beauty"
+ },
+ {
+  "name": "卸妝",
+  "urlPath": "beauty/make-up-remover",
+  "level": 3,
+  "count": 0,
+  "parent": "beauty"
+ },
+ {
+  "name": "眼部彩妝",
+  "urlPath": "beauty/make-up/eye-make-up",
+  "level": 4,
+  "count": 197,
+  "parent": "beauty/make-up"
+ },
+ {
+  "name": "面部彩妝",
+  "urlPath": "beauty/make-up/face-make-up",
+  "level": 4,
+  "count": 251,
+  "parent": "beauty/make-up"
+ },
+ {
+  "name": "唇部彩妝",
+  "urlPath": "beauty/make-up/lip-make-up",
+  "level": 4,
+  "count": 291,
+  "parent": "beauty/make-up"
+ },
+ {
+  "name": "美甲產品",
+  "urlPath": "beauty/make-up/nail-make-up",
+  "level": 4,
+  "count": 6,
+  "parent": "beauty/make-up"
+ },
+ {
+  "name": "面膜",
+  "urlPath": "beauty/mask",
+  "level": 3,
+  "count": 0,
+  "parent": "beauty"
+ },
+ {
+  "name": "面霜",
+  "urlPath": "beauty/moisturiser",
+  "level": 3,
+  "count": 619,
+  "parent": "beauty"
+ },
+ {
+  "name": "敏感肌膚",
+  "urlPath": "beauty/sensitive-skin",
+  "level": 3,
+  "count": 0,
+  "parent": "beauty"
+ },
+ {
+  "name": "精華",
+  "urlPath": "beauty/serum",
+  "level": 3,
+  "count": 0,
+  "parent": "beauty"
+ },
+ {
+  "name": "防曬",
+  "urlPath": "beauty/sun-care",
+  "level": 3,
+  "count": 94,
+  "parent": "beauty"
+ },
+ {
+  "name": "面部防曬",
+  "urlPath": "beauty/sun-care/facial-suntan",
+  "level": 4,
+  "count": 9,
+  "parent": "beauty/sun-care"
+ },
+ {
+  "name": "防曬霜",
+  "urlPath": "beauty/sun-care/sun-blocks",
+  "level": 4,
+  "count": 83,
+  "parent": "beauty/sun-care"
+ },
+ {
+  "name": "爽膚水",
+  "urlPath": "beauty/toner",
+  "level": 3,
+  "count": 0,
+  "parent": "beauty"
+ },
+ {
+  "name": "食品",
+  "urlPath": "food-confectionery",
+  "level": 2,
+  "count": 21,
+  "parent": null
+ },
+ {
+  "name": "餅乾及薯片",
+  "urlPath": "food-confectionery/biscuits-chips",
+  "level": 3,
+  "count": 6,
+  "parent": "food-confectionery"
+ },
+ {
+  "name": "節日精選",
+  "urlPath": "food-confectionery/festive-gifting",
+  "level": 3,
+  "count": 1,
+  "parent": "food-confectionery"
+ },
+ {
+  "name": "健康小食",
+  "urlPath": "food-confectionery/healthy-snacks",
+  "level": 3,
+  "count": 1,
+  "parent": "food-confectionery"
+ },
+ {
+  "name": "頭髮護理",
+  "urlPath": "hair",
+  "level": 2,
+  "count": 797,
+  "parent": null
+ },
+ {
+  "name": "護髮素",
+  "urlPath": "hair/conditioner",
+  "level": 3,
+  "count": 43,
+  "parent": "hair"
+ },
+ {
+  "name": "醫學頭髮護理",
+  "urlPath": "hair/derma-hair",
+  "level": 3,
+  "count": 49,
+  "parent": "hair"
+ },
+ {
+  "name": "醫學頭髮護理護髮素",
+  "urlPath": "hair/derma-hair/derma-hair-conditioner",
+  "level": 4,
+  "count": 6,
+  "parent": "hair/derma-hair"
+ },
+ {
+  "name": "醫學頭髮護理美髮油",
+  "urlPath": "hair/derma-hair/derma-hair-hair-oil",
+  "level": 4,
+  "count": 0,
+  "parent": "hair/derma-hair"
+ },
+ {
+  "name": "醫學頭髮護理磨砂膏",
+  "urlPath": "hair/derma-hair/derma-hair-scrub",
+  "level": 4,
+  "count": 1,
+  "parent": "hair/derma-hair"
+ },
+ {
+  "name": "醫學頭髮護理精華素",
+  "urlPath": "hair/derma-hair/derma-hair-serum",
+  "level": 4,
+  "count": 9,
+  "parent": "hair/derma-hair"
+ },
+ {
+  "name": "醫學頭髮護理洗髮水",
+  "urlPath": "hair/derma-hair/derma-hair-shampoo",
+  "level": 4,
+  "count": 26,
+  "parent": "hair/derma-hair"
+ },
+ {
+  "name": "醫學頭髮護理髮膜",
+  "urlPath": "hair/derma-hair/derma-hair-treatment",
+  "level": 4,
+  "count": 7,
+  "parent": "hair/derma-hair"
+ },
+ {
+  "name": "染髮產品",
+  "urlPath": "hair/hair-colouring",
+  "level": 3,
+  "count": 160,
+  "parent": "hair"
+ },
+ {
+  "name": "防脫髮產品",
+  "urlPath": "hair/hair-loss",
+  "level": 3,
+  "count": 190,
+  "parent": "hair"
+ },
+ {
+  "name": "防脫育髮 - 護髮素",
+  "urlPath": "hair/hair-loss/hair-loss-conditioner",
+  "level": 4,
+  "count": 14,
+  "parent": "hair/hair-loss"
+ },
+ {
+  "name": "防脫育髮美髮油",
+  "urlPath": "hair/hair-loss/hair-loss-hair-oil",
+  "level": 4,
+  "count": 0,
+  "parent": "hair/hair-loss"
+ },
+ {
+  "name": "防脫育髮 - 家用美髮儀器",
+  "urlPath": "hair/hair-loss/hair-loss-home-device",
+  "level": 4,
+  "count": 1,
+  "parent": "hair/hair-loss"
+ },
+ {
+  "name": "防脫育髮其他頭髮用品",
+  "urlPath": "hair/hair-loss/hair-loss-others",
+  "level": 4,
+  "count": 0,
+  "parent": "hair/hair-loss"
+ },
+ {
+  "name": "防脫育髮磨砂膏",
+  "urlPath": "hair/hair-loss/hair-loss-scrub",
+  "level": 4,
+  "count": 0,
+  "parent": "hair/hair-loss"
+ },
+ {
+  "name": "防脫育髮 - 精華素",
+  "urlPath": "hair/hair-loss/hair-loss-serum",
+  "level": 4,
+  "count": 34,
+  "parent": "hair/hair-loss"
+ },
+ {
+  "name": "防脫育髮 - 洗髮水",
+  "urlPath": "hair/hair-loss/hair-loss-shampoo",
+  "level": 4,
+  "count": 68,
+  "parent": "hair/hair-loss"
+ },
+ {
+  "name": "防脫育髮 - 髮膜",
+  "urlPath": "hair/hair-loss/hair-loss-treatment",
+  "level": 4,
+  "count": 5,
+  "parent": "hair/hair-loss"
+ },
+ {
+  "name": "專業級頭髮護理產品",
+  "urlPath": "hair/professional-hair-care",
+  "level": 3,
+  "count": 48,
+  "parent": "hair"
+ },
+ {
+  "name": "專業級護髮素",
+  "urlPath": "hair/professional-hair-care/professional-conditioner",
+  "level": 4,
+  "count": 8,
+  "parent": "hair/professional-hair-care"
+ },
+ {
+  "name": "專業級洗髮水",
+  "urlPath": "hair/professional-hair-care/professional-shampoo",
+  "level": 4,
+  "count": 20,
+  "parent": "hair/professional-hair-care"
+ },
+ {
+  "name": "專業級精華素",
+  "urlPath": "hair/professional-hair-care/professional-treatment",
+  "level": 4,
+  "count": 20,
+  "parent": "hair/professional-hair-care"
+ },
+ {
+  "name": "洗髮水",
+  "urlPath": "hair/shampoo",
+  "level": 3,
+  "count": 0,
+  "parent": "hair"
+ },
+ {
+  "name": "頭髮造型",
+  "urlPath": "hair/styling-aids",
+  "level": 3,
+  "count": 45,
+  "parent": "hair"
+ },
+ {
+  "name": "定型啫喱",
+  "urlPath": "hair/styling-aids/gels",
+  "level": 4,
+  "count": 12,
+  "parent": "hair/styling-aids"
+ },
+ {
+  "name": "慕絲",
+  "urlPath": "hair/styling-aids/mousse",
+  "level": 4,
+  "count": 2,
+  "parent": "hair/styling-aids"
+ },
+ {
+  "name": "其他造型工具",
+  "urlPath": "hair/styling-aids/other-styling-aids",
+  "level": 4,
+  "count": 22,
+  "parent": "hair/styling-aids"
+ },
+ {
+  "name": "造型噴霧",
+  "urlPath": "hair/styling-aids/spray",
+  "level": 4,
+  "count": 9,
+  "parent": "hair/styling-aids"
+ },
+ {
+  "name": "精華素",
+  "urlPath": "hair/treatment",
+  "level": 3,
+  "count": 123,
+  "parent": "hair"
+ },
+ {
+  "name": "健康",
+  "urlPath": "health-care",
+  "level": 2,
+  "count": 2136,
+  "parent": null
+ },
+ {
+  "name": "成人營養",
+  "urlPath": "health-care/adult-nutrition",
+  "level": 3,
+  "count": 73,
+  "parent": "health-care"
+ },
+ {
+  "name": "即飲裝",
+  "urlPath": "health-care/adult-nutrition/liquid",
+  "level": 4,
+  "count": 9,
+  "parent": "health-care/adult-nutrition"
+ },
+ {
+  "name": "粉裝",
+  "urlPath": "health-care/adult-nutrition/powder",
+  "level": 4,
+  "count": 64,
+  "parent": "health-care/adult-nutrition"
+ },
+ {
+  "name": "止痕驅蚊",
+  "urlPath": "health-care/anti-pruritic-insect-repellent",
+  "level": 3,
+  "count": 37,
+  "parent": "health-care"
+ },
+ {
+  "name": "止癢",
+  "urlPath": "health-care/anti-pruritic-insect-repellent/anti-pruritic",
+  "level": 4,
+  "count": 7,
+  "parent": "health-care/anti-pruritic-insect-repellent"
+ },
+ {
+  "name": "驅蚊",
+  "urlPath": "health-care/anti-pruritic-insect-repellent/insect-repellent",
+  "level": 4,
+  "count": 30,
+  "parent": "health-care/anti-pruritic-insect-repellent"
+ },
+ {
+  "name": "心血管保健",
+  "urlPath": "health-care/cardiovascular-health",
+  "level": 3,
+  "count": 66,
+  "parent": "health-care"
+ },
+ {
+  "name": "三高",
+  "urlPath": "health-care/cardiovascular-health/3-high",
+  "level": 4,
+  "count": 66,
+  "parent": "health-care/cardiovascular-health"
+ },
+ {
+  "name": "中式保健品及藥油",
+  "urlPath": "health-care/chinese-supplements-medicated-oil",
+  "level": 3,
+  "count": 252,
+  "parent": "health-care"
+ },
+ {
+  "name": "腦部健康",
+  "urlPath": "health-care/chinese-supplements-medicated-oil/brain-health",
+  "level": 4,
+  "count": 10,
+  "parent": "health-care/chinese-supplements-medicated-oil"
+ },
+ {
+  "name": "濕敏",
+  "urlPath": "health-care/chinese-supplements-medicated-oil/eczema",
+  "level": 4,
+  "count": 8,
+  "parent": "health-care/chinese-supplements-medicated-oil"
+ },
+ {
+  "name": "人參",
+  "urlPath": "health-care/chinese-supplements-medicated-oil/ginseng",
+  "level": 4,
+  "count": 1,
+  "parent": "health-care/chinese-supplements-medicated-oil"
+ },
+ {
+  "name": "頭髮保健品",
+  "urlPath": "health-care/chinese-supplements-medicated-oil/hair-supplement",
+  "level": 4,
+  "count": 13,
+  "parent": "health-care/chinese-supplements-medicated-oil"
+ },
+ {
+  "name": "清熱解毒",
+  "urlPath": "health-care/chinese-supplements-medicated-oil/hot-relief",
+  "level": 4,
+  "count": 15,
+  "parent": "health-care/chinese-supplements-medicated-oil"
+ },
+ {
+  "name": "護肝保健品",
+  "urlPath": "health-care/chinese-supplements-medicated-oil/liver-health",
+  "level": 4,
+  "count": 27,
+  "parent": "health-care/chinese-supplements-medicated-oil"
+ },
+ {
+  "name": "藥油",
+  "urlPath": "health-care/chinese-supplements-medicated-oil/medicated-oil",
+  "level": 4,
+  "count": 0,
+  "parent": "health-care/chinese-supplements-medicated-oil"
+ },
+ {
+  "name": "NMN",
+  "urlPath": "health-care/chinese-supplements-medicated-oil/nmn-supplements",
+  "level": 4,
+  "count": 0,
+  "parent": "health-care/chinese-supplements-medicated-oil"
+ },
+ {
+  "name": "健脾祛濕",
+  "urlPath": "health-care/chinese-supplements-medicated-oil/spleen",
+  "level": 4,
+  "count": 0,
+  "parent": "health-care/chinese-supplements-medicated-oil"
+ },
+ {
+  "name": "茶",
+  "urlPath": "health-care/chinese-supplements-medicated-oil/tea",
+  "level": 4,
+  "count": 26,
+  "parent": "health-care/chinese-supplements-medicated-oil"
+ },
+ {
+  "name": "傷風咳嗽",
+  "urlPath": "health-care/cough-cold",
+  "level": 3,
+  "count": 160,
+  "parent": "health-care"
+ },
+ {
+  "name": "中式藥品 (傷風咳嗽)",
+  "urlPath": "health-care/cough-cold/chinese-medicines-cough-cold",
+  "level": 4,
+  "count": 37,
+  "parent": "health-care/cough-cold"
+ },
+ {
+  "name": "傷風感冒",
+  "urlPath": "health-care/cough-cold/cold",
+  "level": 4,
+  "count": 36,
+  "parent": "health-care/cough-cold"
+ },
+ {
+  "name": "咳嗽",
+  "urlPath": "health-care/cough-cold/cough",
+  "level": 4,
+  "count": 22,
+  "parent": "health-care/cough-cold"
+ },
+ {
+  "name": "健康護理用品",
+  "urlPath": "health-care/cough-cold/healthcare-products",
+  "level": 4,
+  "count": 0,
+  "parent": "health-care/cough-cold"
+ },
+ {
+  "name": "退熱貼/冷熱墊",
+  "urlPath": "health-care/cough-cold/heat-cold-pad",
+  "level": 4,
+  "count": 4,
+  "parent": "health-care/cough-cold"
+ },
+ {
+  "name": "止痛退燒",
+  "urlPath": "health-care/cough-cold/pain-fever-relief",
+  "level": 4,
+  "count": 0,
+  "parent": "health-care/cough-cold"
+ },
+ {
+  "name": "鼻腔紓緩",
+  "urlPath": "health-care/cough-cold/soothing",
+  "level": 4,
+  "count": 17,
+  "parent": "health-care/cough-cold"
+ },
+ {
+  "name": "通鼻薄荷膏",
+  "urlPath": "health-care/cough-cold/soothing-ointment",
+  "level": 4,
+  "count": 5,
+  "parent": "health-care/cough-cold"
+ },
+ {
+  "name": "耳鼻及眼部護理",
+  "urlPath": "health-care/ear-nose-eye-care",
+  "level": 3,
+  "count": 69,
+  "parent": "health-care"
+ },
+ {
+  "name": "中式藥品(耳鼻喉)",
+  "urlPath": "health-care/ear-nose-eye-care/chinese-medicines-ear-nose-throat",
+  "level": 4,
+  "count": 4,
+  "parent": "health-care/ear-nose-eye-care"
+ },
+ {
+  "name": "隱形眼鏡護理",
+  "urlPath": "health-care/ear-nose-eye-care/contact-lens-care",
+  "level": 4,
+  "count": 12,
+  "parent": "health-care/ear-nose-eye-care"
+ },
+ {
+  "name": "耳部護理",
+  "urlPath": "health-care/ear-nose-eye-care/ear-care",
+  "level": 4,
+  "count": 0,
+  "parent": "health-care/ear-nose-eye-care"
+ },
+ {
+  "name": "眼藥水",
+  "urlPath": "health-care/ear-nose-eye-care/eye-drops",
+  "level": 4,
+  "count": 32,
+  "parent": "health-care/ear-nose-eye-care"
+ },
+ {
+  "name": "眼部保健品",
+  "urlPath": "health-care/ear-nose-eye-care/eye-supplement",
+  "level": 4,
+  "count": 21,
+  "parent": "health-care/ear-nose-eye-care"
+ },
+ {
+  "name": "口罩",
+  "urlPath": "health-care/face-masks",
+  "level": 3,
+  "count": 53,
+  "parent": "health-care"
+ },
+ {
+  "name": "立體口罩",
+  "urlPath": "health-care/face-masks/3d-mask",
+  "level": 4,
+  "count": 48,
+  "parent": "health-care/face-masks"
+ },
+ {
+  "name": "成人口罩",
+  "urlPath": "health-care/face-masks/for-adult",
+  "level": 4,
+  "count": 23,
+  "parent": "health-care/face-masks"
+ },
+ {
+  "name": "中童口罩",
+  "urlPath": "health-care/face-masks/for-junior",
+  "level": 4,
+  "count": 5,
+  "parent": "health-care/face-masks"
+ },
+ {
+  "name": "幼童口罩",
+  "urlPath": "health-care/face-masks/for-kid",
+  "level": 4,
+  "count": 11,
+  "parent": "health-care/face-masks"
+ },
+ {
+  "name": "家庭計劃及性用品",
+  "urlPath": "health-care/family-planning-sexual-wellness",
+  "level": 3,
+  "count": 55,
+  "parent": "health-care"
+ },
+ {
+  "name": "安全套",
+  "urlPath": "health-care/family-planning-sexual-wellness/condoms",
+  "level": 4,
+  "count": 43,
+  "parent": "health-care/family-planning-sexual-wellness"
+ },
+ {
+  "name": "避孕藥",
+  "urlPath": "health-care/family-planning-sexual-wellness/contraceptive",
+  "level": 4,
+  "count": 4,
+  "parent": "health-care/family-planning-sexual-wellness"
+ },
+ {
+  "name": "性別測試",
+  "urlPath": "health-care/family-planning-sexual-wellness/gender-kit",
+  "level": 4,
+  "count": 0,
+  "parent": "health-care/family-planning-sexual-wellness"
+ },
+ {
+  "name": "排卵測試",
+  "urlPath": "health-care/family-planning-sexual-wellness/ovulation-test",
+  "level": 4,
+  "count": 2,
+  "parent": "health-care/family-planning-sexual-wellness"
+ },
+ {
+  "name": "情趣用品",
+  "urlPath": "health-care/family-planning-sexual-wellness/pleasure-toys",
+  "level": 4,
+  "count": 0,
+  "parent": "health-care/family-planning-sexual-wellness"
+ },
+ {
+  "name": "驗孕棒",
+  "urlPath": "health-care/family-planning-sexual-wellness/pregnancy-test",
+  "level": 4,
+  "count": 6,
+  "parent": "health-care/family-planning-sexual-wellness"
+ },
+ {
+  "name": "急救用品",
+  "urlPath": "health-care/first-aid",
+  "level": 3,
+  "count": 104,
+  "parent": "health-care"
+ },
+ {
+  "name": "消毒用品",
+  "urlPath": "health-care/first-aid/antiseptic",
+  "level": 4,
+  "count": 11,
+  "parent": "health-care/first-aid"
+ },
+ {
+  "name": "敷料及綳帶",
+  "urlPath": "health-care/first-aid/dressing-bandages",
+  "level": 4,
+  "count": 8,
+  "parent": "health-care/first-aid"
+ },
+ {
+  "name": "藥膏",
+  "urlPath": "health-care/first-aid/medicated-cream",
+  "level": 4,
+  "count": 22,
+  "parent": "health-care/first-aid"
+ },
+ {
+  "name": "膠布",
+  "urlPath": "health-care/first-aid/plasters",
+  "level": 4,
+  "count": 14,
+  "parent": "health-care/first-aid"
+ },
+ {
+  "name": "去疤",
+  "urlPath": "health-care/first-aid/scar-reduction",
+  "level": 4,
+  "count": 28,
+  "parent": "health-care/first-aid"
+ },
+ {
+  "name": "暖包",
+  "urlPath": "health-care/first-aid/warmer",
+  "level": 4,
+  "count": 0,
+  "parent": "health-care/first-aid"
+ },
+ {
+  "name": "足部護理",
+  "urlPath": "health-care/foot-care",
+  "level": 3,
+  "count": 43,
+  "parent": "health-care"
+ },
+ {
+  "name": "腸胃護理",
+  "urlPath": "health-care/gastrointestinal",
+  "level": 3,
+  "count": 66,
+  "parent": "health-care"
+ },
+ {
+  "name": "抗胃酸",
+  "urlPath": "health-care/gastrointestinal/anti-acid",
+  "level": 4,
+  "count": 8,
+  "parent": "health-care/gastrointestinal"
+ },
+ {
+  "name": "止瀉",
+  "urlPath": "health-care/gastrointestinal/anti-diarrhea",
+  "level": 4,
+  "count": 6,
+  "parent": "health-care/gastrointestinal"
+ },
+ {
+  "name": "中式藥品 (腸胃)",
+  "urlPath": "health-care/gastrointestinal/chinese-medicines-gastrointestinal",
+  "level": 4,
+  "count": 30,
+  "parent": "health-care/gastrointestinal"
+ },
+ {
+  "name": "消化輔助",
+  "urlPath": "health-care/gastrointestinal/digestive",
+  "level": 4,
+  "count": 9,
+  "parent": "health-care/gastrointestinal"
+ },
+ {
+  "name": "痔瘡",
+  "urlPath": "health-care/gastrointestinal/haemorroids",
+  "level": 4,
+  "count": 3,
+  "parent": "health-care/gastrointestinal"
+ },
+ {
+  "name": "通便",
+  "urlPath": "health-care/gastrointestinal/laxative",
+  "level": 4,
+  "count": 10,
+  "parent": "health-care/gastrointestinal"
+ },
+ {
+  "name": "雞精及燕窩",
+  "urlPath": "health-care/health-tonic",
+  "level": 3,
+  "count": 16,
+  "parent": "health-care"
+ },
+ {
+  "name": "燕窩",
+  "urlPath": "health-care/health-tonic/bird-s-nest",
+  "level": 4,
+  "count": 6,
+  "parent": "health-care/health-tonic"
+ },
+ {
+  "name": "雞精",
+  "urlPath": "health-care/health-tonic/chicken-essence",
+  "level": 4,
+  "count": 10,
+  "parent": "health-care/health-tonic"
+ },
+ {
+  "name": "關節健康",
+  "urlPath": "health-care/joint-health",
+  "level": 3,
+  "count": 153,
+  "parent": "health-care"
+ },
+ {
+  "name": "關節保健品",
+  "urlPath": "health-care/joint-health/joint-supplements",
+  "level": 4,
+  "count": 75,
+  "parent": "health-care/joint-health"
+ },
+ {
+  "name": "外用關節護理",
+  "urlPath": "health-care/joint-health/topical-joint-care",
+  "level": 4,
+  "count": 78,
+  "parent": "health-care/joint-health"
+ },
+ {
+  "name": "靈芝及蟲草",
+  "urlPath": "health-care/lingzhi-cordyceps",
+  "level": 3,
+  "count": 64,
+  "parent": "health-care"
+ },
+ {
+  "name": "蟲草",
+  "urlPath": "health-care/lingzhi-cordyceps/cordyceps",
+  "level": 4,
+  "count": 31,
+  "parent": "health-care/lingzhi-cordyceps"
+ },
+ {
+  "name": "靈芝",
+  "urlPath": "health-care/lingzhi-cordyceps/lingzhi",
+  "level": 4,
+  "count": 33,
+  "parent": "health-care/lingzhi-cordyceps"
+ },
+ {
+  "name": "醫療用品",
+  "urlPath": "health-care/medical-device",
+  "level": 3,
+  "count": 31,
+  "parent": "health-care"
+ },
+ {
+  "name": "血糖測試",
+  "urlPath": "health-care/medical-device/blood-glucose-meter-and-kits",
+  "level": 4,
+  "count": 0,
+  "parent": "health-care/medical-device"
+ },
+ {
+  "name": "血壓計",
+  "urlPath": "health-care/medical-device/blood-pressure-monitor",
+  "level": 4,
+  "count": 10,
+  "parent": "health-care/medical-device"
+ },
+ {
+  "name": "自我檢測",
+  "urlPath": "health-care/medical-device/self-test",
+  "level": 4,
+  "count": 17,
+  "parent": "health-care/medical-device"
+ },
+ {
+  "name": "探熱用品",
+  "urlPath": "health-care/medical-device/thermometer",
+  "level": 4,
+  "count": 4,
+  "parent": "health-care/medical-device"
+ },
+ {
+  "name": "男女士保健品",
+  "urlPath": "health-care/men-s-women-s-health",
+  "level": 3,
+  "count": 81,
+  "parent": "health-care"
+ },
+ {
+  "name": "男士保健品",
+  "urlPath": "health-care/men-s-women-s-health/men-s-health",
+  "level": 4,
+  "count": 44,
+  "parent": "health-care/men-s-women-s-health"
+ },
+ {
+  "name": "女士保健品",
+  "urlPath": "health-care/men-s-women-s-health/women-s-health",
+  "level": 4,
+  "count": 37,
+  "parent": "health-care/men-s-women-s-health"
+ },
+ {
+  "name": "母嬰及兒童健康",
+  "urlPath": "health-care/moms-kids-health",
+  "level": 3,
+  "count": 137,
+  "parent": "health-care"
+ },
+ {
+  "name": "嬰幼兒中式藥品",
+  "urlPath": "health-care/moms-kids-health/baby-chinese-medicines",
+  "level": 4,
+  "count": 29,
+  "parent": "health-care/moms-kids-health"
+ },
+ {
+  "name": "嬰幼兒營養保健品",
+  "urlPath": "health-care/moms-kids-health/kids-supplements",
+  "level": 4,
+  "count": 79,
+  "parent": "health-care/moms-kids-health"
+ },
+ {
+  "name": "孕婦營養",
+  "urlPath": "health-care/moms-kids-health/prenatal-supplements",
+  "level": 4,
+  "count": 29,
+  "parent": "health-care/moms-kids-health"
+ },
+ {
+  "name": "止痛",
+  "urlPath": "health-care/pain-relief",
+  "level": 3,
+  "count": 0,
+  "parent": "health-care"
+ },
+ {
+  "name": "益生菌",
+  "urlPath": "health-care/probiotics",
+  "level": 3,
+  "count": 81,
+  "parent": "health-care"
+ },
+ {
+  "name": "抗敏益生菌",
+  "urlPath": "health-care/probiotics/anti-allergy-probiotics",
+  "level": 4,
+  "count": 8,
+  "parent": "health-care/probiotics"
+ },
+ {
+  "name": "腸道健康益生菌",
+  "urlPath": "health-care/probiotics/gut-health-probiotics",
+  "level": 4,
+  "count": 30,
+  "parent": "health-care/probiotics"
+ },
+ {
+  "name": "免疫益生菌",
+  "urlPath": "health-care/probiotics/immune-boosting-probiotics",
+  "level": 4,
+  "count": 26,
+  "parent": "health-care/probiotics"
+ },
+ {
+  "name": "其他益生菌",
+  "urlPath": "health-care/probiotics/other-probiotics",
+  "level": 4,
+  "count": 0,
+  "parent": "health-care/probiotics"
+ },
+ {
+  "name": "甜睡益生菌",
+  "urlPath": "health-care/probiotics/sleep-probiotics",
+  "level": 4,
+  "count": 5,
+  "parent": "health-care/probiotics"
+ },
+ {
+  "name": "輕舒益生菌",
+  "urlPath": "health-care/probiotics/stress-relieving-probiotics",
+  "level": 4,
+  "count": 2,
+  "parent": "health-care/probiotics"
+ },
+ {
+  "name": "瘦身排毒益生菌",
+  "urlPath": "health-care/probiotics/weight-loss-detox-probiotics",
+  "level": 4,
+  "count": 17,
+  "parent": "health-care/probiotics"
+ },
+ {
+  "name": "助眠舒壓",
+  "urlPath": "health-care/sleep-stress-relief",
+  "level": 3,
+  "count": 50,
+  "parent": "health-care"
+ },
+ {
+  "name": "助眠",
+  "urlPath": "health-care/sleep-stress-relief/sleep-aid",
+  "level": 4,
+  "count": 28,
+  "parent": "health-care/sleep-stress-relief"
+ },
+ {
+  "name": "減壓安神",
+  "urlPath": "health-care/sleep-stress-relief/stress-relief-and-calm",
+  "level": 4,
+  "count": 22,
+  "parent": "health-care/sleep-stress-relief"
+ },
+ {
+  "name": "纖體美肌及健身塑形",
+  "urlPath": "health-care/slimming-beauty-fitness",
+  "level": 3,
+  "count": 147,
+  "parent": "health-care"
+ },
+ {
+  "name": "美肌食品",
+  "urlPath": "health-care/slimming-beauty-fitness/beauty-supplements",
+  "level": 4,
+  "count": 49,
+  "parent": "health-care/slimming-beauty-fitness"
+ },
+ {
+  "name": "腸道管理",
+  "urlPath": "health-care/slimming-beauty-fitness/gut-care",
+  "level": 4,
+  "count": 0,
+  "parent": "health-care/slimming-beauty-fitness"
+ },
+ {
+  "name": "健身塑形",
+  "urlPath": "health-care/slimming-beauty-fitness/sports-fitness",
+  "level": 4,
+  "count": 17,
+  "parent": "health-care/slimming-beauty-fitness"
+ },
+ {
+  "name": "體重管理",
+  "urlPath": "health-care/slimming-beauty-fitness/weight-management",
+  "level": 4,
+  "count": 81,
+  "parent": "health-care/slimming-beauty-fitness"
+ },
+ {
+  "name": "復康產品",
+  "urlPath": "health-care/special-health-need",
+  "level": 3,
+  "count": 0,
+  "parent": "health-care"
+ },
+ {
+  "name": "潤喉",
+  "urlPath": "health-care/throat",
+  "level": 3,
+  "count": 46,
+  "parent": "health-care"
+ },
+ {
+  "name": "草本配方",
+  "urlPath": "health-care/throat/herbal",
+  "level": 4,
+  "count": 15,
+  "parent": "health-care/throat"
+ },
+ {
+  "name": "西式",
+  "urlPath": "health-care/throat/western",
+  "level": 4,
+  "count": 31,
+  "parent": "health-care/throat"
+ },
+ {
+  "name": "維他命及礦物質",
+  "urlPath": "health-care/vitamin-mineral",
+  "level": 3,
+  "count": 116,
+  "parent": "health-care"
+ },
+ {
+  "name": "魚油",
+  "urlPath": "health-care/vitamin-mineral/fish-oil",
+  "level": 4,
+  "count": 0,
+  "parent": "health-care/vitamin-mineral"
+ },
+ {
+  "name": "複合維他命",
+  "urlPath": "health-care/vitamin-mineral/multi-vitamins",
+  "level": 4,
+  "count": 39,
+  "parent": "health-care/vitamin-mineral"
+ },
+ {
+  "name": "其他維他命",
+  "urlPath": "health-care/vitamin-mineral/other-vitamins",
+  "level": 4,
+  "count": 0,
+  "parent": "health-care/vitamin-mineral"
+ },
+ {
+  "name": "維他命 B",
+  "urlPath": "health-care/vitamin-mineral/vitamin-b",
+  "level": 4,
+  "count": 19,
+  "parent": "health-care/vitamin-mineral"
+ },
+ {
+  "name": "維他命 C",
+  "urlPath": "health-care/vitamin-mineral/vitamin-c",
+  "level": 4,
+  "count": 30,
+  "parent": "health-care/vitamin-mineral"
+ },
+ {
+  "name": "維他命 D及鈣質",
+  "urlPath": "health-care/vitamin-mineral/vitamin-d-calcium",
+  "level": 4,
+  "count": 24,
+  "parent": "health-care/vitamin-mineral"
+ },
+ {
+  "name": "維他命 E",
+  "urlPath": "health-care/vitamin-mineral/vitamin-e",
+  "level": 4,
+  "count": 4,
+  "parent": "health-care/vitamin-mineral"
+ },
+ {
+  "name": "健康食品",
+  "urlPath": "healthy-food",
+  "level": 2,
+  "count": 217,
+  "parent": null
+ },
+ {
+  "name": "飲品",
+  "urlPath": "healthy-food/beverage-drink",
+  "level": 3,
+  "count": 2,
+  "parent": "healthy-food"
+ },
+ {
+  "name": "蒸餾水及礦泉水",
+  "urlPath": "healthy-food/beverage-drink/distill-mineral-water",
+  "level": 4,
+  "count": 1,
+  "parent": "healthy-food/beverage-drink"
+ },
+ {
+  "name": "運動及能量飲品",
+  "urlPath": "healthy-food/beverage-drink/energy-isotonic-drinks",
+  "level": 4,
+  "count": 0,
+  "parent": "healthy-food/beverage-drink"
+ },
+ {
+  "name": "果汁類",
+  "urlPath": "healthy-food/beverage-drink/juice",
+  "level": 4,
+  "count": 0,
+  "parent": "healthy-food/beverage-drink"
+ },
+ {
+  "name": "其他飲品",
+  "urlPath": "healthy-food/beverage-drink/other-drinks",
+  "level": 4,
+  "count": 1,
+  "parent": "healthy-food/beverage-drink"
+ },
+ {
+  "name": "香口膠",
+  "urlPath": "healthy-food/chewing-gum-gummies-and-candy",
+  "level": 3,
+  "count": 16,
+  "parent": "healthy-food"
+ },
+ {
+  "name": "中式養身",
+  "urlPath": "healthy-food/chinese-nutrition",
+  "level": 3,
+  "count": 21,
+  "parent": "healthy-food"
+ },
+ {
+  "name": "養身茶",
+  "urlPath": "healthy-food/chinese-nutrition/functional-tea",
+  "level": 4,
+  "count": 19,
+  "parent": "healthy-food/chinese-nutrition"
+ },
+ {
+  "name": "沖劑類",
+  "urlPath": "healthy-food/chinese-nutrition/instant-powder",
+  "level": 4,
+  "count": 2,
+  "parent": "healthy-food/chinese-nutrition"
+ },
+ {
+  "name": "健康小食",
+  "urlPath": "healthy-food/healthy-snack",
+  "level": 3,
+  "count": 20,
+  "parent": "healthy-food"
+ },
+ {
+  "name": "果乾",
+  "urlPath": "healthy-food/healthy-snack/dried-fruit",
+  "level": 4,
+  "count": 3,
+  "parent": "healthy-food/healthy-snack"
+ },
+ {
+  "name": "健康餅乾",
+  "urlPath": "healthy-food/healthy-snack/health-diet-biscuits",
+  "level": 4,
+  "count": 0,
+  "parent": "healthy-food/healthy-snack"
+ },
+ {
+  "name": "輕盈代餐",
+  "urlPath": "healthy-food/healthy-snack/meal-replacement",
+  "level": 4,
+  "count": 3,
+  "parent": "healthy-food/healthy-snack"
+ },
+ {
+  "name": "堅果",
+  "urlPath": "healthy-food/healthy-snack/nut",
+  "level": 4,
+  "count": 5,
+  "parent": "healthy-food/healthy-snack"
+ },
+ {
+  "name": "其他小食及節日精選",
+  "urlPath": "healthy-food/other-snacks-festive-gifting",
+  "level": 3,
+  "count": 22,
+  "parent": "healthy-food"
+ },
+ {
+  "name": "餅乾",
+  "urlPath": "healthy-food/other-snacks-festive-gifting/biscuits",
+  "level": 4,
+  "count": 0,
+  "parent": "healthy-food/other-snacks-festive-gifting"
+ },
+ {
+  "name": "朱古力",
+  "urlPath": "healthy-food/other-snacks-festive-gifting/chocolate",
+  "level": 4,
+  "count": 2,
+  "parent": "healthy-food/other-snacks-festive-gifting"
+ },
+ {
+  "name": "糖果",
+  "urlPath": "healthy-food/other-snacks-festive-gifting/gummies-candy",
+  "level": 4,
+  "count": 20,
+  "parent": "healthy-food/other-snacks-festive-gifting"
+ },
+ {
+  "name": "蛋白質補充",
+  "urlPath": "healthy-food/protein-management",
+  "level": 3,
+  "count": 120,
+  "parent": "healthy-food"
+ },
+ {
+  "name": "蛋白能量棒",
+  "urlPath": "healthy-food/protein-management/protein-bar",
+  "level": 4,
+  "count": 21,
+  "parent": "healthy-food/protein-management"
+ },
+ {
+  "name": "蛋白餅乾",
+  "urlPath": "healthy-food/protein-management/protein-biscuits-cookies",
+  "level": 4,
+  "count": 0,
+  "parent": "healthy-food/protein-management"
+ },
+ {
+  "name": "蛋白脆片",
+  "urlPath": "healthy-food/protein-management/protein-chips",
+  "level": 4,
+  "count": 41,
+  "parent": "healthy-food/protein-management"
+ },
+ {
+  "name": "蛋白即飲",
+  "urlPath": "healthy-food/protein-management/protein-drink-rtd",
+  "level": 4,
+  "count": 20,
+  "parent": "healthy-food/protein-management"
+ },
+ {
+  "name": "蛋白沖飲",
+  "urlPath": "healthy-food/protein-management/protein-shake",
+  "level": 4,
+  "count": 38,
+  "parent": "healthy-food/protein-management"
+ },
+ {
+  "name": "蛋白補充品",
+  "urlPath": "healthy-food/protein-management/protein-supplements",
+  "level": 4,
+  "count": 0,
+  "parent": "healthy-food/protein-management"
+ },
+ {
+  "name": "運動營養",
+  "urlPath": "healthy-food/sports-nutrition",
+  "level": 3,
+  "count": 16,
+  "parent": "healthy-food"
+ },
+ {
+  "name": "透明乳清蛋白",
+  "urlPath": "healthy-food/sports-nutrition/clear-whey-protein",
+  "level": 4,
+  "count": 0,
+  "parent": "healthy-food/sports-nutrition"
+ },
+ {
+  "name": "肌酸",
+  "urlPath": "healthy-food/sports-nutrition/creatine",
+  "level": 4,
+  "count": 6,
+  "parent": "healthy-food/sports-nutrition"
+ },
+ {
+  "name": "乳清蛋白",
+  "urlPath": "healthy-food/sports-nutrition/whey-protein",
+  "level": 4,
+  "count": 0,
+  "parent": "healthy-food/sports-nutrition"
+ },
+ {
+  "name": "家居用品",
+  "urlPath": "household",
+  "level": 2,
+  "count": 55,
+  "parent": null
+ },
+ {
+  "name": "衣物",
+  "urlPath": "household/apparel",
+  "level": 3,
+  "count": 24,
+  "parent": "household"
+ },
+ {
+  "name": "乾電池",
+  "urlPath": "household/batteries",
+  "level": 3,
+  "count": 0,
+  "parent": "household"
+ },
+ {
+  "name": "紙品",
+  "urlPath": "household/paper-goods",
+  "level": 3,
+  "count": 31,
+  "parent": "household"
+ },
+ {
+  "name": "母嬰護理",
+  "urlPath": "mom-baby",
+  "level": 2,
+  "count": 772,
+  "parent": null
+ },
+ {
+  "name": "嬰兒洗髮沐浴護理",
+  "urlPath": "mom-baby/baby-bath-shampoo",
+  "level": 3,
+  "count": 63,
+  "parent": "mom-baby"
+ },
+ {
+  "name": "嬰兒洗髮沐浴2合1",
+  "urlPath": "mom-baby/baby-bath-shampoo/baby-2-in-1",
+  "level": 4,
+  "count": 29,
+  "parent": "mom-baby/baby-bath-shampoo"
+ },
+ {
+  "name": "嬰兒沐浴露",
+  "urlPath": "mom-baby/baby-bath-shampoo/baby-bath",
+  "level": 4,
+  "count": 19,
+  "parent": "mom-baby/baby-bath-shampoo"
+ },
+ {
+  "name": "嬰兒洗髮",
+  "urlPath": "mom-baby/baby-bath-shampoo/baby-shampoo",
+  "level": 4,
+  "count": 15,
+  "parent": "mom-baby/baby-bath-shampoo"
+ },
+ {
+  "name": "嬰兒口腔護理",
+  "urlPath": "mom-baby/baby-dental",
+  "level": 3,
+  "count": 36,
+  "parent": "mom-baby"
+ },
+ {
+  "name": "嬰兒牙膠",
+  "urlPath": "mom-baby/baby-dental/baby-teether",
+  "level": 4,
+  "count": 9,
+  "parent": "mom-baby/baby-dental"
+ },
+ {
+  "name": "嬰兒牙刷",
+  "urlPath": "mom-baby/baby-dental/baby-toothbrush",
+  "level": 4,
+  "count": 11,
+  "parent": "mom-baby/baby-dental"
+ },
+ {
+  "name": "嬰兒牙膏",
+  "urlPath": "mom-baby/baby-dental/baby-toothpaste",
+  "level": 4,
+  "count": 16,
+  "parent": "mom-baby/baby-dental"
+ },
+ {
+  "name": "嬰兒食品",
+  "urlPath": "mom-baby/baby-food",
+  "level": 3,
+  "count": 218,
+  "parent": "mom-baby"
+ },
+ {
+  "name": "嬰兒食品 - 其他",
+  "urlPath": "mom-baby/baby-food/baby-food-others",
+  "level": 4,
+  "count": 9,
+  "parent": "mom-baby/baby-food"
+ },
+ {
+  "name": "餅乾及小食(嬰兒)",
+  "urlPath": "mom-baby/baby-food/biscuit-snacks-baby",
+  "level": 4,
+  "count": 86,
+  "parent": "mom-baby/baby-food"
+ },
+ {
+  "name": "米糊及榖物(嬰兒)",
+  "urlPath": "mom-baby/baby-food/cereal-baby",
+  "level": 4,
+  "count": 29,
+  "parent": "mom-baby/baby-food"
+ },
+ {
+  "name": "果汁(嬰兒)",
+  "urlPath": "mom-baby/baby-food/juice-baby",
+  "level": 4,
+  "count": 14,
+  "parent": "mom-baby/baby-food"
+ },
+ {
+  "name": "意粉及麵類(嬰兒)",
+  "urlPath": "mom-baby/baby-food/pasta-noodles-baby",
+  "level": 4,
+  "count": 15,
+  "parent": "mom-baby/baby-food"
+ },
+ {
+  "name": "嬰兒蔬果蓉/肉蓉",
+  "urlPath": "mom-baby/baby-food/pouch-jar-food-baby",
+  "level": 4,
+  "count": 65,
+  "parent": "mom-baby/baby-food"
+ },
+ {
+  "name": "嬰兒面部及身體護理",
+  "urlPath": "mom-baby/baby-skin-body-care",
+  "level": 3,
+  "count": 56,
+  "parent": "mom-baby"
+ },
+ {
+  "name": "嬰兒潤膚霜",
+  "urlPath": "mom-baby/baby-skin-body-care/baby-cream",
+  "level": 4,
+  "count": 34,
+  "parent": "mom-baby/baby-skin-body-care"
+ },
+ {
+  "name": "嬰兒潤唇膏",
+  "urlPath": "mom-baby/baby-skin-body-care/baby-lipbalm",
+  "level": 4,
+  "count": 3,
+  "parent": "mom-baby/baby-skin-body-care"
+ },
+ {
+  "name": "嬰兒潤膚乳",
+  "urlPath": "mom-baby/baby-skin-body-care/baby-lotion",
+  "level": 4,
+  "count": 0,
+  "parent": "mom-baby/baby-skin-body-care"
+ },
+ {
+  "name": "嬰兒潤膚油",
+  "urlPath": "mom-baby/baby-skin-body-care/baby-oil",
+  "level": 4,
+  "count": 7,
+  "parent": "mom-baby/baby-skin-body-care"
+ },
+ {
+  "name": "嬰兒爽身粉",
+  "urlPath": "mom-baby/baby-skin-body-care/baby-powder",
+  "level": 4,
+  "count": 0,
+  "parent": "mom-baby/baby-skin-body-care"
+ },
+ {
+  "name": "嬰兒防蚊",
+  "urlPath": "mom-baby/baby-skin-body-care/baby-repellent",
+  "level": 4,
+  "count": 3,
+  "parent": "mom-baby/baby-skin-body-care"
+ },
+ {
+  "name": "嬰兒防曬",
+  "urlPath": "mom-baby/baby-skin-body-care/baby-suntan",
+  "level": 4,
+  "count": 4,
+  "parent": "mom-baby/baby-skin-body-care"
+ },
+ {
+  "name": "其他",
+  "urlPath": "mom-baby/baby-skin-body-care/others",
+  "level": 4,
+  "count": 5,
+  "parent": "mom-baby/baby-skin-body-care"
+ },
+ {
+  "name": "嬰兒濕紙巾/潔膚棉",
+  "urlPath": "mom-baby/baby-wipes-cotton",
+  "level": 3,
+  "count": 43,
+  "parent": "mom-baby"
+ },
+ {
+  "name": "嬰兒棉花",
+  "urlPath": "mom-baby/baby-wipes-cotton/baby-cotton",
+  "level": 4,
+  "count": 13,
+  "parent": "mom-baby/baby-wipes-cotton"
+ },
+ {
+  "name": "嬰兒濕紙巾",
+  "urlPath": "mom-baby/baby-wipes-cotton/baby-wipes",
+  "level": 4,
+  "count": 30,
+  "parent": "mom-baby/baby-wipes-cotton"
+ },
+ {
+  "name": "紙尿片",
+  "urlPath": "mom-baby/diapers",
+  "level": 3,
+  "count": 123,
+  "parent": "mom-baby"
+ },
+ {
+  "name": "嬰兒學習褲",
+  "urlPath": "mom-baby/diapers/diaper-pants",
+  "level": 4,
+  "count": 73,
+  "parent": "mom-baby/diapers"
+ },
+ {
+  "name": "紙尿片/尿布",
+  "urlPath": "mom-baby/diapers/diaper-taped",
+  "level": 4,
+  "count": 50,
+  "parent": "mom-baby/diapers"
+ },
+ {
+  "name": "餵哺用品",
+  "urlPath": "mom-baby/feeding-aids",
+  "level": 3,
+  "count": 81,
+  "parent": "mom-baby"
+ },
+ {
+  "name": "母乳餵哺輔助用品",
+  "urlPath": "mom-baby/feeding-aids/breast-feeding-aids",
+  "level": 4,
+  "count": 2,
+  "parent": "mom-baby/feeding-aids"
+ },
+ {
+  "name": "奶瓶",
+  "urlPath": "mom-baby/feeding-aids/milk-bottles",
+  "level": 4,
+  "count": 27,
+  "parent": "mom-baby/feeding-aids"
+ },
+ {
+  "name": "奶粉盒",
+  "urlPath": "mom-baby/feeding-aids/milk-powder-dispenser",
+  "level": 4,
+  "count": 1,
+  "parent": "mom-baby/feeding-aids"
+ },
+ {
+  "name": "奶嘴",
+  "urlPath": "mom-baby/feeding-aids/teats-soothers",
+  "level": 4,
+  "count": 22,
+  "parent": "mom-baby/feeding-aids"
+ },
+ {
+  "name": "嬰兒餐具",
+  "urlPath": "mom-baby/feeding-aids/utensils",
+  "level": 4,
+  "count": 29,
+  "parent": "mom-baby/feeding-aids"
+ },
+ {
+  "name": "媽媽專用",
+  "urlPath": "mom-baby/for-moms",
+  "level": 3,
+  "count": 18,
+  "parent": "mom-baby"
+ },
+ {
+  "name": "孕媽媽營養",
+  "urlPath": "mom-baby/for-moms/mother-nutrition",
+  "level": 4,
+  "count": 3,
+  "parent": "mom-baby/for-moms"
+ },
+ {
+  "name": "孕媽媽護理",
+  "urlPath": "mom-baby/for-moms/pregnancy-skincare-personal-care",
+  "level": 4,
+  "count": 14,
+  "parent": "mom-baby/for-moms"
+ },
+ {
+  "name": "嬰兒清潔用品",
+  "urlPath": "mom-baby/laundry-cleansing-baby",
+  "level": 3,
+  "count": 34,
+  "parent": "mom-baby"
+ },
+ {
+  "name": "嬰兒洗衣",
+  "urlPath": "mom-baby/laundry-cleansing-baby/baby-laundry",
+  "level": 4,
+  "count": 16,
+  "parent": "mom-baby/laundry-cleansing-baby"
+ },
+ {
+  "name": "奶瓶清潔用品",
+  "urlPath": "mom-baby/laundry-cleansing-baby/bottle-cleanser",
+  "level": 4,
+  "count": 18,
+  "parent": "mom-baby/laundry-cleansing-baby"
+ },
+ {
+  "name": "嬰兒奶粉",
+  "urlPath": "mom-baby/milk-powder",
+  "level": 3,
+  "count": 100,
+  "parent": "mom-baby"
+ },
+ {
+  "name": "兒童配方",
+  "urlPath": "mom-baby/milk-powder/children-formula",
+  "level": 4,
+  "count": 8,
+  "parent": "mom-baby/milk-powder"
+ },
+ {
+  "name": "嬰幼兒奶粉 - 特別配方",
+  "urlPath": "mom-baby/milk-powder/special-formula",
+  "level": 4,
+  "count": 7,
+  "parent": "mom-baby/milk-powder"
+ },
+ {
+  "name": "第一階段奶粉",
+  "urlPath": "mom-baby/milk-powder/stage-1",
+  "level": 4,
+  "count": 43,
+  "parent": "mom-baby/milk-powder"
+ },
+ {
+  "name": "第二階段奶粉",
+  "urlPath": "mom-baby/milk-powder/stage-2",
+  "level": 4,
+  "count": 27,
+  "parent": "mom-baby/milk-powder"
+ },
+ {
+  "name": "第三階段",
+  "urlPath": "mom-baby/milk-powder/stage-3",
+  "level": 4,
+  "count": 0,
+  "parent": "mom-baby/milk-powder"
+ },
+ {
+  "name": "第四階段奶粉",
+  "urlPath": "mom-baby/milk-powder/stage-4",
+  "level": 4,
+  "count": 19,
+  "parent": "mom-baby/milk-powder"
+ },
+ {
+  "name": "其他嬰兒用品",
+  "urlPath": "mom-baby/other-accessories",
+  "level": 3,
+  "count": 0,
+  "parent": "mom-baby"
+ },
+ {
+  "name": "個人護理",
+  "urlPath": "personal-care",
+  "level": 2,
+  "count": 1008,
+  "parent": null
+ },
+ {
+  "name": "沐浴用品",
+  "urlPath": "personal-care/body-cleansing",
+  "level": 3,
+  "count": 176,
+  "parent": "personal-care"
+ },
+ {
+  "name": "肥皂",
+  "urlPath": "personal-care/body-cleansing/bar-soap",
+  "level": 4,
+  "count": 11,
+  "parent": "personal-care/body-cleansing"
+ },
+ {
+  "name": "沐浴露",
+  "urlPath": "personal-care/body-cleansing/liquid-soap",
+  "level": 4,
+  "count": 164,
+  "parent": "personal-care/body-cleansing"
+ },
+ {
+  "name": "敏感性肌膚沐浴產品",
+  "urlPath": "personal-care/body-cleansing/sensitive-skin-bath",
+  "level": 4,
+  "count": 28,
+  "parent": "personal-care/body-cleansing"
+ },
+ {
+  "name": "止汗用品",
+  "urlPath": "personal-care/deodorant",
+  "level": 3,
+  "count": 62,
+  "parent": "personal-care"
+ },
+ {
+  "name": "止汗濕紙巾",
+  "urlPath": "personal-care/deodorant/deodorant-wipes",
+  "level": 4,
+  "count": 5,
+  "parent": "personal-care/deodorant"
+ },
+ {
+  "name": "走珠止汗劑",
+  "urlPath": "personal-care/deodorant/roll-on-deodorant",
+  "level": 4,
+  "count": 27,
+  "parent": "personal-care/deodorant"
+ },
+ {
+  "name": "止汗噴霧",
+  "urlPath": "personal-care/deodorant/spray-deodorant",
+  "level": 4,
+  "count": 28,
+  "parent": "personal-care/deodorant"
+ },
+ {
+  "name": "止汗膏",
+  "urlPath": "personal-care/deodorant/stick-deodorant",
+  "level": 4,
+  "count": 2,
+  "parent": "personal-care/deodorant"
+ },
+ {
+  "name": "洗手液/搓手液",
+  "urlPath": "personal-care/hand-wash-sanitizer",
+  "level": 3,
+  "count": 25,
+  "parent": "personal-care"
+ },
+ {
+  "name": "搓手液",
+  "urlPath": "personal-care/hand-wash-sanitizer/hand-sanitizer",
+  "level": 4,
+  "count": 6,
+  "parent": "personal-care/hand-wash-sanitizer"
+ },
+ {
+  "name": "洗手液",
+  "urlPath": "personal-care/hand-wash-sanitizer/hand-wash",
+  "level": 4,
+  "count": 19,
+  "parent": "personal-care/hand-wash-sanitizer"
+ },
+ {
+  "name": "成人尿片及防漏洗護用品",
+  "urlPath": "personal-care/incontinence-adult-diapers-related",
+  "level": 3,
+  "count": 38,
+  "parent": "personal-care"
+ },
+ {
+  "name": "成人皮膚護理",
+  "urlPath": "personal-care/incontinence-adult-diapers-related/adult-skin-care",
+  "level": 4,
+  "count": 0,
+  "parent": "personal-care/incontinence-adult-diapers-related"
+ },
+ {
+  "name": "男士剃鬚",
+  "urlPath": "personal-care/mens-shaving",
+  "level": 3,
+  "count": 48,
+  "parent": "personal-care"
+ },
+ {
+  "name": "刀片",
+  "urlPath": "personal-care/mens-shaving/blades",
+  "level": 4,
+  "count": 18,
+  "parent": "personal-care/mens-shaving"
+ },
+ {
+  "name": "即棄剃刀",
+  "urlPath": "personal-care/mens-shaving/disposable-razors",
+  "level": 4,
+  "count": 3,
+  "parent": "personal-care/mens-shaving"
+ },
+ {
+  "name": "電動剃鬚刀",
+  "urlPath": "personal-care/mens-shaving/electrical-shavers",
+  "level": 4,
+  "count": 16,
+  "parent": "personal-care/mens-shaving"
+ },
+ {
+  "name": "剃鬚膏",
+  "urlPath": "personal-care/mens-shaving/pre-shaving",
+  "level": 4,
+  "count": 10,
+  "parent": "personal-care/mens-shaving"
+ },
+ {
+  "name": "剃刀",
+  "urlPath": "personal-care/mens-shaving/razor",
+  "level": 4,
+  "count": 1,
+  "parent": "personal-care/mens-shaving"
+ },
+ {
+  "name": "口腔護理",
+  "urlPath": "personal-care/oral-care",
+  "level": 3,
+  "count": 384,
+  "parent": "personal-care"
+ },
+ {
+  "name": "假牙護理",
+  "urlPath": "personal-care/oral-care/denture-care",
+  "level": 4,
+  "count": 9,
+  "parent": "personal-care/oral-care"
+ },
+ {
+  "name": "電動牙刷",
+  "urlPath": "personal-care/oral-care/electric-toothbrush",
+  "level": 4,
+  "count": 0,
+  "parent": "personal-care/oral-care"
+ },
+ {
+  "name": "牙線",
+  "urlPath": "personal-care/oral-care/floss-interdental",
+  "level": 4,
+  "count": 19,
+  "parent": "personal-care/oral-care"
+ },
+ {
+  "name": "漱口水",
+  "urlPath": "personal-care/oral-care/mouthwash",
+  "level": 4,
+  "count": 44,
+  "parent": "personal-care/oral-care"
+ },
+ {
+  "name": "牙刷",
+  "urlPath": "personal-care/oral-care/toothbrushes",
+  "level": 4,
+  "count": 54,
+  "parent": "personal-care/oral-care"
+ },
+ {
+  "name": "兒童牙刷",
+  "urlPath": "personal-care/oral-care/toothbrushes-for-kids",
+  "level": 4,
+  "count": 0,
+  "parent": "personal-care/oral-care"
+ },
+ {
+  "name": "牙膏",
+  "urlPath": "personal-care/oral-care/toothpaste",
+  "level": 4,
+  "count": 188,
+  "parent": "personal-care/oral-care"
+ },
+ {
+  "name": "兒童牙膏",
+  "urlPath": "personal-care/oral-care/toothpaste-for-kids",
+  "level": 4,
+  "count": 0,
+  "parent": "personal-care/oral-care"
+ },
+ {
+  "name": "女性衛生護理",
+  "urlPath": "personal-care/sanitary-protection",
+  "level": 3,
+  "count": 201,
+  "parent": "personal-care"
+ },
+ {
+  "name": "女性經痛貼",
+  "urlPath": "personal-care/sanitary-protection/feminine-thermal-patch",
+  "level": 4,
+  "count": 1,
+  "parent": "personal-care/sanitary-protection"
+ },
+ {
+  "name": "女性潔膚液及私密護理",
+  "urlPath": "personal-care/sanitary-protection/feminine-wash",
+  "level": 4,
+  "count": 25,
+  "parent": "personal-care/sanitary-protection"
+ },
+ {
+  "name": "女性濕紙巾",
+  "urlPath": "personal-care/sanitary-protection/feminine-wipes",
+  "level": 4,
+  "count": 0,
+  "parent": "personal-care/sanitary-protection"
+ },
+ {
+  "name": "衛生護墊",
+  "urlPath": "personal-care/sanitary-protection/liners",
+  "level": 4,
+  "count": 45,
+  "parent": "personal-care/sanitary-protection"
+ },
+ {
+  "name": "衛生巾",
+  "urlPath": "personal-care/sanitary-protection/napkins",
+  "level": 4,
+  "count": 126,
+  "parent": "personal-care/sanitary-protection"
+ },
+ {
+  "name": "女性衛生褲",
+  "urlPath": "personal-care/sanitary-protection/pants",
+  "level": 4,
+  "count": 0,
+  "parent": "personal-care/sanitary-protection"
+ },
+ {
+  "name": "衛生棉條",
+  "urlPath": "personal-care/sanitary-protection/tampons",
+  "level": 4,
+  "count": 5,
+  "parent": "personal-care/sanitary-protection"
+ },
+ {
+  "name": "舒壓個人護理產品",
+  "urlPath": "personal-care/wellbeing-personal-care",
+  "level": 3,
+  "count": 9,
+  "parent": "personal-care"
+ },
+ {
+  "name": "蠟燭",
+  "urlPath": "personal-care/wellbeing-personal-care/candle",
+  "level": 4,
+  "count": 6,
+  "parent": "personal-care/wellbeing-personal-care"
+ },
+ {
+  "name": "香氛",
+  "urlPath": "personal-care/wellbeing-personal-care/diffuser",
+  "level": 4,
+  "count": 3,
+  "parent": "personal-care/wellbeing-personal-care"
+ },
+ {
+  "name": "聖木",
+  "urlPath": "personal-care/wellbeing-personal-care/palo-santo",
+  "level": 4,
+  "count": 0,
+  "parent": "personal-care/wellbeing-personal-care"
+ },
+ {
+  "name": "女士脫毛",
+  "urlPath": "personal-care/women-shaving",
+  "level": 3,
+  "count": 0,
+  "parent": "personal-care"
+ }
+]

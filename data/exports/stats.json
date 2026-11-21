@@ -1,0 +1,19 @@
+{
+ "scrapedAt": "2026-11-21T09:10:24.875Z",
+ "source": "https://www.mannings.com.hk (zh_HK store view)",
+ "totalCount": 7802,
+ "products": 7780,
+ "categories": 155,
+ "brands": 999,
+ "pages": {
+  "home": 1,
+  "category": 155,
+  "product": 7780,
+  "brand": 999
+ },
+ "priceRange": {
+  "min": 5,
+  "max": 3999
+ },
+ "images": 28642
+}
