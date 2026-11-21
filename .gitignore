@@ -19,3 +19,6 @@ Thumbs.db
 
 # GraphQL 快照（可重建，线上存在 R2）
 cache/
+
+# Pages 构建产物（由 npm run build:pages 生成）
+pages/dist/

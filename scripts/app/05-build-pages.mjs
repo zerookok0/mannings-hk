@@ -1,18 +1,20 @@
-// scripts/app/05-build-pages.mjs —— 生成 Cloudflare Pages 工程（原站应用 + Functions + R2 绑定）
+// scripts/app/05-build-pages.mjs —— 生成「纯静态」Cloudflare Pages 工程
+// 该账号的 Pages 不执行 Functions/_worker.js，因此全部逻辑放进 Service Worker：
+//   /graphql  -> 静态快照 dist/snap/<key>.json
+//   /media/*  -> 本地静态图，缺失则回源原站（no-cors，视觉一致）
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { ROOT } from '../lib/api.mjs';
+import { ROOT, DATA, readJson } from '../lib/api.mjs';
 
 const APP = path.join(ROOT, 'app');
 const OUT = path.join(ROOT, 'pages');
 const DIST = path.join(OUT, 'dist');
-const FN = path.join(OUT, 'functions');
+const SNAP_SRC = path.join(ROOT, 'cache', 'graphql');
+const MEDIA_SRC = path.join(ROOT, 'site', 'media');
 
 await fs.rm(OUT, { recursive: true, force: true });
 await fs.mkdir(DIST, { recursive: true });
-await fs.mkdir(path.join(FN, 'media'), { recursive: true });
 
-// ---------- 1. 拷贝应用本体 ----------
 async function copyDir(src, dst) {
   await fs.mkdir(dst, { recursive: true });
   for (const e of await fs.readdir(src, { withFileTypes: true })) {
@@ -24,28 +26,67 @@ async function copyDir(src, dst) {
 }
 await copyDir(APP, DIST);
 
-// ---------- 2. 外壳里的图片后端改成同源 ----------
+// 1) 外壳：图片后端同源 + 注册镜像 Service Worker
 const shellPath = path.join(DIST, 'index.html');
 let shell = await fs.readFile(shellPath, 'utf8');
 shell = shell
   .replace(/data-media-backend="https:\/\/www\.mannings\.com\.hk\/media\/"/g, 'data-media-backend="/media/"')
   .replace(/data-media-backend="https:\/\/mannings\.com\.hk\/media\/"/g, 'data-media-backend="/media/"');
+if (!shell.includes('sw-mirror')) {
+  const boot = '<script>(function(){if(!("serviceWorker" in navigator))return;'
+    + 'navigator.serviceWorker.register("/sw-mirror.js").then(function(){return navigator.serviceWorker.ready}).then(function(){'
+    + 'if(!navigator.serviceWorker.controller){try{if(!sessionStorage.getItem("mn-sw-boot")){sessionStorage.setItem("mn-sw-boot","1");location.reload();}}catch(e){}}'
+    + '}).catch(function(){});})();</script>';
+  shell = shell.replace('</head>', boot + '</head>');
+}
 await fs.writeFile(shellPath, shell, 'utf8');
 
-// ---------- 3. SPA 回退 + 函数路由 ----------
-await fs.writeFile(path.join(DIST, '_redirects'), '/*  /index.html  200\n', 'utf8');
-await fs.writeFile(path.join(DIST, '_routes.json'), JSON.stringify({
-  version: 1,
-  include: ['/graphql', '/media/*'],
-  exclude: [],
-}, null, 1), 'utf8');
+// 2) 快照 -> dist/snap/*.json
+await fs.mkdir(path.join(DIST, 'snap'), { recursive: true });
+let snapCount = 0;
+for (const f of await fs.readdir(SNAP_SRC)) {
+  if (!f.endsWith('.json') || f.startsWith('_')) continue;
+  await fs.copyFile(path.join(SNAP_SRC, f), path.join(DIST, 'snap', f));
+  snapCount++;
+}
 
-// ---------- 4. /graphql 函数：R2 快照优先，未命中回源并落盘 ----------
-const graphqlFn = `// Cloudflare Pages Function: /graphql
-// 1) 先取 R2 快照（键 = operationName + 规范化 variables，与本地预热一致）
-// 2) 未命中则回源 mannings.com.hk，成功即写入 R2
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
-const CACHE_ID = '62d2b26f1cda94c69aaada85b80382dd2b6853d7cb6160fbbb0af49892021962';
+// 3) 图片：首页/列表主图 + 横幅（控制文件数在 Pages 2 万限制内）
+const catalog = await readJson(path.join(DATA, 'catalog.json'), null);
+const wanted = new Set();
+for (const p of catalog.products) {
+  if (p.image) {
+    const u = String(p.image).split('?')[0];
+    if (u.includes('/media/')) wanted.add(u.slice(u.indexOf('/media/') + 7).replace(/\.(jpg|jpeg|png)$/i, '.webp'));
+  }
+}
+const mediaDir = path.join(DIST, 'media');
+let mediaCount = 0;
+for (const rel of wanted) {
+  const src = path.join(MEDIA_SRC, rel);
+  try {
+    const dst = path.join(mediaDir, rel);
+    await fs.mkdir(path.dirname(dst), { recursive: true });
+    await fs.copyFile(src, dst);
+    mediaCount++;
+  } catch { }
+}
+// 横幅/图标（wysiwyg、site 目录全部带上）
+for (const sub of ['wysiwyg', 'site']) {
+  const src = path.join(MEDIA_SRC, sub);
+  try {
+    await copyDir(src, path.join(mediaDir, sub));
+    for (const f of await walkCount(path.join(mediaDir, sub))) mediaCount++;
+  } catch { }
+}
+
+// 4) 镜像 Service Worker（覆盖原站 sw.js 路径，确保被注册）
+const sw = `/* 万宁镜像 Service Worker：/graphql 走静态快照，/media 缺失回源 */
+const VERSION = 'mn-mirror-v2';
+const LOG = [];
+const ORIGIN = 'https://www.mannings.com.hk';
+
+self.addEventListener('install', () => self.skipWaiting());
+self.addEventListener('activate', (e) => e.waitUntil(self.clients.claim()));
 
 function canonical(v) {
   if (v == null) return {};
@@ -63,129 +104,92 @@ async function keyFor(op, vars, query) {
   return [...new Uint8Array(hash)].map((b) => b.toString(16).padStart(2, '0')).join('').slice(0, 32);
 }
 
-function rewriteMediaUrls(text) {
-  return text
-    .replace(/https:\\\\\\/\\\\\\/www\\.mannings\\.com\\.hk\\\\\\/media\\\\\\//g, '\\\\/media\\\\/')
-    .replace(/https:\\\\\\/\\\\\\/mannings\\.com\\.hk\\\\\\/media\\\\\\//g, '\\\\/media\\\\/')
-    .replace(/https:\\/\\/www\\.mannings\\.com\\.hk\\/media\\//g, '/media/')
-    .replace(/https:\\/\\/mannings\\.com\\.hk\\/media\\//g, '/media/');
-}
-
-const JSON_HEADERS = { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'public, max-age=300' };
-
-export async function onRequest(context) {
-  const { request, env } = context;
+// 缺快照时的最小合法空响应，避免整页报错
+const EMPTY = {
+  Megamenu: { data: { megamenu: null } },
+  getStoreConfigData: { data: { storeConfig: {} } },
+  getAvailableStoresData: { data: { availableStores: [] } },
+  searchTrending: { data: { searchTrending: { top_brands: [], top_categories: [], hot_products: [] } } },
+  SearchQueries: { data: { searchQueries: [] } },
+  cmsBlocks: { data: { cmsBlocks: { items: [] } } },
+  ResolveURL: { data: { route: null } },
+  GetRegion: { data: { countries: [] } },
+  GetStoresInfo: { data: { runStoreInfo: { code: '0000', msg: 'mirror', data: { items: [] } } } },
+  getProductsByUrlKey: { data: { productsV3: { items: [], total_count: 0 } } },
+  getProductDetailForProductPage: { data: { productsV3: { items: [], enable_store_inventory_check: false } } },
+  GetBreadcrumbs: { data: { categories: { items: [] } } },
+  getCategoryData: { data: { categories: { items: [] } } },
+  getCouponListing: { data: { rules: { items: [], totalCount: 0, pageSize: 0, currentPage: 1 } } },
+  getHotPosts: { data: { blogPosts: { items: [], total_count: 0, total_pages: 0 } } },
+  getPostListQueryByProductId: { data: { blogPosts: { items: [], total_count: 0, total_pages: 0 } } },
+  GetCmsPage: { data: { cmsPage: null } },
+  getProductDetailForReturnAndRefund: { data: { cmsBlocks: { items: [] } } },
+  GetWishlistConfigForProductAC: { data: { storeConfig: {} } },
+};
+async function handleGraphql(request) {
   const url = new URL(request.url);
   let op, vars, query;
-
   if (request.method === 'POST') {
-    try { const j = await request.json(); op = j.operationName; vars = j.variables; query = j.query; } catch (e) { op = undefined; }
+    try { const j = await request.clone().json(); op = j.operationName; vars = j.variables; query = j.query; } catch (e) { op = undefined; }
   } else {
     op = url.searchParams.get('operationName');
     vars = url.searchParams.get('variables');
     query = url.searchParams.get('query');
   }
-
   const key = await keyFor(op, vars, query);
-
-  if (env.MEDIA) {
-    const hit = await env.MEDIA.get('graphql/' + key + '.json');
-    if (hit) return new Response(rewriteMediaUrls(await hit.text()), { headers: { ...JSON_HEADERS, 'x-mirror': 'snapshot' } });
-  }
-
-  // 回源
+  LOG.push({ op: op || null, vars: typeof vars === 'string' ? vars : JSON.stringify(vars), key: key.slice(0, 8) });
+  if (LOG.length > 300) LOG.shift();
   try {
-    const up = new URL('https://www.mannings.com.hk/graphql');
-    if (query) up.searchParams.set('query', String(query));
-    if (op) up.searchParams.set('operationName', String(op));
-    up.searchParams.set('variables', typeof vars === 'string' ? vars : JSON.stringify(vars || {}));
-    const r = await fetch(up.toString(), {
-      method: 'GET',
-      headers: {
-        'user-agent': UA, store: 'zh_HK', accept: '*/*', 'content-type': 'application/json',
-        origin: 'https://www.mannings.com.hk', referer: 'https://www.mannings.com.hk/zh-hant/',
-        'accept-language': 'zh-HK,zh;q=0.9,en;q=0.8', 'x-magento-cache-id': CACHE_ID,
-        'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty',
-      },
-    });
-    const text = await r.text();
-    if (r.ok) {
-      if (env.MEDIA) context.waitUntil(env.MEDIA.put('graphql/' + key + '.json', text));
-      return new Response(rewriteMediaUrls(text), { headers: { ...JSON_HEADERS, 'x-mirror': 'live' } });
+    const r = await fetch('/snap/' + key + '.json', { cache: 'force-cache' });
+    const ct = r.headers.get('content-type') || '';
+    if (r.ok && ct.includes('json')) {
+      const text = await r.text();
+      return new Response(text, { headers: { 'content-type': 'application/json; charset=utf-8', 'x-mirror': 'snapshot' } });
     }
-    return new Response(JSON.stringify({ errors: [{ message: 'mirror upstream ' + r.status }] }), { status: 502, headers: JSON_HEADERS });
-  } catch (e) {
-    return new Response(JSON.stringify({ errors: [{ message: 'mirror upstream error: ' + String(e) }] }), { status: 502, headers: JSON_HEADERS });
-  }
+  } catch (e) { }
+  const fallback = (op && EMPTY[op]) ? EMPTY[op] : { data: null };
+  return new Response(JSON.stringify(fallback), {
+    headers: { 'content-type': 'application/json; charset=utf-8', 'x-mirror': 'fallback' },
+  });
 }
-`;
-await fs.writeFile(path.join(FN, 'graphql.js'), graphqlFn, 'utf8');
 
-// ---------- 5. /media/* 函数：R2 原图优先 ----------
-const mediaFn = `// Cloudflare Pages Function: /media/*
-// R2 里存的是原站原始图片（键 = media/<原路径>），命中即直出；未命中回源并写回 R2
-const MIME = {
-  webp: 'image/webp', jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', gif: 'image/gif',
-  svg: 'image/svg+xml', ico: 'image/x-icon', pdf: 'application/pdf', webp2: 'image/webp',
-};
-
-export async function onRequest(context) {
-  const { request, env, params } = context;
+async function handleMedia(request) {
   const url = new URL(request.url);
-  const rest = Array.isArray(params.path) ? params.path.join('/') : (params.path || '');
-  const key = 'media/' + rest;
-  const ext = (rest.split('.').pop() || '').toLowerCase();
-
-  if (env.MEDIA) {
-    const obj = await env.MEDIA.get(key);
-    if (obj) {
-      return new Response(obj.body, {
-        headers: {
-          'content-type': obj.httpMetadata?.contentType || MIME[ext] || 'application/octet-stream',
-          'cache-control': 'public, max-age=31536000, immutable',
-          etag: obj.httpEtag,
-        },
-      });
-    }
-    if (/^(jpe?g|png)$/i.test(ext)) {
-      const alt = await env.MEDIA.get(key.replace(/\\.(jpe?g|png)$/i, '.webp'));
-      if (alt) {
-        return new Response(alt.body, {
-          headers: { 'content-type': 'image/webp', 'cache-control': 'public, max-age=31536000, immutable', etag: alt.httpEtag },
-        });
-      }
-    }
-  }
-
+  // 1) 本地 .webp
+  const webp = url.pathname.replace(/\\.(jpg|jpeg|png)$/i, '.webp');
   try {
-    const r = await fetch('https://www.mannings.com.hk/media/' + rest + url.search, {
-      headers: { referer: 'https://www.mannings.com.hk/zh-hant/', accept: 'image/avif,image/webp,*/*' },
-    });
-    if (!r.ok) return new Response('not found', { status: 404 });
-    const buf = await r.arrayBuffer();
-    if (env.MEDIA) context.waitUntil(env.MEDIA.put(key, buf, { httpMetadata: { contentType: r.headers.get('content-type') || MIME[ext] || 'image/jpeg' } }));
-    return new Response(buf, {
-      headers: { 'content-type': r.headers.get('content-type') || MIME[ext] || 'image/jpeg', 'cache-control': 'public, max-age=86400' },
-    });
+    const r = await fetch(webp, { cache: 'force-cache' });
+    if (r.ok) return r;
+  } catch (e) { }
+  // 2) 原站回源（图片不需要 CORS）
+  try {
+    return await fetch(ORIGIN + url.pathname + url.search, { mode: 'no-cors', cache: 'force-cache' });
   } catch (e) {
-    return new Response('mirror media error', { status: 502 });
+    return new Response('', { status: 404 });
   }
 }
+
+self.addEventListener('fetch', (event) => {
+  const url = new URL(event.request.url);
+  if (url.origin !== self.location.origin) return;
+  if (url.pathname === '/_mirror-log') { event.respondWith(new Response(JSON.stringify(LOG), { headers: { 'content-type': 'application/json' } })); return; }
+  if (url.pathname === '/graphql') { event.respondWith(handleGraphql(event.request)); return; }
+  if (url.pathname.startsWith('/media/')) { event.respondWith(handleMedia(event.request)); return; }
+});
 `;
-await fs.writeFile(path.join(FN, 'media', '[[path]].js'), mediaFn, 'utf8');
+await fs.writeFile(path.join(DIST, 'sw-mirror.js'), sw, 'utf8');
+await fs.writeFile(path.join(DIST, 'sw.js'), sw, 'utf8');
 
-// ---------- 6. wrangler 配置 ----------
-const wrangler = `name = "mannings-hk"
-compatibility_date = "2026-11-01"
-pages_build_output_dir = "dist"
+async function walkCount(dir) {
+  let out = [];
+  for (const e of await fs.readdir(dir, { withFileTypes: true })) {
+    const f = path.join(dir, e.name);
+    if (e.isDirectory()) out = out.concat(await walkCount(f));
+    else out.push(f);
+  }
+  return out;
+}
 
-[[r2_buckets]]
-binding = "MEDIA"
-bucket_name = "mannings-mirror"
-`;
-await fs.writeFile(path.join(OUT, 'wrangler.toml'), wrangler, 'utf8');
-
-// ---------- 7. 统计 ----------
 async function size(p) {
   let total = 0, count = 0;
   for (const e of await fs.readdir(p, { withFileTypes: true })) {
@@ -197,5 +201,5 @@ async function size(p) {
 }
 const s = await size(DIST);
 console.log('dist:', s.count, 'files,', (s.total / 1048576).toFixed(1), 'MB');
-console.log('functions:', (await fs.readdir(FN)).join(', '), '+ media/');
-console.log('pages 工程已生成:', OUT);
+console.log('快照:', snapCount, '| 主图:', mediaCount);
+console.log('pages 工程已生成（纯静态 + Service Worker）:', OUT);

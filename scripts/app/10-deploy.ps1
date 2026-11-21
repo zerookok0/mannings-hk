@@ -23,9 +23,14 @@ if (-not $SkipUpload) {
 
   Write-Host "== 3/5 批量上传快照 + 图片到 R2 =="
   $acct = $env:CLOUDFLARE_ACCOUNT_ID
-  $url = if ($env:UPLOADER_URL) { $env:UPLOADER_URL } else {
-    if ($acct) { "https://mannings-uploader.$acct.workers.dev" } else { Read-Host '请输入 uploader Worker 地址（https://mannings-uploader.<acct>.workers.dev）' }
+  if (-not $acct) {
+    try {
+      $who = npx --yes wrangler whoami --json 2>$null | Out-String
+      $acct = ($who | ConvertFrom-Json).accounts[0].id
+    } catch { }
   }
+  $url = if ($env:UPLOADER_URL) { $env:UPLOADER_URL } else { "https://mannings-uploader.$acct.workers.dev" }
+  Write-Host "uploader: $url"
   $env:UPLOADER_URL = $url
   $env:UPLOAD_TOKEN = $token
   $env:CONCURRENCY = [string]$Concurrency
