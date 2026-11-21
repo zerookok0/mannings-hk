@@ -11,6 +11,11 @@
 頁面 9,118 個靜態 HTML（另 307 個分類 JSON 索引）
 ```
 
+
+![首頁](docs/preview-home.jpg)
+![分類頁](docs/preview-category.jpg)
+![商品頁](docs/preview-product.jpg)
+
 ## 快速開始
 
 ```bash
