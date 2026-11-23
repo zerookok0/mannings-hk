@@ -1,0 +1,41 @@
+---
+description: Cloudflare 变更必须先取得用户授权（部署/删除/新建/改配置一律先问）
+alwaysApply: true
+---
+
+# Cloudflare 变更必须先授权
+
+本项目由 Cloudflare Pages（`mannings-hk`）+ Worker（`mannings-api` 图片代理）承载。
+**任何会改动 Cloudflare 账号状态的操作，执行前必须先拿到用户的明确同意。**
+
+## 需要先问的操作（一条都不能自己动手）
+
+- `wrangler pages deploy` / `pages project create|delete` / 改 `_headers`·`_redirects`·`_routes.json` 后部署
+- `wrangler deploy` / `delete` / `versions` / `rollback`（任何 Worker）
+- 改 `wrangler.toml`、`wrangler.uploader.toml`、`config.json` 后**部署**
+- 新建/删除 R2 桶、上传对象、改桶权限
+- 改环境变量、Secret、KV、D1、路由、自定义域名、CSP 头
+- 任何会产生账单或改动生产流量的设置
+
+## 允许直接做（不碰 Cloudflare）
+
+- 本地改代码、改数据、跑构建、跑自检
+- 生成 `sf/dist`、`pages/dist` 等构建产物
+- `git add/commit/push`（GitHub 不是 Cloudflare；若用户另有要求以用户为准）
+- 读线上现状（curl 只读 GET）用于排查
+
+## 标准动作：先给命令，等点头
+
+改完本地后，输出一段「将要执行的命令 + 影响范围」，等用户回复同意再执行：
+
+```text
+准备执行：
+  cd sf && npx wrangler pages deploy dist --project-name mannings-hk --branch main
+影响：覆盖 mannings-hk.pages.dev 的生产版本（站点 + /api + /checkout）
+执行吗？（是 / 否）
+```
+
+## 例外
+
+- 用户当条消息中已明确说「部署吧 / 发吧 / 直接上线」，即视为该次授权，仅对该次有效。
+- 授权不跨轮次继承。
