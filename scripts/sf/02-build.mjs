@@ -75,7 +75,7 @@ await fs.writeFile(path.join(DIST, '_headers'), [
 ].join(String.fromCharCode(10)), 'utf8');
 
 // /api/* 交给 Pages Functions（functions/api/*）
-await fs.writeFile(path.join(DIST, '_routes.json'), JSON.stringify({ version: 1, include: ['/api/*'], exclude: [] }, null, 1), 'utf8');
+await fs.writeFile(path.join(DIST, '_routes.json'), JSON.stringify({ version: 1, include: ['/api/*', '/order/*'], exclude: [] }, null, 1), 'utf8');
 
 // SPA 回退
 await fs.writeFile(path.join(DIST, '_redirects'), [
