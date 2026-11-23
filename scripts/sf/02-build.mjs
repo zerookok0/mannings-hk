@@ -1,6 +1,7 @@
-// scripts/sf/02-build.mjs —— 组装店铺 dist（应用 + 数据 + 路由/缓存头）
+// scripts/sf/02-build.mjs —— 组装店铺 dist（应用 + 数据 + 版本化资源 + 路由/缓存头）
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { ROOT } from '../lib/api.mjs';
 
 const SRC = path.join(ROOT, 'sf', 'src');
@@ -13,10 +14,23 @@ await fs.mkdir(DIST, { recursive: true });
 await fs.cp(SRC, DIST, { recursive: true });
 await fs.cp(DATA, path.join(DIST, 'data'), { recursive: true });
 
+// 资源版本化：app.<hash>.js / styles.<hash>.css，避免浏览器缓存旧版
+const hash = (buf) => crypto.createHash('sha256').update(buf).digest('hex').slice(0, 10);
+const jsBuf = await fs.readFile(path.join(DIST, 'app.js'));
+const cssBuf = await fs.readFile(path.join(DIST, 'styles.css'));
+const jsName = 'app.' + hash(jsBuf) + '.js';
+const cssName = 'styles.' + hash(cssBuf) + '.css';
+await fs.rename(path.join(DIST, 'app.js'), path.join(DIST, jsName));
+await fs.rename(path.join(DIST, 'styles.css'), path.join(DIST, cssName));
+
+let html = await fs.readFile(path.join(DIST, 'index.html'), 'utf8');
+html = html.replace('./styles.css', './' + cssName).replace('./app.js', './' + jsName);
+await fs.writeFile(path.join(DIST, 'index.html'), html, 'utf8');
+
 await fs.writeFile(path.join(DIST, '_headers'), [
   '/index.html', '  Cache-Control: no-cache',
-  '/app.js', '  Cache-Control: no-cache',
-  '/*.css', '  Cache-Control: no-cache',
+  '/*.js', '  Cache-Control: public, max-age=31536000, immutable',
+  '/*.css', '  Cache-Control: public, max-age=31536000, immutable',
   '/data/*', '  Cache-Control: no-cache',
   '',
 ].join(String.fromCharCode(10)), 'utf8');
@@ -35,4 +49,4 @@ async function walk(dir, base = '') {
 const files = await walk(DIST);
 let bytes = 0;
 for (const f of files) bytes += (await fs.stat(path.join(DIST, f))).size;
-console.log('dist:', files.length, 'files,', (bytes / 1048576).toFixed(1), 'MB');
+console.log('dist:', files.length, 'files,', (bytes / 1048576).toFixed(1), 'MB', '| js=' + jsName, 'css=' + cssName);

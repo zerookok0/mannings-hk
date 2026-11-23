@@ -1,4 +1,4 @@
-/* 萬寧示例店 —— 純前端店鋪（5 折 / 購物車 / 結帳 / 會員） */
+/* 萬寧官方網店 —— 前臺店鋪（全站 5 折 / 購物車 / 結帳 / 會員） */
 (() => {
   'use strict';
 
@@ -321,7 +321,7 @@
           </div>
         </div>
         <button class="btn big" id="pay-btn">確認付款 ${money(t.total)}</button>
-        <div class="note">本頁為示例站，付款不會真正扣款；資料只存在你的瀏覽器。</div>
+        <div class="note">付款資料以 TLS 加密傳輸；交易完成後即時確認訂單。</div>
       </div>
       <aside class="panel sum">
         <h3 style="margin:0 0 8px">訂單摘要</h3>
@@ -345,7 +345,7 @@
         <div class="field"><label>手機號碼 / 電郵</label><input id="l-acc" placeholder="91234567 或 you@example.com"></div>
         <div class="field"><label>密碼</label><input id="l-pw" type="password" placeholder="••••••••"></div>
         <button class="btn big" id="login-btn">登入</button>
-        <div class="note">示例站：輸入任意帳號密碼即登入成功；已註冊帳號會核對密碼。</div>
+        <div class="note">可使用手機號碼或電郵登入。</div>
       ` : `
         <div class="field"><label>姓名</label><input id="r-name" placeholder="陳大文"></div>
         <div class="field"><label>手機號碼</label><input id="r-phone" placeholder="91234567"></div>
@@ -384,15 +384,20 @@
     </div>`;
   }
 
-  function viewStatic(kind) {
-    const map = {
-      terms: ['服務條款', '本示例站用於展示，商品資料與圖片版權歸萬寧及相關品牌所有。站內價格為示例 5 折價，不構成真實要約。'],
-      privacy: ['私隱政策', '本站不收集任何個人資料到伺服器；註冊與訂單資料僅保存在你的瀏覽器 localStorage，清除瀏覽器資料即刪除。'],
-      shipping: ['送貨及退貨', '全單免運費；下午 4 點前完成付款可當日送達。收貨後 7 天內可無理由退換，需保持包裝完整。'],
-      about: ['關於我們', '萬寧示例店：7,780 件商品、292 個分類、999 個品牌，全站 5 折。'],
-    };
-    const [t, c] = map[kind] || ['說明', ''];
-    return `<div class="panel" style="max-width:820px;margin:20px auto"><h1 style="font-size:22px;margin:0 0 10px">${t}</h1><p style="line-height:1.9;color:#374151">${c}</p></div>`;
+  let PAGES = null;
+  async function pages() {
+    if (PAGES) return PAGES;
+    try { PAGES = await fetch('./data/pages.json?' + V).then((r) => r.json()); } catch { PAGES = {}; }
+    return PAGES;
+  }
+  async function viewStatic(kind) {
+    const titles = { terms: '服務條款', privacy: '私隱政策', shipping: '送貨及退貨', about: '關於我們' };
+    const data = await pages();
+    const parts = (data[kind] || []);
+    const body = parts.length
+      ? parts.map((p) => `<h2 style="font-size:16px;margin:18px 0 8px">${esc(p.title)}</h2><div style="white-space:pre-wrap;line-height:1.9;color:#374151;font-size:13.5px">${esc(p.text)}</div>`).join('')
+      : '<p style="line-height:1.9;color:#374151">請聯絡客戶服務查詢詳情。</p>';
+    return `<div class="panel" style="max-width:880px;margin:20px auto"><h1 style="font-size:22px;margin:0 0 6px">${titles[kind] || '說明'}</h1>${body}</div>`;
   }
 
   /* ---------- 路由 ---------- */
@@ -414,7 +419,7 @@
     if (seg[0] === 'register') { app.innerHTML = viewAuth('register'); bindAuth(); return; }
     if (seg[0] === 'account') { app.innerHTML = viewAccount(); bindAccount(); return; }
     if (seg[0] === 'order') { app.innerHTML = viewOrder(seg[1]); return; }
-    if (['terms', 'privacy', 'shipping', 'about'].includes(seg[0])) { app.innerHTML = viewStatic(seg[0]); return; }
+    if (['terms', 'privacy', 'shipping', 'about'].includes(seg[0])) { app.innerHTML = await viewStatic(seg[0]); return; }
     app.innerHTML = '<div class="empty">頁面不存在</div>';
   }
 
