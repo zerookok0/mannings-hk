@@ -17,7 +17,7 @@ await fs.writeFile(path.join(DIST, '_headers'), [
   '/index.html', '  Cache-Control: no-cache',
   '/app.js', '  Cache-Control: no-cache',
   '/*.css', '  Cache-Control: no-cache',
-  '/data/*', '  Cache-Control: public, max-age=600',
+  '/data/*', '  Cache-Control: no-cache',
   '',
 ].join(String.fromCharCode(10)), 'utf8');
 

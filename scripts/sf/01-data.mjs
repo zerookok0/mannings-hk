@@ -26,16 +26,61 @@ const imgUrl = (u, w = 500) => {
   return API + rel + `?optimize=high&fit=bounds&height=${w}&width=${w}&format=webp`;
 };
 
-const NAMES = ['陳大文', 'Wing L.', '阿儀', 'Karen C.', '李先生', 'Mandy', '陳太', 'Joey', '黃小姐', 'Kelvin'];
-const POS = [
-  '回購多次，質素穩定，價錢比門市平。', '包裝完整，到期日好長，抵買。', '用了一星期已經見到效果，會再買。',
-  '送貨快，第二日就到，包裝無破損。', '同款用開，官網特價最抵。', '香港行貨，有信心。', '味道不錯，小朋友都食。',
-  '用落唔錯，皮膚冇敏感。', '份量夠，抵用。', '買二送一時期入貨，好划算。',
+// —— 香港用户口吻的评价语料（廣東話 + 港式書面語，按品类分组）——
+const NAMES = [
+  '阿儀', 'Wing L.', '陳太', 'Kelvin C.', 'Mandy', '阿明', '嘉欣', 'C9 大埔', 'yuki', '黃小姐',
+  'Joe 仔', '沙田友', 'Karen', '細蚊', '阿珊', 'Sam', 'Mei Mei', '九龍城街坊', 'Anson', '肥仔賢',
+  '屯門友', 'Cathy', '阿Roy', 'Jenny', '觀塘人', 'Kaman', '阿伯', 'Vivian', '深水埗師奶', 'Tony',
 ];
-const NEG = ['包裝送到有輕微壓扁，但產品無事。', '希望多啲折扣。', '味道比較濃，需要習慣。'];
-const MIX = ['整體唔錯，會考慮回購。', '性價比高，不過存貨有時唔穩定。', '比預期好，推薦。'];
+
+const POS_COMMON = [
+  '回購第 N 次，質素穩定，官網買仲平過門市。',
+  '落單第二日就送到，包裝企理，冇穿冇爛。',
+  '5 折真係抵，趁特價入咗兩件。',
+  '到期日好新，唔會係即期貨，放心。',
+  '同屋企人一齊用，份量夠，抵用。',
+  '送貨快靚正，星期日落單星期一朝早就到。',
+  '用開呢隻，官網做特價就即刻掃。',
+  '職員有問必答，落單流程好順。',
+  '包裝好細心，有防撞氣袋，一滴都冇漏。',
+  '買滿免運費，慳返車費同時間。',
+];
+const POS_BY_CAT = {
+  健康: ['食咗兩個禮拜，精神好咗，會繼續食。', '老人家食開，話腸胃舒服咗。', '唔會太甜，容易入口。', '朝早空肚食一粒，方便。'],
+  美容: ['質地清爽唔黏，夏天用都 OK。', '用咗一星期，皮膚冇再泛紅。', '敏感肌都用得，冇刺刺痛。', '上妝前用唔會起屑，正。'],
+  個人護理: ['味道唔嗆，用完唔會乾。', '一家大細都用得，抵買。', '泡沫夠，好快沖乾淨。'],
+  母嬰護理: ['BB 飲完成晚都冇事，消化好。', '尿片吸力夠，夜晚都唔怕漏。', '質地溫和，BB 皮膚冇敏感。'],
+  家居用品: ['紙質厚實，唔會一濕就爛。', '一卷用到好耐，計落好抵。', '無香味，屋企人唔敏感。'],
+  頭髮護理: ['洗完唔會旱，頭髮順咗。', '用咗一個月，甩少咗頭髮。', '泡夠多，一支用到兩個月。'],
+  食品: ['味道濃，用嚟煲湯一流。', '獨立包裝，帶返工好方便。', '唔會太鹹，細路都食。'],
+};
+const NEU = [
+  '整體 OK，不過如果多啲折扣就更好。',
+  '同門市價差唔多，貪方便先上網買。',
+  '效果普通，未算好驚喜，但都收貨。',
+  '包裝送到有少少壓扁，入面冇事。',
+  '味道有啲濃，要時間習慣。',
+  '存貨有時唔穩定，試過等一個禮拜先出貨。',
+];
+const NEG = [
+  '等咗五日先送到，比預期慢。',
+  '收到時外盒凹咗，雖然入面冇事但觀感一般。',
+  '同我之前用開嘅版本唔太一樣，要再觀察。',
+];
+const TAGS = ['已購買', '回購', '用家實測', ''];
 
 const catOf = (p) => (details[p.sku]?.categories || []).map((c) => c.name);
+function catGroup(cats) {
+  const s = (cats || []).join(' ');
+  if (/健康|保健|藥|維他命|靈芝|益生菌/.test(s)) return '健康';
+  if (/美容|護膚|面霜|面膜|彩妝|防曬/.test(s)) return '美容';
+  if (/母嬰|BB|嬰兒|奶粉|尿片/.test(s)) return '母嬰護理';
+  if (/家居|紙巾|清潔|洗衣/.test(s)) return '家居用品';
+  if (/頭髮|洗頭|護髮/.test(s)) return '頭髮護理';
+  if (/食品|零食|飲品|湯/.test(s)) return '食品';
+  return '個人護理';
+}
+function pick(arr, rnd) { return arr[Math.floor(rnd() * arr.length)]; }
 
 const list = [];
 const shards = new Map(); // 0-9
@@ -53,14 +98,33 @@ for (const p of catalog.products) {
   push(p.image);
   for (const g of d.gallery || []) push('https://www.mannings.com.hk/media/catalog/product' + g.file);
 
-  // 评价（稳定的 4~6 条）
+  // 评价（港式口吻，5~7 条，按品类与星级分布）
+  const cats = catOf(p);
+  const grp = catGroup(cats);
+  const pool = POS_BY_CAT[grp] || POS_BY_CAT['個人護理'];
   const reviews = [];
-  const n = 4 + Math.floor(rnd() * 3);
+  const used = new Set();
+  const take = (arr) => {
+    for (let k = 0; k < 10; k++) { const t = pick(arr, rnd); if (!used.has(t)) { used.add(t); return t; } }
+    return pick(arr, rnd);
+  };
+  const n = 5 + Math.floor(rnd() * 3);
   for (let i = 0; i < n; i++) {
     const r = rnd();
-    const stars = r > 0.25 ? (r > 0.5 ? 5 : 4) : (r > 0.12 ? 3 : 2);
-    const text = stars >= 4 ? POS[Math.floor(rnd() * POS.length)] : (stars === 3 ? MIX[Math.floor(rnd() * MIX.length)] : NEG[Math.floor(rnd() * NEG.length)]);
-    reviews.push({ name: NAMES[Math.floor(rnd() * NAMES.length)], stars, text, date: `2026-${String(1 + Math.floor(rnd() * 11)).padStart(2, '0')}-${String(1 + Math.floor(rnd() * 28)).padStart(2, '0')}` });
+    const stars = r > 0.30 ? (r > 0.58 ? 5 : 4) : (r > 0.14 ? 3 : 2);
+    let text;
+    if (stars === 5) text = rnd() > 0.45 ? take(pool) : take(POS_COMMON);
+    else if (stars === 4) text = rnd() > 0.5 ? take(POS_COMMON) : take(pool);
+    else if (stars === 3) text = take(NEU);
+    else text = take(NEG);
+    const tag = stars >= 4 && rnd() > 0.6 ? pick(TAGS.filter(Boolean), rnd) : '';
+    reviews.push({
+      name: (() => { for (let k = 0; k < 10; k++) { const nm = pick(NAMES, rnd); if (!used.has('n:' + nm)) { used.add('n:' + nm); return nm; } } return pick(NAMES, rnd); })(),
+      stars,
+      text,
+      tag,
+      date: `2026-${String(1 + Math.floor(rnd() * 11)).padStart(2, '0')}-${String(1 + Math.floor(rnd() * 28)).padStart(2, '0')}`,
+    });
   }
 
   const item = {

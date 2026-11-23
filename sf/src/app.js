@@ -3,6 +3,7 @@
   'use strict';
 
   const API = 'https://mannings-api.mating.workers.dev';
+  const V = 'v=20261123b';
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const money = (v) => 'HK$' + Number(v || 0).toLocaleString('en-HK', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -64,9 +65,9 @@
   /* ---------- 数据加载 ---------- */
   async function loadBase() {
     const [cat, cats, brands] = await Promise.all([
-      fetch('./data/catalog.json').then((r) => r.json()),
-      fetch('./data/cats.json').then((r) => r.json()),
-      fetch('./data/brands.json').then((r) => r.json()),
+      fetch('./data/catalog.json?' + V).then((r) => r.json()),
+      fetch('./data/cats.json?' + V).then((r) => r.json()),
+      fetch('./data/brands.json?' + V).then((r) => r.json()),
     ]);
     state.catalog = cat; state.cats = cats; state.brands = brands;
     paintCart();
@@ -75,7 +76,7 @@
   async function detail(sku) {
     if (state.detailCache.has(sku)) return state.detailCache.get(sku);
     const shard = String(Number(String(sku).slice(-1)) % 10);
-    const j = await fetch('./data/detail/' + shard + '.json').then((r) => r.json());
+    const j = await fetch('./data/detail/' + shard + '.json?' + V).then((r) => r.json());
     for (const [k, v] of Object.entries(j)) state.detailCache.set(k, v);
     return state.detailCache.get(sku) || null;
   }
@@ -241,7 +242,7 @@
       </div>
       <div class="pane" data-pane="rev" hidden>
         <div style="margin-bottom:8px"><span class="stars" style="font-size:16px">${stars(p.r)}</span> <b>${p.r.toFixed(1)}</b> · ${p.rc} 則評價</div>
-        ${(d.reviews || []).map((r) => `<div class="rev"><div class="top"><b>${esc(r.name)}</b><span class="stars">${stars(r.stars)}</span><span>${r.date}</span></div><div class="txt">${esc(r.text)}</div></div>`).join('')}
+        ${(d.reviews || []).map((r) => `<div class="rev"><div class="top"><b>${esc(r.name)}</b><span class="stars">${stars(r.stars)}</span>${r.tag ? `<span style="background:#fff4e6;color:#ff8300;border-radius:6px;padding:1px 6px;font-size:11px;font-weight:800">${esc(r.tag)}</span>` : ''}<span>${r.date}</span></div><div class="txt">${esc(r.text)}</div></div>`).join('')}
       </div>
     </div>
     <section class="sec"><div class="sec-h"><h2>同類推薦</h2></div>${grid(state.catalog.filter((x) => x.c[0] === p.c[0] && x.sku !== p.sku).slice(0, 5))}</section>`;
