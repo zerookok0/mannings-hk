@@ -41,7 +41,16 @@
     const orig = items.reduce((a, i) => a + i.p.o * i.qty, 0);
     return { items, sub, orig, save: orig - sub, ship: 0, total: sub };
   }
+  function writeCartCookie() {
+    try {
+      var arr = Object.keys(state.cart).map(function (sku) { return { sku: sku, qty: state.cart[sku] }; });
+      var json = JSON.stringify(arr);
+      var b64 = btoa(unescape(encodeURIComponent(json))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+      document.cookie = 'bp_cart=' + encodeURIComponent(b64) + '; path=/; max-age=604800; SameSite=Lax';
+    } catch (e) { }
+  }
   function paintCart() {
+    writeCartCookie();
     const n = cartCount();
     const el = $('#cartcount'); if (el) el.textContent = n;
     const acc = $('#acct');
@@ -282,7 +291,7 @@
         <div class="row"><span>5 折優惠</span><span style="color:var(--ok)">-${money0(t.save)}</span></div>
         <div class="row"><span>運費</span><span style="color:var(--ok)">免運費</span></div>
         <div class="tot"><span>應付</span><span>${money(t.total)}</span></div>
-        <a class="btn big" style="margin-top:12px" href="#/checkout">前往結帳</a>
+        <a class="btn big" style="margin-top:12px" href="/checkout">前往結帳</a>
         <div class="note">下午 4 點前完成付款，今日送到。</div>
       </aside>
     </div>`;
@@ -414,7 +423,7 @@
     if (seg[0] === 'p') { app.innerHTML = await viewProduct(seg[1]); bindProduct(); return; }
     if (seg[0] === 'search') { app.innerHTML = viewSearch(q.get('q') || ''); bindGrid(); return; }
     if (seg[0] === 'cart') { app.innerHTML = viewCart(); bindCart(); return; }
-    if (seg[0] === 'checkout') { app.innerHTML = viewCheckout(); bindCheckout(); return; }
+    if (seg[0] === 'checkout') { location.replace('/checkout'); return; }
     if (seg[0] === 'login') { app.innerHTML = viewAuth('login'); bindAuth(); return; }
     if (seg[0] === 'register') { app.innerHTML = viewAuth('register'); bindAuth(); return; }
     if (seg[0] === 'account') { app.innerHTML = viewAccount(); bindAccount(); return; }
@@ -487,7 +496,7 @@
     $$('[data-add]').forEach((b) => b.addEventListener('click', () => addToCart(b.getAttribute('data-add'), parseInt(qty.value || '1', 10))));
     $$('[data-buy]').forEach((b) => b.addEventListener('click', () => {
       addToCart(b.getAttribute('data-buy'), parseInt(qty.value || '1', 10));
-      location.hash = '#/checkout';
+      location.href = '/checkout';
     }));
     $('.tabbar').addEventListener('click', (e) => {
       const b = e.target.closest('[data-tab]'); if (!b) return;

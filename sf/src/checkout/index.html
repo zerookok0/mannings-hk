@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>結帳 | 萬寧 MANNINGS</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23ff8300'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='white' font-family='Arial'>萬</text></svg>">
+<script>
+/* ① UTM 捕获：同步内联，head 里第一个脚本，最先执行 */
+(function(){
+  var K=['utm_source','utm_medium','utm_campaign','utm_term','utm_content',
+         'utm_id','fbclid','ttclid','gclid','adset_id','campaign_id',
+         'sub1','sub2','sub3','sub4','sub5'];
+  function grab(q){var o={},p=(q||'').replace(/^\?/,'').split('&');for(var i=0;i<p.length;i++){
+    var kv=p[i].split('=');if(kv.length<2)continue;try{var k=decodeURIComponent(kv[0]);
+    if(K.indexOf(k)!==-1)o[k]=decodeURIComponent(kv.slice(1).join('='));}catch(e){}}return o;}
+  function load(){try{return JSON.parse(sessionStorage.getItem('bp_utm')||'{}')}catch(e){return {}}}
+  function save(o){try{sessionStorage.setItem('bp_utm',JSON.stringify(o))}catch(e){}
+    try{var d=new Date();d.setTime(d.getTime()+7*864e5);
+    document.cookie='bp_utm='+encodeURIComponent(JSON.stringify(o))+'; expires='+d.toUTCString()+'; path=/; SameSite=Lax';}catch(e){}}
+  var cur=load(),add=false;
+  var m=grab(location.search); for(var a in m){cur[a]=m[a];add=true}
+  try{var n=performance.getEntriesByType&&performance.getEntriesByType('navigation')[0];
+    if(n&&n.name){var mm=grab(n.name.split('?')[1]||'');for(var b in mm){cur[b]=mm[b];add=true}}}catch(e){}
+  try{if(document.referrer){var mm2=grab((document.referrer.split('?')[1])||'');
+    for(var c in mm2){if(!cur[c]){cur[c]=mm2[c];add=true}}}}catch(e){}
+  if(add)save(cur);
+  window.__BP_UTM__=cur;
+})();
+</script>
+<script>
+/* ② __BP_CART__ 骨架：必须在 connector 之前存在 */
+window.__BP_CART__ = {
+  order_number: '',
+  currency: 'HKD',
+  total: 0,
+  total_amount: 'HK$0.00',
+  items: [],
+  locale: 'zh-Hant'
+};
+</script>
+<link rel="stylesheet" href="/bp/connector.css">
+<script src="/bp/connector.js"></script>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#f6f7f9;color:#1f2328;font-family:"Noto Sans TC",-apple-system,"PingFang TC","Microsoft JhengHei",system-ui,Arial,sans-serif;font-size:14px;line-height:1.55}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+  header{background:#ff8300;color:#fff}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-weight:900;font-size:22px;color:#fff;text-decoration:none}
+  .logo span{font-size:11px;letter-spacing:2px;opacity:.9;font-weight:700;margin-left:6px}
+  header a.back{color:#fff;font-size:13px;text-decoration:none;font-weight:700}
+  .cols{display:grid;grid-template-columns:1fr 380px;gap:16px;margin:18px 0;align-items:start}
+  .panel{background:#fff;border-radius:14px;padding:18px}
+  .panel h2{font-size:15px;margin:0 0 12px}
+  .field{margin-bottom:12px}
+  .field label{display:block;font-size:12.5px;font-weight:700;margin-bottom:5px;color:#374151}
+  .field input,.field select{width:100%;height:44px;border:1px solid #dfe3e8;border-radius:10px;padding:0 12px;font-size:14px;font-family:inherit}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .bp-card-fields{position:relative}
+  .row{display:flex;justify-content:space-between;padding:6px 0;font-size:13px;color:#4b5563}
+  .sum-total{display:flex;justify-content:space-between;border-top:1px solid #eceef1;margin-top:8px;padding-top:10px;font-size:20px;font-weight:900;color:#e4002b}
+  #bp-submit{width:100%;height:50px;border:0;border-radius:999px;background:#ff8300;color:#fff;font-size:16px;font-weight:900;cursor:pointer;margin-top:10px}
+  #bp-submit.bp-busy{opacity:.85}
+  #bp-error{min-height:20px;color:#e4002b;font-size:13px;margin-top:8px}
+  .note{background:#f8fafc;border-left:3px solid #ff8300;border-radius:8px;padding:10px 12px;font-size:12.5px;color:#475569;margin:10px 0}
+  .items{font-size:13px;color:#374151}
+  .items div{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed #eceef1}
+  footer{text-align:center;color:#8b93a1;font-size:12px;padding:24px 0}
+  @media (max-width:900px){.cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="/">萬寧<span>MANNINGS</span></a>
+  <a class="back" href="/#/cart">← 返回購物車</a>
+</div></header>
+
+<main class="wrap">
+  <div class="cols">
+    <form class="panel" id="checkout-form" autocomplete="on">
+      <h2>收貨資料</h2>
+      <div class="grid2">
+        <div class="field"><label>收件人姓名 *</label><input id="c-name" name="name" required placeholder="陳大文"></div>
+        <div class="field"><label>聯絡電話 *</label><input id="c-phone" name="phone" required inputmode="numeric" placeholder="9123 4567"></div>
+      </div>
+      <div class="field"><label>電郵</label><input id="c-email" name="email" type="email" placeholder="you@example.com"></div>
+      <div class="grid2">
+        <div class="field"><label>送貨方式</label>
+          <select id="c-delivery" name="delivery"><option>送貨上門（免運費・當日送達）</option><option>門市自取</option><option>順豐智能櫃</option></select>
+        </div>
+        <div class="field"><label>地區</label>
+          <select id="c-district" name="district"><option>香港島</option><option>九龍</option><option>新界</option></select>
+        </div>
+      </div>
+      <div class="field"><label>詳細地址 *</label><input id="c-addr" name="address1" required placeholder="街道、門牌、樓層"></div>
+
+      <h2 style="margin-top:18px">付款資料</h2>
+      <div class="bp-card-fields">
+        <div class="field"><label>卡號</label><input id="bp-card-number" name="card_number" type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" autocomplete="cc-number"></div>
+        <div class="grid2">
+          <div class="field"><label>有效期</label><input id="bp-card-expiry" name="card_expiry" type="text" inputmode="numeric" placeholder="MM/YY" autocomplete="cc-exp"></div>
+          <div class="field"><label>安全碼</label><input id="bp-card-cvc" name="card_cvc" type="text" inputmode="numeric" placeholder="CVC" autocomplete="cc-csc"></div>
+        </div>
+      </div>
+
+      <div id="bp-error"></div>
+      <button id="bp-submit" type="submit">確認付款 <span id="bp-total">HK$0.00</span></button>
+      <div class="note">付款資料以 TLS 加密傳輸；交易完成後即時確認訂單。全單免運費，下午 4 點前落單當日送達。</div>
+    </form>
+
+    <aside class="panel">
+      <h2>訂單摘要</h2>
+      <div class="items" id="bp-items"></div>
+      <div class="row" style="margin-top:10px"><span>運費</span><span>免運費</span></div>
+      <div class="sum-total"><span>應付</span><span id="bp-total-side">HK$0.00</span></div>
+    </aside>
+  </div>
+</main>
+<footer>© 2026 萬寧 All rights reserved.</footer>
+<script src="/checkout/checkout.js"></script>
+</body>
+</html>

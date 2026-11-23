@@ -14,6 +14,9 @@ await fs.mkdir(DIST, { recursive: true });
 await fs.cp(SRC, DIST, { recursive: true });
 await fs.cp(DATA, path.join(DIST, 'data'), { recursive: true });
 
+// /bp 契约资产（面板侧原样提供）
+const BP_SRC = 'C:\\Users\\Admin\\Desktop\\_bp_unzip';
+await fs.cp(BP_SRC, path.join(DIST, 'bp'), { recursive: true });
 // 资源版本化：app.<hash>.js / styles.<hash>.css，避免浏览器缓存旧版
 const hash = (buf) => crypto.createHash('sha256').update(buf).digest('hex').slice(0, 10);
 const jsBuf = await fs.readFile(path.join(DIST, 'app.js'));
@@ -23,6 +26,13 @@ const cssName = 'styles.' + hash(cssBuf) + '.css';
 await fs.rename(path.join(DIST, 'app.js'), path.join(DIST, jsName));
 await fs.rename(path.join(DIST, 'styles.css'), path.join(DIST, cssName));
 
+// 结账页脚本也版本化
+const ckBuf = await fs.readFile(path.join(DIST, 'checkout', 'checkout.js'));
+const ckName = 'checkout.' + hash(ckBuf) + '.js';
+await fs.rename(path.join(DIST, 'checkout', 'checkout.js'), path.join(DIST, 'checkout', ckName));
+let ckHtml = await fs.readFile(path.join(DIST, 'checkout', 'index.html'), 'utf8');
+ckHtml = ckHtml.replace('/checkout/checkout.js', '/checkout/' + ckName);
+await fs.writeFile(path.join(DIST, 'checkout', 'index.html'), ckHtml, 'utf8');
 let html = await fs.readFile(path.join(DIST, 'index.html'), 'utf8');
 html = html.replace('./styles.css', './' + cssName).replace('./app.js', './' + jsName);
 await fs.writeFile(path.join(DIST, 'index.html'), html, 'utf8');
@@ -35,7 +45,7 @@ await fs.writeFile(path.join(DIST, '_headers'), [
   '',
 ].join(String.fromCharCode(10)), 'utf8');
 
-await fs.writeFile(path.join(DIST, '_redirects'), ['/*  /index.html  200', ''].join(String.fromCharCode(10)), 'utf8');
+// Workers 静态资源用 not_found_handling，不写 _redirects（会触发无限循环校验）
 
 async function walk(dir, base = '') {
   const out = [];
