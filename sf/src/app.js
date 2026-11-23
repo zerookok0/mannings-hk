@@ -525,26 +525,52 @@
     document.addEventListener('click', (e) => { if (!e.target.closest('.sbar')) s.classList.remove('on'); });
   }
 
-  /* ---------- 進站彈窗（1 小時倒數） ---------- */
-  function initPopup() {
-    const KEY = 'mn_pop_until';
-    let until = Number(localStorage.getItem(KEY) || 0);
-    const now = Date.now();
-    if (!until || until < now) { until = now + 3600 * 1000; localStorage.setItem(KEY, String(until)); }
-    const pop = $('#pop'), cd = $('#cd');
-    const seen = sessionStorage.getItem('mn_pop_seen');
-    if (!seen) { pop.classList.add('on'); sessionStorage.setItem('mn_pop_seen', '1'); }
-    const tick = () => {
-      const left = Math.max(0, until - Date.now());
-      const m = Math.floor(left / 60000), sec = Math.floor((left % 60000) / 1000);
-      cd.textContent = String(m).padStart(2, '0') + ':' + String(sec).padStart(2, '0');
-      if (left <= 0) { localStorage.removeItem(KEY); clearInterval(timer); }
-    };
-    const timer = setInterval(tick, 1000); tick();
-    window.closePop = () => { pop.classList.remove('on'); sessionStorage.setItem('mn_pop_seen', '1'); };
-    pop.addEventListener('click', (e) => { if (e.target === pop) window.closePop(); });
+  /* ---------- 進站促銷彈窗（每日 00:00 重置的 24 小時倒數） ---------- */
+  function hkClock() {
+    // 用 Intl 取香港時間，避免依賴本機時區
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Asia/Hong_Kong', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false,
+    }).formatToParts(new Date());
+    const get = (t) => Number((parts.find((p) => p.type === t) || {}).value || 0);
+    return { h: get('hour') % 24, m: get('minute'), s: get('second') };
   }
 
+  function initPopup() {
+    const pop = document.getElementById('pop');
+    const cd = document.getElementById('cd');
+    if (!pop || !cd) return;
+
+    // 1) 倒數：距離香港時間下一個 00:00 的剩餘秒數
+    const tick = () => {
+      const { h, m, s } = hkClock();
+      let left = 86400 - (h * 3600 + m * 60 + s);
+      if (left < 0) left = 0;
+      const hh = String(Math.floor(left / 3600)).padStart(2, '0');
+      const mm = String(Math.floor((left % 3600) / 60)).padStart(2, '0');
+      const ss = String(left % 60).padStart(2, '0');
+      cd.textContent = hh + ':' + mm + ':' + ss;
+    };
+    tick();
+    const timer = setInterval(tick, 1000);
+
+    // 2) 每次進站都彈（同一分頁只彈一次），延遲 600ms 讓頁面先出圖
+    const shown = sessionStorage.getItem('mn_pop_seen');
+    const open = () => {
+      pop.classList.add('on');
+      document.body.classList.add('pop-open');
+      sessionStorage.setItem('mn_pop_seen', '1');
+    };
+    if (!shown) setTimeout(open, 600);
+
+    window.closePop = () => {
+      pop.classList.remove('on');
+      document.body.classList.remove('pop-open');
+      sessionStorage.setItem('mn_pop_seen', '1');
+    };
+    pop.addEventListener('click', (e) => { if (e.target === pop) window.closePop(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') window.closePop(); });
+    window.addEventListener('pagehide', () => clearInterval(timer));
+  }
   /* ---------- 启动 ---------- */
   (async function boot() {
     initPopup();

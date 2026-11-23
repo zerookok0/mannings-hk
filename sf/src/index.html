@@ -54,19 +54,31 @@ src="https://www.facebook.com/tr?id=__FB_PIXEL_ID__&ev=PageView&noscript=1"/></n
   <div class="wrap copy">© 2026 萬寧 All rights reserved.</div>
 </footer>
 
-<!-- 進站彈窗 -->
-<div id="pop" class="pop">
+<!-- 進站促銷彈窗（全站 5 折 · 24 小時倒數） -->
+<div id="pop" class="pop" role="dialog" aria-modal="true" aria-label="全站 5 折優惠">
   <div class="popcard">
-    <button class="popx" onclick="closePop()">×</button>
-    <div class="poptag">限時 1 小時</div>
-    <h3>全站 5 折 · 免運費</h3>
-    <p>註冊即送 $45 購物金，全單免運費、當日送達。</p>
-    <div class="timer"><span id="cd">59:59</span></div>
-    <a class="btn primary big" href="#/login" onclick="closePop()">立即領取 5 折優惠</a>
-    <div class="popmini">優惠碼：<b>MANNINGS50</b></div>
+    <button class="popx" type="button" onclick="closePop()" aria-label="關閉">×</button>
+    <div class="poptags">
+      <span>全站 5 折</span><span>免運費</span><span>當日送達</span><span>正貨保證</span>
+    </div>
+    <div class="pophead">
+      <div class="popsave"><b>5</b><i>折</i></div>
+      <div>
+        <h3>全站 5 折</h3>
+        <p>今日落單 · 當日送到</p>
+      </div>
+    </div>
+    <p class="popdesc">7,780 件萬寧正貨，健康 / 美容 / 母嬰 / 家居全品類。<br>全單免運費，註冊再送 $45 購物金。</p>
+    <div class="popcount">
+      <span class="lbl">距離結束</span>
+      <span class="digits" id="cd">00:00:00</span>
+      <span class="tail">後恢復原價</span>
+    </div>
+    <a class="btn primary big" href="#/search?q=" onclick="closePop()">立即搶購 5 折</a>
+    <a class="btn ghost big" href="#/c/健康" onclick="closePop()">睇健康專區</a>
+    <div class="popfoot">優惠碼 <b>MANNINGS50</b> · 每日 00:00 重新計算</div>
   </div>
-</div>
-<div id="toast" class="toast"></div>
+</div><div id="toast" class="toast"></div>
 <script src="./app.js"></script>
 </body>
 </html>

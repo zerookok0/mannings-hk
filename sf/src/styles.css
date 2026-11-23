@@ -171,21 +171,36 @@ button{font-family:inherit;cursor:pointer}
 .copy{border-top:1px solid #232936;margin-top:20px;padding:14px 0;font-size:11.5px;color:#7d8797}
 
 /* popup / toast */
-.pop{position:fixed;inset:0;background:rgba(15,20,25,.55);display:none;align-items:center;justify-content:center;z-index:60;padding:16px}
+.pop{position:fixed;inset:0;background:rgba(12,16,20,.58);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:60;padding:20px}
 .pop.on{display:flex}
-.popcard{background:#fff;border-radius:18px;padding:26px;max-width:420px;width:100%;text-align:center;position:relative;animation:pop .25s ease}
-@keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
-.popx{position:absolute;right:12px;top:10px;border:0;background:none;font-size:22px;color:#9aa4b2}
-.poptag{display:inline-block;background:#fff1e6;color:var(--brand);font-weight:900;font-size:12px;padding:3px 10px;border-radius:999px}
-.popcard h3{margin:10px 0 6px;font-size:24px;font-weight:900}
-.popcard p{margin:0 0 10px;color:var(--ink2);font-size:13px}
-.timer{font-size:30px;font-weight:900;color:var(--sale);letter-spacing:2px;margin:6px 0 14px;font-variant-numeric:tabular-nums}
-.popmini{margin-top:10px;font-size:12px;color:var(--muted)}
-.popmini b{color:var(--brand)}
+body.pop-open{overflow:hidden}
+.popcard{position:relative;width:min(520px,100%);max-height:min(88vh,760px);overflow-y:auto;-webkit-overflow-scrolling:touch;
+  background:linear-gradient(160deg,#fff 0%,#fff 62%,#fff6ec 100%);border-radius:20px;
+  padding:26px 24px 20px;box-shadow:0 24px 60px rgba(0,0,0,.28);animation:popIn .26s cubic-bezier(.2,.8,.3,1) both}
+@keyframes popIn{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}
+.popx{position:absolute;right:10px;top:8px;width:36px;height:36px;border:0;background:transparent;font-size:24px;line-height:1;color:#9aa4b2;cursor:pointer}
+.poptags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;padding-right:34px}
+.poptags span{background:#fff3e6;color:#e67500;border:1px solid #ffd9b0;border-radius:999px;padding:3px 10px;font-size:11.5px;font-weight:800}
+.pophead{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.popsave{flex:0 0 auto;width:74px;height:74px;border-radius:18px;background:linear-gradient(140deg,#ff8f00,#e4002b);color:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;box-shadow:0 8px 18px rgba(228,0,43,.28)}
+.popsave b{font-size:36px;font-weight:900;letter-spacing:-1px}
+.popsave i{font-style:normal;font-size:13px;font-weight:800;margin-top:2px}
+.pophead h3{margin:0 0 4px;font-size:26px;font-weight:900;letter-spacing:-.5px}
+.pophead p{margin:0;font-size:14px;font-weight:700;color:#e4002b}
+.popdesc{margin:0 0 14px;font-size:12.5px;line-height:1.7;color:#475569}
+.popcount{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;
+  background:#fff;border:1px dashed #ffb27a;border-radius:14px;padding:12px 10px;margin-bottom:14px}
+.popcount .lbl{font-size:12px;font-weight:800;color:#e67500}
+.popcount .digits{font-size:26px;font-weight:900;letter-spacing:2px;color:#e4002b;font-variant-numeric:tabular-nums}
+.popcount .tail{font-size:12px;color:#8b93a1}
+.popcard .btn.big{width:100%;margin-bottom:8px}
+.popcard .btn.ghost.big{background:#fff}
+.popfoot{text-align:center;font-size:11.5px;color:#9aa4b2;margin-top:4px}
+.popfoot b{color:#ff8300}
 .toast{position:fixed;left:50%;bottom:32px;transform:translateX(-50%) translateY(20px);background:#111;color:#fff;
   padding:11px 20px;border-radius:999px;font-size:13px;opacity:0;transition:.25s;z-index:80;pointer-events:none}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
-
 /* mobile */
 @media (max-width:1100px){
   .grid{grid-template-columns:repeat(4,1fr)}
@@ -198,6 +213,14 @@ button{font-family:inherit;cursor:pointer}
   .fgrid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:680px){
+  .pop{padding:0;align-items:flex-end}
+  .popcard{width:100%;max-width:100%;max-height:92vh;border-radius:20px 20px 0 0;padding:22px 18px calc(16px + env(safe-area-inset-bottom));animation:popUp .28s cubic-bezier(.2,.8,.3,1) both}
+  @keyframes popUp{from{opacity:.6;transform:translateY(100%)}to{opacity:1;transform:translateY(0)}}
+  .pophead h3{font-size:22px}
+  .popsave{width:64px;height:64px}
+  .popsave b{font-size:31px}
+  .popcount .digits{font-size:23px}
+
   .hdr-in{height:auto;flex-wrap:wrap;padding:10px 12px;gap:10px}
   .logo{font-size:20px}
   .sbar{order:3;flex-basis:100%;max-width:none}
