@@ -73,12 +73,13 @@
 
   /* ---------- 数据加载 ---------- */
   async function loadBase() {
-    const [cat, cats, brands] = await Promise.all([
+    const [cat, cats, brands, home] = await Promise.all([
       fetch('./data/catalog.json?' + V).then((r) => r.json()),
       fetch('./data/cats.json?' + V).then((r) => r.json()),
       fetch('./data/brands.json?' + V).then((r) => r.json()),
+      fetch('./data/home.json?' + V).then((r) => r.json()).catch(() => null),
     ]);
-    state.catalog = cat; state.cats = cats; state.brands = brands;
+    state.catalog = cat; state.cats = cats; state.brands = brands; state.home = home;
     paintCart();
     buildNav();
   }
@@ -119,22 +120,35 @@
 
   /* ---------- 页面 ---------- */
   function viewHome() {
+    const home = state.home || { banners: [], tiles: [], strip: [] };
     const hot = state.catalog.slice().sort((a, b) => b.sold - a.sold).slice(0, 10);
     const newest = state.catalog.slice(2000, 2010);
     const cheap = state.catalog.filter((p) => p.f <= 60).slice(0, 10);
-    return `
-    <section class="hero">
-      <div class="hero-l">
-        <div class="hero-tags"><span>全站 5 折</span><span>免運費</span><span>當日送達</span><span>正貨保證</span></div>
-        <h1>全站 <em>5 折</em><br>今日落單 · 當日送到</h1>
-        <p>7,780 件萬寧正貨，健康 / 美容 / 母嬰 / 家居全品類。滿額即免運費，註冊再送 $45 購物金。</p>
-        <div class="cta-row">
-          <a class="btn dark" href="#/search?q=">立即搶購 5 折</a>
-          <a class="btn ghost" href="#/c/${encodeURIComponent('健康')}" style="background:#fff">睇健康專區</a>
-        </div>
+
+    const strip = (home.strip || []).length
+      ? `<div class="promostrip">${home.strip.map((s) => `<a href="${s.href}">${esc(s.text)}</a>`).join('')}</div>`
+      : '';
+
+    const banners = home.banners || [];
+    const carousel = banners.length ? `
+    <section class="carousel" id="carousel" aria-roledescription="carousel">
+      <div class="ctrack" id="ctrack">
+        ${banners.map((b, i) => `<a class="cslide" href="${b.href}" data-i="${i}"><img src="${b.img}" alt="萬寧推廣 ${i + 1}" ${i ? 'loading="lazy"' : ''}></a>`).join('')}
       </div>
-      <div class="hero-img">🛒</div>
-    </section>
+      <button class="cbtn prev" type="button" data-c="-1" aria-label="上一張">‹</button>
+      <button class="cbtn next" type="button" data-c="1" aria-label="下一張">›</button>
+      <div class="cdots" id="cdots">${banners.map((_, i) => `<button type="button" data-d="${i}" class="${i === 0 ? 'on' : ''}" aria-label="第 ${i + 1} 張"></button>`).join('')}</div>
+    </section>` : '';
+
+    const tiles = (home.tiles || []).length ? `
+    <div class="promotiles">
+      ${home.tiles.map((x) => `<a href="${x.href}"><img src="${x.img}" alt="推廣" loading="lazy"></a>`).join('')}
+    </div>` : '';
+
+    return `
+    ${strip}
+    ${carousel}
+    ${tiles}
     <section class="sec">
       <div class="sec-h"><h2>🔥 人氣熱賣（5 折）</h2><a href="#/search?q=">查看全部 ›</a></div>
       ${grid(hot)}
@@ -157,6 +171,49 @@
     </section>`;
   }
 
+  /* ---------- 首页轮播（自动播放 / 圆点 / 箭头 / 手机滑动） ---------- */
+  function bindCarousel() {
+    const box = document.getElementById('carousel');
+    if (!box) return;
+    const track = document.getElementById('ctrack');
+    const dots = [...document.querySelectorAll('#cdots button')];
+    const total = track.children.length;
+    let i = 0, timer = null;
+
+    const go = (n, anim = true) => {
+      i = (n + total) % total;
+      track.style.transition = anim ? 'transform .45s cubic-bezier(.2,.8,.3,1)' : 'none';
+      track.style.transform = 'translateX(' + (-i * 100) + '%)';
+      dots.forEach((d, k) => d.classList.toggle('on', k === i));
+    };
+    const play = () => { stop(); timer = setInterval(() => go(i + 1), 5000); };
+    const stop = () => { if (timer) clearInterval(timer); timer = null; };
+
+    box.querySelectorAll('[data-c]').forEach((b) => b.addEventListener('click', (e) => {
+      e.preventDefault(); go(i + Number(b.getAttribute('data-c'))); play();
+    }));
+    dots.forEach((d) => d.addEventListener('click', () => { go(Number(d.getAttribute('data-d'))); play(); }));
+    box.addEventListener('mouseenter', stop);
+    box.addEventListener('mouseleave', play);
+
+    let sx = 0, sy = 0, swiping = false;
+    box.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; swiping = false; stop(); }, { passive: true });
+    box.addEventListener('touchmove', (e) => {
+      const dx = e.touches[0].clientX - sx, dy = e.touches[0].clientY - sy;
+      if (Math.abs(dx) > Math.abs(dy)) swiping = true;
+      if (!swiping) return;
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(calc(' + (-i * 100) + '% + ' + dx + 'px))';
+    }, { passive: true });
+    box.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1)); else go(i);
+      play();
+    });
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : play()));
+
+    go(0, false); play();
+  }
   function viewCategory(name) {
     const all = state.catalog.filter((p) => p.c.includes(name));
     return `
@@ -361,7 +418,7 @@
     const q = new URLSearchParams(queryPart || '');
     window.scrollTo(0, 0);
 
-    if (!seg.length) { app.innerHTML = viewHome(); bindGrid(); return; }
+    if (!seg.length) { app.innerHTML = viewHome(); bindGrid(); bindCarousel(); return; }
     if (seg[0] === 'c') { app.innerHTML = viewCategory(decodeURIComponent(seg[1] || '')); bindCategory(decodeURIComponent(seg[1] || '')); return; }
     if (seg[0] === 'p') { app.innerHTML = await viewProduct(seg[1]); bindProduct(); return; }
     if (seg[0] === 'search') { app.innerHTML = viewSearch(q.get('q') || ''); bindGrid(); return; }
