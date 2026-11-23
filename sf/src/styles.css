@@ -241,10 +241,10 @@ body.pop-open{overflow:hidden}
 .promostrip a{flex:1;text-align:center;font-size:12.5px;font-weight:700;color:#b45309;padding:9px 6px;border-right:1px solid #ffe0bd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .promostrip a:last-child{border-right:0}
 .promostrip a:hover{color:#e4002b}
-.carousel{position:relative;margin:14px 0;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 2px 10px rgba(16,24,40,.06)}
+.carousel{position:relative;margin:14px 0;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 2px 10px rgba(16,24,40,.06);aspect-ratio:2}
 .ctrack{display:flex;transition:transform .45s cubic-bezier(.2,.8,.3,1);will-change:transform}
 .cslide{flex:0 0 100%;display:block}
-.cslide img{width:100%;height:auto;display:block;background:#fff;object-fit:contain}
+.cslide img{width:100%;height:100%;display:block;background:#fff;object-fit:cover;object-position:center}
 .cbtn{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;border:0;
   background:rgba(255,255,255,.9);color:#333;font-size:22px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;
   box-shadow:0 2px 8px rgba(0,0,0,.16);opacity:0;transition:opacity .2s}
@@ -258,7 +258,8 @@ body.pop-open{overflow:hidden}
 @media (max-width:680px){
   .promostrip{overflow-x:auto;scrollbar-width:none}
   .promostrip a{flex:0 0 auto;padding:8px 12px;font-size:12px}
-  .cslide img{height:auto}
+  .cslide img{height:100%}
+  .carousel{aspect-ratio:2}
   .promotiles img{height:200px}
   .cbtn{display:none}
   .cdot{display:flex}

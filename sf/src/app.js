@@ -182,11 +182,26 @@
     const total = track.children.length;
     let i = 0, timer = null;
 
+    // 容器高度跟随「当前这张图」的真实比例：不裁剪、也不留白
+    const syncHeight = () => {
+      const im = track.children[i] && track.children[i].querySelector('img');
+      if (!im) return;
+      const w = box.clientWidth || 1;
+      let ratio = im.naturalWidth && im.naturalHeight ? im.naturalWidth / im.naturalHeight : 0;
+      if (!ratio) {
+        const b = (state.home && state.home.banners || [])[i] || {};
+        const isMobile = window.matchMedia('(max-width:680px)').matches;
+        ratio = (isMobile ? (b.arm || b.ar) : (b.ar || b.arm)) || 2.5;
+      }
+      void w; void ratio;   // 固定画幅模式：高度由 CSS aspect-ratio 控制
+    };
+
     const go = (n, anim = true) => {
       i = (n + total) % total;
       track.style.transition = anim ? 'transform .45s cubic-bezier(.2,.8,.3,1)' : 'none';
       track.style.transform = 'translateX(' + (-i * 100) + '%)';
       dots.forEach((d, k) => d.classList.toggle('on', k === i));
+      syncHeight();
     };
     const play = () => { stop(); timer = setInterval(() => go(i + 1), 5000); };
     const stop = () => { if (timer) clearInterval(timer); timer = null; };
@@ -226,6 +241,12 @@
     });
 
     go(0, false); play();
+
+    // 首图加载完 / 窗口尺寸变化时，重算容器高度
+    const firstImg = track.children[0] && track.children[0].querySelector('img');
+    if (firstImg && !firstImg.complete) firstImg.addEventListener('load', syncHeight, { once: true });
+    window.addEventListener('resize', syncHeight);
+    window.addEventListener('orientationchange', () => setTimeout(syncHeight, 200));
   }
   function viewCategory(name) {
     const all = state.catalog.filter((p) => p.c.includes(name));
