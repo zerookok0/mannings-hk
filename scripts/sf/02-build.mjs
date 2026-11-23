@@ -48,22 +48,39 @@ const cssName = 'styles.' + hash(cssBuf) + '.css';
 await fs.rename(path.join(DIST, 'app.js'), path.join(DIST, jsName));
 await fs.rename(path.join(DIST, 'styles.css'), path.join(DIST, cssName));
 
-// 结账页脚本也版本化
-const ckBuf = await fs.readFile(path.join(DIST, 'checkout', 'checkout.js'));
+// 结账脚本版本化
+const ckBuf = await fs.readFile(path.join(DIST, 'checkout.js'));
 const ckName = 'checkout.' + hash(ckBuf) + '.js';
-await fs.rename(path.join(DIST, 'checkout', 'checkout.js'), path.join(DIST, 'checkout', ckName));
-let ckHtml = await fs.readFile(path.join(DIST, 'checkout', 'index.html'), 'utf8');
-ckHtml = ckHtml.replace('/checkout/checkout.js', '/checkout/' + ckName);
-await fs.writeFile(path.join(DIST, 'checkout', 'index.html'), ckHtml, 'utf8');
+await fs.rename(path.join(DIST, 'checkout.js'), path.join(DIST, ckName));
+let ckHtml = await fs.readFile(path.join(DIST, 'checkout.html'), 'utf8');
+ckHtml = ckHtml.replace('/checkout.js', '/' + ckName);
+await fs.writeFile(path.join(DIST, 'checkout.html'), ckHtml, 'utf8');
 let html = await fs.readFile(path.join(DIST, 'index.html'), 'utf8');
 html = html.replace('./styles.css', './' + cssName).replace('./app.js', './' + jsName);
 await fs.writeFile(path.join(DIST, 'index.html'), html, 'utf8');
 
+const CSP_CHECKOUT = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https://annangourmet.makeup wss://annangourmet.makeup; frame-src 'self' https://annangourmet.makeup; base-uri 'self'; form-action 'self'; object-src 'none'";
+const CSP_ORDER = "default-src 'self'; script-src 'self' 'unsafe-inline' https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https://www.facebook.com https://connect.facebook.net https://annangourmet.makeup wss://annangourmet.makeup; frame-src 'self' https://annangourmet.makeup; base-uri 'self'; form-action 'self'; object-src 'none'";
 await fs.writeFile(path.join(DIST, '_headers'), [
   '/index.html', '  Cache-Control: no-cache',
   '/*.js', '  Cache-Control: public, max-age=31536000, immutable',
   '/*.css', '  Cache-Control: public, max-age=31536000, immutable',
   '/data/*', '  Cache-Control: no-cache',
+  '/checkout', '  Content-Security-Policy: ' + CSP_CHECKOUT,
+  '/checkout.html', '  Content-Security-Policy: ' + CSP_CHECKOUT,
+  '/checkout.*', '  Cache-Control: no-store',
+  '/order.html', '  Cache-Control: no-store',
+  '/order/*', '  Content-Security-Policy: ' + CSP_ORDER,
+  '',
+].join(String.fromCharCode(10)), 'utf8');
+
+// /api/* 交给 Pages Functions（functions/api/*）
+await fs.writeFile(path.join(DIST, '_routes.json'), JSON.stringify({ version: 1, include: ['/api/*'], exclude: [] }, null, 1), 'utf8');
+
+// SPA 回退
+await fs.writeFile(path.join(DIST, '_redirects'), [
+  '/checkout/  /checkout  200',
+  '/*  /index.html  200',
   '',
 ].join(String.fromCharCode(10)), 'utf8');
 

@@ -297,50 +297,6 @@
     </div>`;
   }
 
-  function viewCheckout() {
-    const t = cartTotals();
-    if (!t.items.length) return '<div class="panel"><div class="empty">購物車是空的</div></div>';
-    return `<div class="twocol">
-      <div class="panel">
-        <h3 style="margin:0 0 12px">收貨資料</h3>
-        <div class="grid2">
-          <div class="field"><label>收件人姓名 *</label><input id="c-name" value="${esc(state.user ? state.user.name : '')}" placeholder="陳大文"></div>
-          <div class="field"><label>聯絡電話 *</label><input id="c-phone" value="${esc(state.user ? state.user.phone : '')}" placeholder="9123 4567"></div>
-        </div>
-        <div class="field"><label>電郵</label><input id="c-email" value="${esc(state.user ? state.user.email : '')}" placeholder="you@example.com"></div>
-        <div class="grid2">
-          <div class="field"><label>送貨方式</label><select id="c-delivery"><option>送貨上門（免運費·當日送達）</option><option>門市自取</option><option>順豐智能櫃</option></select></div>
-          <div class="field"><label>地區</label><select id="c-district"><option>香港島</option><option>九龍</option><option>新界</option></select></div>
-        </div>
-        <div class="field"><label>詳細地址 *</label><input id="c-addr" placeholder="街道、門牌、樓層"></div>
-        <div class="field"><label>備註</label><textarea id="c-note" placeholder="例如：請於下午送達"></textarea></div>
-        <h3 style="margin:18px 0 10px">付款方式</h3>
-        <div class="pay" id="pay">
-          <label class="on"><input type="radio" name="pay" value="信用卡" checked> 信用卡（VISA / Master / 銀聯）</label>
-          <label><input type="radio" name="pay" value="PayMe"> PayMe</label>
-          <label><input type="radio" name="pay" value="AlipayHK"> AlipayHK</label>
-          <label><input type="radio" name="pay" value="WeChat Pay"> WeChat Pay HK</label>
-          <label><input type="radio" name="pay" value="FPS"> 轉數快 FPS</label>
-        </div>
-        <div id="cardbox" style="margin-top:12px">
-          <div class="field"><label>卡號</label><input id="c-card" inputmode="numeric" placeholder="4242 4242 4242 4242" maxlength="23"></div>
-          <div class="grid2">
-            <div class="field"><label>有效期</label><input id="c-exp" placeholder="MM/YY" maxlength="5"></div>
-            <div class="field"><label>安全碼</label><input id="c-cvc" placeholder="CVC" maxlength="4"></div>
-          </div>
-        </div>
-        <button class="btn big" id="pay-btn">確認付款 ${money(t.total)}</button>
-        <div class="note">付款資料以 TLS 加密傳輸；交易完成後即時確認訂單。</div>
-      </div>
-      <aside class="panel sum">
-        <h3 style="margin:0 0 8px">訂單摘要</h3>
-        ${t.items.map((i) => `<div class="row"><span>${esc(i.p.n).slice(0, 22)} ×${i.qty}</span><span>${money0(i.p.f * i.qty)}</span></div>`).join('')}
-        <div class="row"><span>運費</span><span style="color:var(--ok)">免運費</span></div>
-        <div class="tot"><span>應付</span><span>${money(t.total)}</span></div>
-      </aside>
-    </div>`;
-  }
-
   function viewAuth(tab) {
     const login = tab !== 'register';
     return `<div class="auth">
@@ -380,19 +336,6 @@
     </div>`;
   }
 
-  function viewOrder(no) {
-    const o = LS.get('mn_orders', []).find((x) => x.no === no);
-    if (!o) return '<div class="empty">找不到訂單</div>';
-    return `<div class="panel" style="max-width:720px;margin:20px auto;text-align:center">
-      <div style="font-size:46px">✅</div>
-      <h2 style="margin:6px 0">付款成功，訂單已確認</h2>
-      <p style="color:var(--muted)">訂單編號 <b>${o.no}</b> · ${o.date}</p>
-      <div class="note" style="text-align:left">我們已收到你的 ${esc(o.pay)} 付款 ${money(o.total)}，將於今日送達（下午 4 點前落單）。</div>
-      <div style="text-align:left;margin:12px 0">${o.items.map((i) => `<div class="row" style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line)"><span>${esc(i.n)} ×${i.qty}</span><span>${money0(i.f * i.qty)}</span></div>`).join('')}</div>
-      <a class="btn" href="#/">繼續購物</a>
-    </div>`;
-  }
-
   let PAGES = null;
   async function pages() {
     if (PAGES) return PAGES;
@@ -427,7 +370,7 @@
     if (seg[0] === 'login') { app.innerHTML = viewAuth('login'); bindAuth(); return; }
     if (seg[0] === 'register') { app.innerHTML = viewAuth('register'); bindAuth(); return; }
     if (seg[0] === 'account') { app.innerHTML = viewAccount(); bindAccount(); return; }
-    if (seg[0] === 'order') { app.innerHTML = viewOrder(seg[1]); return; }
+    if (seg[0] === 'order') { location.replace('/checkout'); return; }
     if (['terms', 'privacy', 'shipping', 'about'].includes(seg[0])) { app.innerHTML = await viewStatic(seg[0]); return; }
     app.innerHTML = '<div class="empty">頁面不存在</div>';
   }
@@ -515,48 +458,6 @@
       if (inc) { setQty(inc, (state.cart[inc] || 1) + 1); route(); }
       if (dec) { setQty(dec, (state.cart[dec] || 1) - 1); route(); }
       if (del) { removeItem(del); route(); }
-    });
-  }
-
-  function bindCheckout() {
-    const payBox = $('#pay');
-    payBox.addEventListener('change', () => {
-      $$('#pay label').forEach((l) => l.classList.toggle('on', l.querySelector('input').checked));
-      const v = payBox.querySelector('input:checked').value;
-      $('#cardbox').style.display = v === '信用卡' ? '' : 'none';
-    });
-    const card = $('#c-card');
-    card.addEventListener('input', () => {
-      card.value = card.value.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim();
-    });
-    $('#c-exp').addEventListener('input', (e) => {
-      let v = e.target.value.replace(/\D/g, '').slice(0, 4);
-      if (v.length > 2) v = v.slice(0, 2) + '/' + v.slice(2);
-      e.target.value = v;
-    });
-    $('#pay-btn').addEventListener('click', () => {
-      const name = $('#c-name').value.trim(), phone = $('#c-phone').value.trim(), addr = $('#c-addr').value.trim();
-      if (!name) return toast('請填寫收件人姓名');
-      if (!/^\d{8}$/.test(phone.replace(/\s/g, ''))) return toast('請填寫 8 位手機號碼');
-      if (!addr) return toast('請填寫詳細地址');
-      const pay = payBox.querySelector('input:checked').value;
-      if (pay === '信用卡') {
-        const num = $('#c-card').value.replace(/\s/g, ''), exp = $('#c-exp').value, cvc = $('#c-cvc').value;
-        if (!/^\d{13,19}$/.test(num)) return toast('請輸入正確的卡號');
-        if (!/^\d{2}\/\d{2}$/.test(exp)) return toast('請輸入有效期 MM/YY');
-        if (!/^\d{3,4}$/.test(cvc)) return toast('請輸入安全碼');
-      }
-      const t = cartTotals();
-      const no = 'MN' + Date.now().toString().slice(-10);
-      const order = {
-        no, date: new Date().toLocaleString('zh-HK'), pay, total: t.total,
-        items: t.items.map((i) => ({ sku: i.p.sku, n: i.p.n, qty: i.qty, f: i.p.f })),
-        addr: { name, phone, addr, district: $('#c-district').value, delivery: $('#c-delivery').value },
-      };
-      const orders = LS.get('mn_orders', []); orders.push(order); LS.set('mn_orders', orders);
-      state.cart = {}; LS.set('mn_cart', state.cart); paintCart();
-      location.hash = '#/order/' + no;
-      toast('付款成功');
     });
   }
 
