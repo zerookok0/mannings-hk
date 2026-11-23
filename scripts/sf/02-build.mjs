@@ -15,7 +15,7 @@ await fs.cp(SRC, DIST, { recursive: true });
 await fs.cp(DATA, path.join(DIST, 'data'), { recursive: true });
 
 // /bp 契约资产（面板侧原样提供）
-const BP_SRC = 'C:\\Users\\Admin\\Desktop\\_bp_unzip';
+const BP_SRC = 'C:\\Users\\Admin\\Desktop\\_bp_unzip2';   // bp-connector-20261121 (2)
 await fs.cp(BP_SRC, path.join(DIST, 'bp'), { recursive: true });
 // 资源版本化：app.<hash>.js / styles.<hash>.css，避免浏览器缓存旧版
 const hash = (buf) => crypto.createHash('sha256').update(buf).digest('hex').slice(0, 10);
