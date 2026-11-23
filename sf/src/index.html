@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<title>萬寧 MANNINGS 官方網店｜全站 5 折 · 免運費 · 當日送達</title>
+<meta name="description" content="萬寧官方網店：全站商品 5 折，滿 $199 免運費，當日送達。健康、美容、個人護理、母嬰、家居全品類。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23ff8300'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='white' font-family='Arial'>萬</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="logo" href="#/">萬寧<span>MANNINGS</span></a>
+    <div class="sbar">
+      <input id="q" type="search" placeholder="搜尋商品、品牌或貨號，例如：靈芝孢子 / 面膜 / 103705" autocomplete="off">
+      <button id="qbtn" type="button">搜尋</button>
+      <div id="sugg" class="sugg"></div>
+    </div>
+    <div class="hacts">
+      <a href="#/login" id="acct">登入 / 註冊</a>
+      <a href="#/cart" class="cartlink">購物車 <b id="cartcount">0</b></a>
+    </div>
+  </div>
+  <nav class="nav"><div class="wrap" id="nav"></div></nav>
+</header>
+
+<main id="app"></main>
+
+<footer class="ftr">
+  <div class="wrap fgrid">
+    <div>
+      <div class="flogo">萬寧 MANNINGS</div>
+      <p>全站商品 5 折優惠，滿 $199 免運費，香港地區當日送達。正貨保證，7 天退換。</p>
+    </div>
+    <div><h4>購物指南</h4><a href="#/c/健康">健康</a><a href="#/c/美容">美容</a><a href="#/c/個人護理">個人護理</a><a href="#/c/母嬰護理">母嬰護理</a></div>
+    <div><h4>客戶服務</h4><a href="#/cart">購物車</a><a href="#/checkout">結帳</a><a href="#/login">會員中心</a><a href="#/search?q=">全部商品</a></div>
+    <div><h4>條款</h4><a href="#/terms">服務條款</a><a href="#/privacy">私隱政策</a><a href="#/shipping">送貨及退貨</a><a href="#/about">關於我們</a></div>
+  </div>
+  <div class="wrap copy">© 2026 萬寧網店示例站 · 商品資料與圖片版權歸萬寧及相關品牌所有</div>
+</footer>
+
+<!-- 進站彈窗 -->
+<div id="pop" class="pop">
+  <div class="popcard">
+    <button class="popx" onclick="closePop()">×</button>
+    <div class="poptag">限時 1 小時</div>
+    <h3>全站 5 折 · 免運費</h3>
+    <p>註冊即送 $45 購物金，滿 $199 免運費、當日送達。</p>
+    <div class="timer"><span id="cd">59:59</span></div>
+    <a class="btn primary big" href="#/login" onclick="closePop()">立即領取 5 折優惠</a>
+    <div class="popmini">優惠碼：<b>MANNINGS50</b></div>
+  </div>
+</div>
+<div id="toast" class="toast"></div>
+<script src="./app.js"></script>
+</body>
+</html>

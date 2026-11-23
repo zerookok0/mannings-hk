@@ -22,3 +22,8 @@ cache/
 
 # Pages æ„å»ºäº§ç‰©ï¼ˆç”± npm run build:pages ç”Ÿæˆï¼‰
 pages/dist/
+
+# µêÆÌ¹¹½¨²úÎï
+sf/dist/
+sf/data/
+
