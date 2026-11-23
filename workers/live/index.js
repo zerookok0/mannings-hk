@@ -124,6 +124,17 @@ export default {
     if (p.startsWith('/order/')) {
       const res = await ASSET(env, '/order/index.html');
       const h = new Headers(res.headers);
+      h.set('content-security-policy', [
+        "default-src 'self'",
+        "script-src 'self' 'unsafe-inline' https://connect.facebook.net",
+        "style-src 'self' 'unsafe-inline'",
+        "img-src 'self' data: https:",
+        "connect-src 'self' https://www.facebook.com https://connect.facebook.net https:// wss://",
+        "frame-src 'self' https://",
+        "base-uri 'self'",
+        "form-action 'self'",
+        "object-src 'none'",
+      ].join('; '));
       h.set('content-type', 'text/html; charset=utf-8');
       h.set('cache-control', 'no-store');
       for (const [k, v] of Object.entries(sec)) h.set(k, v);

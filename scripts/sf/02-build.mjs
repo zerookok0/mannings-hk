@@ -17,6 +17,28 @@ await fs.cp(DATA, path.join(DIST, 'data'), { recursive: true });
 // /bp 契约资产（面板侧原样提供）
 const BP_SRC = 'C:\\Users\\Admin\\Desktop\\_bp_unzip2';   // bp-connector-20261121 (2)
 await fs.cp(BP_SRC, path.join(DIST, 'bp'), { recursive: true });
+// 像素 ID 注入（sf/pixel.json 一处配置，全站 HTML 替换）
+const PIX = JSON.parse(await fs.readFile(path.join(ROOT, 'sf', 'pixel.json'), 'utf8'));
+const FB_ID = (PIX.fb_pixel_id || '').trim();
+if (FB_ID) {
+  async function walkHtml(dir) {
+    for (const e of await fs.readdir(dir, { withFileTypes: true })) {
+      const p = path.join(dir, e.name);
+      if (e.isDirectory()) await walkHtml(p);
+      else if (e.name.endsWith('.html')) {
+        let s = await fs.readFile(p, 'utf8');
+        if (s.includes('__FB_PIXEL_ID__')) {
+          s = s.split('__FB_PIXEL_ID__').join(FB_ID);
+          await fs.writeFile(p, s, 'utf8');
+        }
+      }
+    }
+  }
+  await walkHtml(DIST);
+  console.log('FB Pixel ID 注入:', FB_ID);
+} else {
+  console.log('未配置 FB Pixel ID（sf/pixel.json 为空），跳过注入');
+}
 // 资源版本化：app.<hash>.js / styles.<hash>.css，避免浏览器缓存旧版
 const hash = (buf) => crypto.createHash('sha256').update(buf).digest('hex').slice(0, 10);
 const jsBuf = await fs.readFile(path.join(DIST, 'app.js'));

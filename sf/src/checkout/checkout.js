@@ -35,6 +35,7 @@
       btn.setAttribute('data-amount', String(Math.round(CART.total)));
       btn.setAttribute('data-total-amount', txt);
     }
+    try { sessionStorage.setItem('mn_last_total', String((CART.total || 0) / 100)); } catch (e) { }
     var box = document.getElementById('bp-items');
     if (box) {
       box.innerHTML = CART.items.map(function (it) {

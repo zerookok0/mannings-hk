@@ -1,0 +1,14 @@
+﻿<script>
+/* Purchase 事件：订单页触发，eventID 用订单号去重 */
+(function(){
+  var no = decodeURIComponent((location.pathname.split('/').pop()||''));
+  function fire(){
+    try {
+      var total = 0;
+      try { total = Number((JSON.parse(sessionStorage.getItem('mn_last_total')||'0'))||0); } catch(e){}
+      fbq('track','Purchase',{value: total||0, currency:'HKD'},{eventID: no||('MN'+Date.now())});
+    } catch(e){}
+  }
+  if (document.readyState === 'complete') fire(); else window.addEventListener('load', fire);
+})();
+</script>
