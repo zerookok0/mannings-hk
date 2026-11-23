@@ -148,6 +148,22 @@ for (const p of catalog.products) {
   };
 }
 
+// 促销索引：買X送Y → [sku]，供 #/search?promo= 精确筛选
+const promos = new Map();
+for (const [sku, d] of Object.entries(details)) {
+  for (const o of d.offers || []) {
+    const txt = String(o.message || '');
+    for (const m of txt.matchAll(/買\s*(\d+)\s*送\s*(\d+)/g)) {
+      const key = '買' + m[1] + '送' + m[2];
+      if (!promos.has(key)) promos.set(key, []);
+      promos.get(key).push(sku);
+    }
+  }
+}
+const promoObj = {};
+for (const [k, v] of [...promos.entries()].sort((a, b) => b[1].length - a[1].length)) promoObj[k] = v.slice(0, 2000);
+await writeJson(path.join(OUT, 'promos.json'), promoObj);
+console.log('促销索引:', Object.keys(promoObj).map((k) => k + '=' + promoObj[k].length).join(' | '));
 await writeJson(path.join(OUT, 'catalog.json'), list);
 for (const [k, v] of shards) await writeJson(path.join(OUT, 'detail', k + '.json'), v);
 

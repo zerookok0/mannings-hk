@@ -17,6 +17,23 @@ await fs.cp(DATA, path.join(DIST, 'data'), { recursive: true });
 // /bp 契约资产（面板侧原样提供）
 const BP_SRC = 'C:\\Users\\Admin\\Desktop\\_bp_unzip2';   // bp-connector-20261121 (2)
 await fs.cp(BP_SRC, path.join(DIST, 'bp'), { recursive: true });
+// 首屏轮播图预加载（桌面/手机各一条，避免先下载错的那张）
+try {
+  const homeData = JSON.parse(await fs.readFile(path.join(DIST, 'data', 'home.json'), 'utf8'));
+  const b0 = (homeData.banners || [])[0];
+  if (b0) {
+    let html0 = await fs.readFile(path.join(DIST, 'index.html'), 'utf8');
+    const links = [
+      b0.m ? `<link rel="preload" as="image" media="(max-width:680px)" href="${b0.m}">` : '',
+      b0.d ? `<link rel="preload" as="image" media="(min-width:681px)" href="${b0.d}">` : '',
+    ].filter(Boolean).join('');
+    if (links && !html0.includes('rel="preload" as="image"')) {
+      html0 = html0.replace('</head>', links + '</head>');
+      await fs.writeFile(path.join(DIST, 'index.html'), html0, 'utf8');
+      console.log('已注入首图 preload');
+    }
+  }
+} catch (e) { console.log('preload 跳过:', String(e).slice(0, 60)); }
 // 像素 ID 注入（sf/pixel.json 一处配置，全站 HTML 替换）
 const PIX = JSON.parse(await fs.readFile(path.join(ROOT, 'sf', 'pixel.json'), 'utf8'));
 const FB_ID = (PIX.fb_pixel_id || '').trim();

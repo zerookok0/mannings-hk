@@ -73,13 +73,15 @@
 
   /* ---------- 数据加载 ---------- */
   async function loadBase() {
-    const [cat, cats, brands, home] = await Promise.all([
+    const [cat, cats, brands, home, promos] = await Promise.all([
       fetch('./data/catalog.json?' + V).then((r) => r.json()),
       fetch('./data/cats.json?' + V).then((r) => r.json()),
       fetch('./data/brands.json?' + V).then((r) => r.json()),
       fetch('./data/home.json?' + V).then((r) => r.json()).catch(() => null),
+      fetch('./data/promos.json?' + V).then((r) => r.json()).catch(() => ({})),
     ]);
-    state.catalog = cat; state.cats = cats; state.brands = brands; state.home = home;
+    state.catalog = cat; state.cats = cats; state.brands = brands;
+    state.home = home; state.promos = promos || {};
     paintCart();
     buildNav();
   }
@@ -133,7 +135,7 @@
     const carousel = banners.length ? `
     <section class="carousel" id="carousel" aria-roledescription="carousel">
       <div class="ctrack" id="ctrack">
-        ${banners.map((b, i) => `<a class="cslide" href="${b.href}" data-i="${i}"><img src="${b.img}" alt="萬寧推廣 ${i + 1}" ${i ? 'loading="lazy"' : ''}></a>`).join('')}
+        ${banners.map((b, i) => `<a class="cslide" href="${b.href}" data-i="${i}"><picture><source media="(max-width:680px)" srcset="${b.m || b.d}"><img src="${b.d || b.m}" alt="萬寧推廣 ${i + 1}" style="--ar:${b.ar || 2.5};--arm:${b.arm || b.ar || 2.5}" ${i ? 'loading="lazy" decoding="async"' : 'fetchpriority="high"'}></picture></a>`).join('')}
       </div>
       <button class="cbtn prev" type="button" data-c="-1" aria-label="上一張">‹</button>
       <button class="cbtn next" type="button" data-c="1" aria-label="下一張">›</button>
@@ -142,7 +144,7 @@
 
     const tiles = (home.tiles || []).length ? `
     <div class="promotiles">
-      ${home.tiles.map((x) => `<a href="${x.href}"><img src="${x.img}" alt="推廣" loading="lazy"></a>`).join('')}
+      ${home.tiles.map((x) => `<a href="${x.href}"><picture><source media="(max-width:680px)" srcset="${x.m || x.d}"><img src="${x.d || x.m}" alt="推廣" style="--ar:${x.ar || 1.5};--arm:${x.arm || x.ar || 1.5}" loading="lazy" decoding="async"></picture></a>`).join('')}
     </div>` : '';
 
     return `
@@ -211,6 +213,17 @@
       play();
     });
     document.addEventListener('visibilitychange', () => (document.hidden ? stop() : play()));
+
+    // 首屏外预取：第 2、3 张（按当前设备取对应源），首图已由 <link rel=preload> + fetchpriority 抢先
+    const isMobile = window.matchMedia('(max-width:680px)').matches;
+    const list = (state.home && state.home.banners) || [];
+    [1, 2].forEach((k) => {
+      const b = list[k];
+      if (!b) return;
+      const im = new Image();
+      im.decoding = 'async';
+      im.src = isMobile ? (b.m || b.d) : (b.d || b.m);
+    });
 
     go(0, false); play();
   }
@@ -314,7 +327,18 @@
     <section class="sec"><div class="sec-h"><h2>同類推薦</h2></div>${grid(state.catalog.filter((x) => x.c[0] === p.c[0] && x.sku !== p.sku).slice(0, 5))}</section>`;
   }
 
-  function viewSearch(q) {
+  function viewSearch(q, promo) {
+    // 促销筛选：買 X 送 Y → 精确 SKU 集合（由 promos.json 预生成）
+    if (promo) {
+      const map = state.promos || {};
+      const skus = new Set(map[promo] || []);
+      const list = state.catalog.filter((p) => skus.has(p.sku));
+      const chips = Object.keys(map).map((k) =>
+        `<a class="chip ${k === promo ? 'on' : ''}" href="#/search?promo=${encodeURIComponent(k)}">${esc(k)}（${map[k].length}）</a>`).join('');
+      return `<div class="lh"><h1>${esc(promo)}</h1><div class="cnt">共 ${list.length} 件參與</div></div>
+        <div style="margin:0 0 12px">${chips}</div>` +
+        (list.length ? grid(list.slice(0, 60)) : '<div class="empty">此促銷暫無商品</div>');
+    }
     const kw = (q || '').trim().toLowerCase();
     if (!kw) return `<div class="lh"><h1>全部商品</h1><div class="cnt">${state.catalog.length} 件 · 全部 5 折</div></div>` + grid(state.catalog.slice(0, 40));
     const list = state.catalog.filter((p) =>
@@ -421,7 +445,7 @@
     if (!seg.length) { app.innerHTML = viewHome(); bindGrid(); bindCarousel(); return; }
     if (seg[0] === 'c') { app.innerHTML = viewCategory(decodeURIComponent(seg[1] || '')); bindCategory(decodeURIComponent(seg[1] || '')); return; }
     if (seg[0] === 'p') { app.innerHTML = await viewProduct(seg[1]); bindProduct(); return; }
-    if (seg[0] === 'search') { app.innerHTML = viewSearch(q.get('q') || ''); bindGrid(); return; }
+    if (seg[0] === 'search') { app.innerHTML = viewSearch(q.get('q') || '', q.get('promo') || ''); bindGrid(); return; }
     if (seg[0] === 'cart') { app.innerHTML = viewCart(); bindCart(); return; }
     if (seg[0] === 'checkout') { location.replace('/checkout'); return; }
     if (seg[0] === 'login') { app.innerHTML = viewAuth('login'); bindAuth(); return; }
