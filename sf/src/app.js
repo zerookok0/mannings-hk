@@ -142,10 +142,22 @@
       <div class="cdots" id="cdots">${banners.map((_, i) => `<button type="button" data-d="${i}" class="${i === 0 ? 'on' : ''}" aria-label="第 ${i + 1} 張"></button>`).join('')}</div>
     </section>` : '';
 
-    const tiles = (home.tiles || []).length ? `
+    // 双图位：换成「健康」「個人護理」两类商品（与顶部导航箭头指向一致）
+    const topOf = (cat, n) => state.catalog
+      .filter((p) => p.c.includes(cat) && p.i)
+      .sort((a, b) => b.sold - a.sold)
+      .slice(0, n);
+    const catTiles = [
+      { t: '健康', href: '#/c/' + encodeURIComponent('健康'), items: topOf('健康', 2) },
+      { t: '個人護理', href: '#/c/' + encodeURIComponent('個人護理'), items: topOf('個人護理', 2) },
+    ];
+    const tiles = `
     <div class="promotiles">
-      ${home.tiles.map((x) => `<a href="${x.href}"><picture><source media="(max-width:680px)" srcset="${x.m || x.d}"><img src="${x.d || x.m}" alt="推廣" style="--ar:${x.ar || 1.5};--arm:${x.arm || x.ar || 1.5}" loading="lazy" decoding="async"></picture></a>`).join('')}
-    </div>` : '';
+      ${catTiles.map((c) => `<a class="cattile" href="${c.href}">
+        <div class="cattile-imgs">${c.items.map((p) => `<img src="${p.i}&width=400" alt="${esc(p.n)}" loading="lazy" decoding="async">`).join('')}</div>
+        <div class="cattile-label"><b>${esc(c.t)}</b><span>全站 5 折 · 選購 ›</span></div>
+      </a>`).join('')}
+    </div>`;
 
     return `
     ${strip}

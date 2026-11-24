@@ -52,7 +52,7 @@ window.__BP_CART__ = {
   header a.back{color:#fff;font-size:13px;text-decoration:none;font-weight:700}
   .cols{display:grid;grid-template-columns:1fr 380px;gap:16px;margin:18px 0;align-items:start}
   .panel{background:#fff;border-radius:14px;padding:18px}
-  .panel h2{font-size:15px;margin:0 0 12px}
+  .panel h2{font-size:16px;margin:0 0 12px;font-weight:900;letter-spacing:.2px;color:#111418}
   .field{margin-bottom:12px}
   .field label{display:block;font-size:12.5px;font-weight:700;margin-bottom:5px;color:#374151}
   .field input,.field select{width:100%;height:44px;border:1px solid #dfe3e8;border-radius:10px;padding:0 12px;font-size:14px;font-family:inherit}
@@ -60,14 +60,60 @@ window.__BP_CART__ = {
   .bp-card-fields{position:relative}
   .row{display:flex;justify-content:space-between;padding:6px 0;font-size:13px;color:#4b5563}
   .sum-total{display:flex;justify-content:space-between;border-top:1px solid #eceef1;margin-top:8px;padding-top:10px;font-size:20px;font-weight:900;color:#e4002b}
-  #bp-submit{width:100%;height:50px;border:0;border-radius:999px;background:#ff8300;color:#fff;font-size:16px;font-weight:900;cursor:pointer;margin-top:10px}
-  #bp-submit.bp-busy{opacity:.85}
-  #bp-error{min-height:20px;color:#e4002b;font-size:13px;margin-top:8px}
+  #bp-submit{width:100%;height:52px;border:0;border-radius:10px;background:#ff8300;color:#fff;font-size:16px;font-weight:900;
+    cursor:pointer;letter-spacing:.3px;box-shadow:0 6px 16px rgba(255,131,0,.28);transition:background .15s,box-shadow .15s,transform .06s}
+  #bp-submit:hover{background:#f07c00;box-shadow:0 8px 20px rgba(255,131,0,.36)}
+  #bp-submit:active{transform:translateY(1px)}
+  #bp-submit.bp-busy{opacity:.85;cursor:progress}
+
+  /* 模块：預計送貨時間 / 送貨偏好 */
+  .mod{border:1px solid #eceef1;border-radius:12px;padding:14px;margin:14px 0}
+  .mod-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .mod-title{font-size:16px;font-weight:900;margin:0;color:#111418}
+  .edit-btn{height:34px;padding:0 16px;border:1.5px solid #d7dbe0;border-radius:8px;background:#fff;font-size:13px;font-weight:800;color:#374151;cursor:pointer}
+  .edit-btn:hover{border-color:#ff8300;color:#ff8300}
+  .mod-body{margin-top:8px}
+  .mod-empty{color:#8b93a1;font-size:13px}
+  .mod-val{font-size:14px;font-weight:800;color:#111418}
+  .mod-hint{color:#8b93a1;font-size:12px;margin-top:4px}
+  .mod-desc{font-size:12.5px;color:#4b5563;margin:0 0 10px;line-height:1.7}
+  .mod-fine{color:#8b93a1;font-size:11.5px;margin:10px 0 0}
+  .pref-btns{display:flex;gap:8px;flex-wrap:wrap}
+  .pref{height:34px;padding:0 16px;border:1px solid #e5e7eb;border-radius:8px;background:#fff;font-size:13px;font-weight:700;color:#374151;cursor:pointer}
+  .pref.on{background:#fff4e6;border-color:#ff8300;color:#e67500;font-weight:900}
+
+  /* 底部固定付款条 */
+  .submitbar{position:sticky;bottom:0;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,#fff 38%);padding:12px 0 4px;margin-top:6px}
+
+  /* 时间选择抽屉 */
+  .sheet{position:fixed;inset:0;background:rgba(15,20,25,.5);display:none;align-items:center;justify-content:center;z-index:80;padding:16px}
+  .sheet.on{display:flex}
+  .sheet-card{background:#fff;width:min(520px,100%);max-height:82vh;border-radius:16px;display:flex;flex-direction:column;overflow:hidden;animation:pop .22s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+  .sheet-head{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #eceef1;font-size:15px;font-weight:900}
+  .sheet-x{width:32px;height:32px;border:0;background:none;font-size:22px;color:#6b7280;cursor:pointer}
+  .sheet-body{overflow-y:auto;padding:6px 16px 12px}
+  .day{display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #f2f4f6}
+  .day-left .dow{font-size:13.5px;font-weight:900;color:#111418}
+  .day-left .dd{font-size:12px;color:#8b93a1}
+  .day.today .dow{color:#e4002b}
+  .slots{display:flex;gap:8px;flex-wrap:wrap}
+  .slot{height:36px;padding:0 14px;border:1px solid #dfe3e8;border-radius:8px;background:#fff;font-size:12.5px;font-weight:700;color:#111418;cursor:pointer}
+  .slot:disabled{background:#f3f4f6;color:#b6bcc6;border-color:#eceef1;cursor:not-allowed}
+  .slot.on{border-color:#ff8300;background:#fff4e6;color:#e67500;font-weight:900}
+  .sheet-foot{padding:12px 16px 16px;border-top:1px solid #eceef1}
+  .sheet-ok{width:100%;height:48px;border:0;border-radius:10px;background:#ff8300;color:#fff;font-size:16px;font-weight:900;cursor:pointer}
+
   .note{background:#f8fafc;border-left:3px solid #ff8300;border-radius:8px;padding:10px 12px;font-size:12.5px;color:#475569;margin:10px 0}
   .items{font-size:13px;color:#374151}
   .items div{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed #eceef1}
   footer{text-align:center;color:#8b93a1;font-size:12px;padding:24px 0}
   @media (max-width:900px){.cols{grid-template-columns:1fr}}
+  @media (max-width:680px){
+    .sheet{padding:0;align-items:flex-end}
+    .sheet-card{width:100%;max-width:100%;max-height:88vh;border-radius:16px 16px 0 0}
+    .day{grid-template-columns:84px 1fr}
+  }
 </style>
 </head>
 <body>
@@ -95,6 +141,31 @@ window.__BP_CART__ = {
       </div>
       <div class="field"><label>詳細地址 *</label><input id="c-addr" name="address1" required placeholder="街道、門牌、樓層"></div>
 
+      <!-- 預計送貨時間 -->
+      <div class="mod" id="mod-time">
+        <div class="mod-head">
+          <h3 class="mod-title">預計送貨時間</h3>
+          <button class="edit-btn" type="button" id="pick-time">修改</button>
+        </div>
+        <div class="mod-body">
+          <div id="time-val" class="mod-empty">尚未選擇送貨時間</div>
+          <div class="mod-hint">實際送貨時間以短訊 SMS / 電郵通知為準</div>
+        </div>
+      </div>
+
+      <!-- 送貨偏好 -->
+      <div class="mod" id="mod-pref">
+        <div class="mod-head"><h3 class="mod-title">送貨偏好</h3></div>
+        <div class="mod-body">
+          <p class="mod-desc">我們會盡量直接送貨給你。如果您無法親自收貨，請選擇您的替代方式：</p>
+          <div class="pref-btns" id="pref-btns">
+            <button type="button" class="pref" data-pref="放於門口">放於門口</button>
+            <button type="button" class="pref" data-pref="放於接待處">放於接待處</button>
+          </div>
+          <p class="mod-desc mod-fine">當您選擇此選項，即表示您授權送遞員將訂單放於您的門口或接待處，當包裹置放妥當後，我們即視為送貨完成。</p>
+        </div>
+      </div>
+
       <h2 style="margin-top:18px">付款資料</h2>
       <div class="bp-card-fields">
         <div class="field"><label>卡號</label><input id="bp-card-number" name="card_number" type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" autocomplete="cc-number"></div>
@@ -105,7 +176,9 @@ window.__BP_CART__ = {
       </div>
 
       <div id="bp-error"></div>
-      <button id="bp-submit" type="submit">確認付款 <span id="bp-total">HK$0.00</span></button>
+      <div class="submitbar">
+        <button id="bp-submit" type="submit">確認付款 <span id="bp-total">HK$0.00</span></button>
+      </div>
       <div class="note">付款資料以 TLS 加密傳輸；交易完成後即時確認訂單。全單免運費，下午 4 點前落單當日送達。</div>
     </form>
 
@@ -117,6 +190,19 @@ window.__BP_CART__ = {
     </aside>
   </div>
 </main>
+
+<!-- 選擇送貨時間 -->
+<div class="sheet" id="time-sheet" aria-hidden="true">
+  <div class="sheet-card">
+    <div class="sheet-head">
+      <button class="sheet-x" type="button" id="sheet-close" aria-label="關閉">×</button>
+      <span>選擇送貨時間</span>
+    </div>
+    <div class="sheet-body" id="time-list"></div>
+    <div class="sheet-foot"><button type="button" class="sheet-ok" id="sheet-ok">確定</button></div>
+  </div>
+</div>
+
 <footer>© 2026 萬寧 All rights reserved.</footer>
 <script src="/checkout.js"></script>
 </body>
