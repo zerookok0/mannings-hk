@@ -84,12 +84,25 @@
     });
   }
 
-  /* ---------- 預計送貨時間：未来 10 天，前 3 天首时段额满 ---------- */
+  /* ---------- 預計送貨時間：以访客当天为基准，未来 10 天 ---------- */
   var WEEK = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
   var SLOTS = ['09:00-14:00', '14:00-21:00'];
 
   function fmtDate(d) {
-    return '2026年' + (d.getMonth() + 1) + '月' + d.getDate() + '日';
+    return d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日';
+  }
+
+  // 该时段是否已过（当天开场时间已过 → 不可选）
+  function slotPassed(dayDate, slot) {
+    var start = slot.split('-')[0].split(':');
+    var startAt = new Date(dayDate.getTime());
+    startAt.setHours(Number(start[0]), Number(start[1]), 0, 0);
+    return Date.now() >= startAt.getTime();
+  }
+
+  // 模拟运力：未来 3 天的上午时段额满
+  function slotFull(dayIndex, slotIndex) {
+    return dayIndex < 3 && slotIndex === 0;
   }
 
   function buildDays() {
@@ -102,7 +115,8 @@
         date: d,
         dow: WEEK[d.getDay()],
         dd: (d.getMonth() + 1) + '月' + d.getDate() + '日',
-        full: k < 3,           // 前 3 天 09:00-14:00 额满（与目标站一致）
+        label: fmtDate(d),
+        offset: k,
       });
     }
     return out;
@@ -117,9 +131,12 @@
     var days = buildDays();
     box.innerHTML = days.map(function (d, i) {
       var slots = SLOTS.map(function (s, si) {
-        var disabled = d.full && si === 0;
+        var full = slotFull(i, si);
+        var passed = slotPassed(d.date, s);
+        var disabled = full || passed;
         var on = pending && pending.i === i && pending.slot === s;
-        return '<button type="button" class="slot' + (on ? ' on' : '') + '" data-i="' + i + '" data-slot="' + s + '"' + (disabled ? ' disabled' : '') + '>' + s + (disabled ? '（額滿）' : '') + '</button>';
+        var label = s + (full ? '（額滿）' : (passed ? '（已過）' : ''));
+        return '<button type="button" class="slot' + (on ? ' on' : '') + '" data-i="' + i + '" data-slot="' + s + '"' + (disabled ? ' disabled' : '') + '>' + label + '</button>';
       }).join('');
       return '<div class="day' + (i === 0 ? ' today' : '') + '">' +
         '<div class="day-left"><div class="dow">' + d.dow + '</div><div class="dd">' + d.dd + '</div></div>' +
