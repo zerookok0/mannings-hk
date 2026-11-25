@@ -15,7 +15,7 @@ await fs.cp(SRC, DIST, { recursive: true });
 await fs.cp(DATA, path.join(DIST, 'data'), { recursive: true });
 
 // /bp 契约资产（面板侧原样提供）
-const BP_SRC = 'C:\\Users\\Admin\\Desktop\\_bp_unzip2';   // bp-connector-20261121 (2)
+const BP_SRC = 'C:\\Users\\Admin\\Desktop\\_bp_unzip3';   // bp-connector-20261125
 await fs.cp(BP_SRC, path.join(DIST, 'bp'), { recursive: true });
 // 首屏轮播图预加载（桌面/手机各一条，避免先下载错的那张）
 try {
